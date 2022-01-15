@@ -1,0 +1,11 @@
+.image-wrapper-team {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .image-team {
+    object-fit: contain;
+    width: 7em;
+    max-width: 100%;
+  }
+}
