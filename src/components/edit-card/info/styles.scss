@@ -1,0 +1,54 @@
+@import "../../../assets/variables/_variables.scss";
+
+.info {
+  display: flex;
+  background: $gradient;
+  border-radius: 0px 0px 10px 10px;
+  color: $white;
+
+  h2 {
+    font-size: 1.8em;
+  }
+}
+
+.command .left {
+  width: 40%;
+}
+.command .right {
+  padding: 3rem 0;
+  width: 60%;
+}
+.player .left {
+  width: 50%;
+}
+.player .right {
+  padding: 3rem 0;
+  width: 50%;
+}
+.red {
+  color: $red;
+}
+
+.properties {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 1em;
+  padding-left: 0;
+  list-style-type: none;
+
+  li {
+    display: block;
+    width: 40%;
+    font-style: normal;
+    font-weight: 800;
+    font-size: 1.2em;
+
+    .value {
+      font-style: normal;
+      font-weight: 500;
+      font-size: 0.9em;
+      line-height: 2em;
+    }
+  }
+}
