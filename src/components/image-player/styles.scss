@@ -1,0 +1,11 @@
+.image-wrapper-player {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 100%;
+  .image-player {
+    object-fit: cover;
+    width: 20em;
+    max-width: 100%;
+  }
+}
