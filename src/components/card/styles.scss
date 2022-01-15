@@ -8,28 +8,6 @@
   display: flex;
   flex-direction: column;
 
- .command{
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100%;
-    img{
-      height: 150px;
-      width: 150px;
-    }
-  }
-
-  .player{
-    display: flex;
-    justify-content: center;
-    align-items: end;
-    height: 100%;
-    img{
-      height: 207px;
-      width: 274px;
-    }
-  }
-
   &_description {
     height: 100px;
     padding: 19px;
