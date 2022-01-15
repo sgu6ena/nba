@@ -11,3 +11,24 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
+
+*{
+  box-sizing: border-box;
+}
+
+@font-face {
+  font-family: Avenir;
+  src: url("assets/fonts/AvenirLTStd-Black.otf") format("otf")
+}
+
+@import './assets/variables/_variables.scss';
+
+.App {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5em;
+  font-family: Avenir, sans-serif;
+  min-height: 100vh;
+  background: $lightest-grey1;
+  padding: 15px;
+}

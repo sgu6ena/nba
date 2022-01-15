@@ -1,35 +1,63 @@
-@import '../../assets/variables/_variables.scss';
+@import "../../assets/variables/_variables.scss";
 
 .card {
   height: 364px;
   width: 380px;
   background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
   border-radius: 4px;
+  display: flex;
+  flex-direction: column;
 
-  display: grid;
-  grid-template-columns: 1fr;
-  grid-template-rows: 1fr 100px;
-  grid-column-gap: 0px;
-  grid-row-gap: 0px;
-
-  &_image {
+ .command{
+    display: flex;
+    justify-content: center;
+    align-items: center;
     height: 100%;
-    grid-area: 1 / 1 / 3 / 2;
+    img{
+      height: 150px;
+      width: 150px;
+    }
+  }
+
+  .player{
+    display: flex;
+    justify-content: center;
+    align-items: end;
+    height: 100%;
+    img{
+      height: 207px;
+      width: 274px;
+    }
   }
 
   &_description {
-    color: $white;
-    text-align: center;
+    height: 100px;
     padding: 19px;
     font-size: 18px;
     background: $dark-grey;
     border-radius: 0px 0px 4px 4px;
 
-    grid-area: 2 / 1 / 3 / 2;
-
     font-style: normal;
     font-weight: 500;
-    font-size: 18px;
-    line-height: 25px;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    flex-shrink: 0;
+
+    .title {
+      color: $white;
+      font-size: 18px;
+
+      .red {
+        color: $red;
+      }
+    }
+
+    .subtitle {
+      font-size: 14px;
+      color: $light-grey;
+    }
   }
 }
