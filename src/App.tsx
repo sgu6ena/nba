@@ -1,10 +1,13 @@
 import React from "react";
 import Card from "./components/card/Card";
 import EditCard from "./components/edit-card/EditCard";
+import Table from "./components/table/Table";
 
 function App() {
   return (
-    <div className="App">
+
+  
+    <div className="App">  <Table />
       <EditCard
         title="Portland trail blazers"
         type="command"

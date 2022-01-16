@@ -1,0 +1,35 @@
+.table_wrapper {
+  width: 100%;
+  display: block;
+  table {
+    border-spacing: 0;
+    width: 100%;
+    border: 1px solid #9c9c9c;
+    border-radius: 10px 10px 0px 0px;
+    thead {
+      tr {
+        th {  padding:  14px 32px;
+          font-style: normal;
+          font-weight: 500;
+          font-size: 18px;
+          line-height: 25px;
+          color: #707070;
+          text-align: left;
+        }
+      }
+    }
+    tbody {
+      tr {
+        td { 
+            text-align: left; padding:  7px 32px;
+          border-spacing: 0;
+          border: none;
+          border-top: 1px solid #9c9c9c;font-style: normal;
+          font-weight: 500;
+          font-size: 14px;
+          line-height: 24px;
+        }
+      }
+    }
+  }
+}
