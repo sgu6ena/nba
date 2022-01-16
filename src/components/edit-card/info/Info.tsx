@@ -7,37 +7,39 @@ export interface IInfoProps {
   title: string;
   type: "command" | "player";
   place?: string;
-  
 }
 
 const Info: React.FC<IInfoProps> = ({ img, type, title, place }) => {
   return (
     <div className={`info ${type}`}>
       <div className={`left ${type}`}>
-        
-          <Image img={img} type={type}/>
-       
+        <Image img={img} type={type} />
       </div>
 
       <div className="right">
         <h2>
-          {title} <span className="red"> {place}</span>{" "}
+          {title} <span className="red"> {place}</span>
         </h2>
-        <ul className="properties">
-          <li className="child">Position
-          <div className="value">Forvard</div>
+        <ul>
+          <li>
+            Position
+            <div className="value">Forvard</div>
           </li>
-          <li className="child">Position
-          <div className="value">Forvard</div>
+          <li>
+            Position
+            <div className="value">Forvard</div>
           </li>
-          <li className="child">Position
-          <div className="value">Forvard</div>
+          <li>
+            Position
+            <div className="value">Forvard</div>
           </li>
-          <li className="child">Position
-          <div className="value">Forvard</div>
+          <li>
+            Position
+            <div className="value">Forvard</div>
           </li>
-          <li className="child">Position
-          <div className="value">Forvard</div>
+          <li>
+            Position
+            <div className="value">Forvard</div>
           </li>
         </ul>
       </div>

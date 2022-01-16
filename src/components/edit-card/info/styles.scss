@@ -7,7 +7,32 @@
   color: $white;
 
   h2 {
-    font-size: 1.8em;
+    font-size: 1.5em;
+    margin-bottom: 1.5em;
+  }
+
+  ul {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    gap: 2.5rem;
+    padding-left: 0;
+    list-style-type: none;
+  
+    li {
+      display: block;
+      width: 40%;
+      font-style: normal;
+      font-weight: 800;
+      font-size: 1em;
+  
+      .value {
+        font-style: normal;
+        font-weight: 500;
+        font-size: 0.75em;
+        line-height: 2em;
+      }
+    }
   }
 }
 
@@ -15,40 +40,17 @@
   width: 40%;
 }
 .command .right {
-  padding: 3rem 0;
+  padding: 2.5rem 0;
   width: 60%;
 }
 .player .left {
-  width: 50%;
+  width: 45%;
 }
 .player .right {
-  padding: 3rem 0;
-  width: 50%;
+  padding: 2.5rem 0;
+  width: 55%;
 }
 .red {
   color: $red;
 }
 
-.properties {
-  display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  gap: 1em;
-  padding-left: 0;
-  list-style-type: none;
-
-  li {
-    display: block;
-    width: 40%;
-    font-style: normal;
-    font-weight: 800;
-    font-size: 1.2em;
-
-    .value {
-      font-style: normal;
-      font-weight: 500;
-      font-size: 0.9em;
-      line-height: 2em;
-    }
-  }
-}
