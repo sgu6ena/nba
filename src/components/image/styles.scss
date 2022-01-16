@@ -1,0 +1,24 @@
+.player.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: end;
+  height: 100%;
+  .image {
+    object-fit: cover;
+    width: 20em;
+    max-width: 100%;
+  }
+}
+
+
+.command.image-wrapper {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+  .image {
+    object-fit: contain;
+    width: 7em;
+    max-width: 100%;
+  }
+}

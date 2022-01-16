@@ -1,6 +1,5 @@
 import * as React from "react";
-import ImagePlayer from "../../image-player/ImagePlayer";
-import ImageTeam from "../../image-team/ImageTeam";
+import Image from "../../image/Image";
 import "./styles.scss";
 
 export interface IInfoProps {
@@ -8,17 +7,16 @@ export interface IInfoProps {
   title: string;
   type: "command" | "player";
   place?: string;
+  
 }
 
 const Info: React.FC<IInfoProps> = ({ img, type, title, place }) => {
   return (
     <div className={`info ${type}`}>
-      <div className="left">
-        {type === "player" ? (
-          <ImagePlayer img={img} />
-        ) : (
-          <ImageTeam img={img} />
-        )}
+      <div className={`left ${type}`}>
+        
+          <Image img={img} type={type}/>
+       
       </div>
 
       <div className="right">

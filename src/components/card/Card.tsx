@@ -1,6 +1,5 @@
 import * as React from "react";
-import ImagePlayer from "../image-player/ImagePlayer";
-import ImageTeam from "../image-team/ImageTeam";
+import Image from "../image/Image";
 import "./styles.scss";
 
 interface ICardProps {
@@ -20,13 +19,9 @@ const Card: React.FunctionComponent<ICardProps> = ({
 }) => {
   return (
     <div className="card">
-      {console.log(type === "player" )}
-      
-      {type === "player" ? (
-        <ImagePlayer img={img} title={title} />
-      ) : (
-        <ImageTeam img={img} title={title}/>
-      )}
+  
+        <Image img={img} title={title} type={type} />
+     
       <div className="card_description">
         <div className="title">
           {title}
