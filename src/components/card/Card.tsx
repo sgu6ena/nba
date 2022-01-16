@@ -6,7 +6,7 @@ interface ICardProps {
   title: string;
   place?: string;
   subtitle: string;
-  img: string;
+  avatarUrl: string;
   type: "command" | "player";
 }
 
@@ -14,13 +14,13 @@ const Card: React.FunctionComponent<ICardProps> = ({
   title,
   subtitle,
   place,
-  img,
+  avatarUrl,
   type,
 }) => {
   return (
     <div className="card">
   
-        <Image img={img} title={title} type={type} />
+        <Image avatarUrl={avatarUrl} title={title} type={type} />
      
       <div className="card_description">
         <div className="title">

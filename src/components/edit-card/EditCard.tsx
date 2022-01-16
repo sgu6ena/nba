@@ -6,20 +6,20 @@ import "./styles.scss";
 export interface IEditCardProps {
   title: string;
   place?: string;
-  img: string;
+  avatarUrl: string;
   type: "command" | "player";
 }
 
 const EditCard: React.FC<IEditCardProps> = ({
   title,
   place,
-  img,
+  avatarUrl,
   type,
 }) => {
   return (
     <div className="edit-card">
       <Panel type={type} title={title} />
-      <Info img={img} type={type} title={title}   place={place} />
+      <Info avatarUrl={avatarUrl} type={type} title={title}   place={place} />
     </div>
   );
 };

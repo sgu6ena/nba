@@ -3,17 +3,17 @@ import Image from "../../image/Image";
 import "./styles.scss";
 
 export interface IInfoProps {
-  img: string;
+  avatarUrl: string;
   title: string;
   type: "command" | "player";
   place?: string;
 }
 
-const Info: React.FC<IInfoProps> = ({ img, type, title, place }) => {
+const Info: React.FC<IInfoProps> = ({ avatarUrl, type, title, place }) => {
   return (
     <div className={`info ${type}`}>
       <div className={`left ${type}`}>
-        <Image img={img} type={type} />
+        <Image avatarUrl={avatarUrl} type={type} />
       </div>
 
       <div className="right">
