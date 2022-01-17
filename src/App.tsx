@@ -6,6 +6,7 @@ import BasketUp from "./assets/images/Basket-up";
 import NotFound from "./assets/images/NotFound";
 import Card from "./components/card/Card";
 import EditCard from "./components/edit-card/EditCard";
+import Header from "./components/header/Header";
 import Table from "./components/table/Table";
 import Button from "./ui/button/Button";
 
@@ -14,6 +15,7 @@ function App() {
 
   
     <div className="App"> 
+    <Header/>  
     <BasketUp height={200}/>
     <BasketIn height={200}/>
     <BasketEmpty height={200}/>
