@@ -1,10 +1,14 @@
 import React from "react";
 
-const Avatar = () => (
-  <div>
-    <svg
-      width="48"
-      height="48"
+ 
+interface ISvgProps{
+  width?:number;
+  height?: number;
+}
+
+const Avatar = ({ width, height}:ISvgProps) => (
+<> 
+<svg width={width} height={height}
       viewBox="0 0 48 48"
       fill="currentColor"
       xmlns="http://www.w3.org/2000/svg"
@@ -16,7 +20,7 @@ const Avatar = () => (
         fill="#currentColor"
       />
     </svg>
-  </div>
+  </>
 );
 
 export default Avatar;

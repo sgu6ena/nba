@@ -1,4 +1,9 @@
 import React from "react";
+import BasketEmpty from "./assets/images/Basket-empty";
+import BasketIn from "./assets/images/Basket-in";
+import BasketMan from "./assets/images/Basket-man";
+import BasketUp from "./assets/images/Basket-up";
+import NotFound from "./assets/images/NotFound";
 import Card from "./components/card/Card";
 import EditCard from "./components/edit-card/EditCard";
 import Table from "./components/table/Table";
@@ -9,6 +14,11 @@ function App() {
 
   
     <div className="App"> 
+    <BasketUp height={200}/>
+    <BasketIn height={200}/>
+    <BasketEmpty height={200}/>
+    <BasketMan height={200}/>
+    <NotFound  height={200}/>
     <Button secondary>Кнопка</Button>
     <Button secondary disabled>Кнопка</Button>
     <Button >Кнопка</Button>
