@@ -2,12 +2,18 @@ import React from "react";
 import Card from "./components/card/Card";
 import EditCard from "./components/edit-card/EditCard";
 import Table from "./components/table/Table";
+import Button from "./ui/button/Button";
 
 function App() {
   return (
 
   
-    <div className="App">  <Table />
+    <div className="App"> 
+    <Button secondary>Кнопка</Button>
+    <Button secondary disabled>Кнопка</Button>
+    <Button >Кнопка</Button>
+    <Button  disabled>Кнопка</Button>
+     <Table />
       <EditCard
         title="Portland trail blazers"
         type="command"
