@@ -1,9 +1,9 @@
 import * as React from 'react';
 
-export interface ICommandsListProps {
+export interface ICommandProps {
 }
 
-export function CommandsList (props: ICommandsListProps) {
+export function Command (props: ICommandProps) {
   return (
     <div>
       
