@@ -6,7 +6,7 @@ export interface IPageNotFoundProps {
 
 export function PageNotFound (props: IPageNotFoundProps) {
   return (
-    <div>
+    <div style={{display:"block", margin:"auto"}}>
       <NotFound  width={300}/>
     </div>
   );
