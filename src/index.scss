@@ -22,7 +22,6 @@ code {
 }
 
 .App {
-  // border: 1px solid blue;
   width: 100vw;
   height: 100vh;
   display: grid;
@@ -33,26 +32,21 @@ code {
     "nav  main";
   .header {
     grid-area: header;
-    // border: 1px solid tomato;
   }
   nav {
-  
     transition: all 0.3s ease-in-out;
     width: 130px;
     grid-area: nav;
-    // border: 1px solid green;
   }
-  nav:hover{
-    transition: all 0.3s ease-in-out;
-    width: 230px;
-  }
+  // nav:hover{
+  //   transition: all 0.3s ease-in-out;
+  //   width: 230px;
+  // }
   main {
     background-color: $lightest-grey1;
     display: flex;
     padding: 10px;
     grid-area: main;
-    // border: 0px solid ligthblue;
     overflow-y: scroll;
-    // overflow-x: hidden ;
   }
 }

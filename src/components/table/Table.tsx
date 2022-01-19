@@ -6,8 +6,8 @@ export interface ITableProps {}
 
 const Table: React.FC<ITableProps> = (props: ITableProps) => {
   return (
-    <div className="table_wrapper">
-      <table>
+   
+      <table className="table">
         <thead>
           <tr>
             <th colSpan={5}>заголовок</th>
@@ -57,7 +57,7 @@ const Table: React.FC<ITableProps> = (props: ITableProps) => {
             name="Gary Harris "/>
         </tbody>
       </table>
-    </div>
+ 
   );
 };
 

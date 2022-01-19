@@ -1,9 +1,8 @@
 @import "../../assets/variables/_variables.scss";
 
-.table_wrapper {
-  width: 100%;
-  display: block;
-  table {
+
+  table.table {
+    margin: 3px;
     background-color: $white;
     border-spacing: 0;
     width: 100%;
@@ -70,7 +69,7 @@
       }
       tr:hover {
         transition: all 0.3s;
-        background-color: $lightest-red;
+        background-color: $lightest-grey1;
         color: $dark-grey;
         .position {
           color: $dark-grey;
@@ -78,4 +77,4 @@
       }
     }
   }
-}
+
