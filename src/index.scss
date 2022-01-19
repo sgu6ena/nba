@@ -1,35 +1,58 @@
+@import "./assets/variables/_variables.scss";
 
-@import './assets/variables/_variables.scss';
-
-body {
+body { box-sizing: border-box;
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen", "Ubuntu", "Cantarell", "Fira Sans",
+    "Droid Sans", "Helvetica Neue", sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New", monospace;
 }
 
-*{
+* {
   box-sizing: border-box;
 }
 
 @font-face {
   font-family: Avenir;
-  src: url("assets/fonts/AvenirLTStd-Book.otf") format("otf")
+  src: url("assets/fonts/AvenirLTStd-Book.otf") format("otf");
 }
 
 .App {
-  display: flex;
-  flex-wrap: wrap;
-  gap: 0.5em;
-  font-family: Avenir, sans-serif;
-  min-height: 100vh;
-  background: $lightest-grey1;
-  padding: 90px 15px;
+  // border: 1px solid blue;
+  width: 100vw;
+  height: 100vh;
+  display: grid;
+  grid-template-rows: 80px auto;
+  grid-template-columns: max-content auto ;
+  grid-template-areas:
+    "header  header"
+    "nav  main";
+  .header {
+    grid-area: header;
+    // border: 1px solid tomato;
+  }
+  nav {
+  
+    transition: all 0.3s ease-in-out;
+    width: 130px;
+    grid-area: nav;
+    // border: 1px solid green;
+  }
+  nav:hover{
+    transition: all 0.3s ease-in-out;
+    width: 230px;
+  }
+  main {
+    background-color: $lightest-grey1;
+    display: flex;
+    padding: 10px;
+    grid-area: main;
+    // border: 0px solid ligthblue;
+    overflow-y: scroll;
+    // overflow-x: hidden ;
+  }
 }
