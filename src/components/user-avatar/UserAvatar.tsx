@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ReactComponent as Avatar} from "../../assets/svg/profile.svg";
+import {ReactComponent as Avatar} from "../../assets/icons/profile.svg";
 import "./styles.scss";
 
 export interface IUserAvatarProps {

@@ -1,15 +1,7 @@
-import React from "react";
- 
-interface ISvgProps{
-    width?:number;
-    height?: number;
-}
 
-const BasketIn = ({ width, height}:ISvgProps) => (
-  <>
     <svg
-      width={width}
-      height={height}
+      width="606"
+      height="413"
       viewBox="0 0 606 413"
       fill="none"
       xmlns="http://www.w3.org/2000/svg"
@@ -234,7 +226,3 @@ const BasketIn = ({ width, height}:ISvgProps) => (
         fill="#2B478B"
       />
     </svg>
-  </>
-);
-
-export default BasketIn;

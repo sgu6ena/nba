@@ -1,5 +1,5 @@
 import * as React from 'react';
-import NotFound from "../assets/images/NotFound"
+import {ReactComponent as NotFound} from "../assets/images/NotFound.svg";
 
 export interface IPageNotFoundProps {
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import Avatar from "../../assets/svg/avatar";
+import {ReactComponent as Avatar} from "../../assets/icons/profile.svg";
 
 interface IRowProps {
   name: string;
@@ -32,7 +32,7 @@ const Row: React.FC<IRowProps> = ({
       <td>
         <div className="player">
           <div className="avatar">
-              {avatarUrl? <img src={avatarUrl} alt={name} height="40" /> : <Avatar/>}
+              {avatarUrl? <img src={avatarUrl} alt={name} height="40" /> : <Avatar  width={48} height={48} />}
            
           </div>
           <div>

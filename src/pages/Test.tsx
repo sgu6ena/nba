@@ -1,9 +1,9 @@
 import React from "react";
-import BasketEmpty from "../assets/images/Basket-empty";
-import BasketIn from "../assets/images/Basket-in";
-import BasketMan from "../assets/images/Basket-man";
-import BasketUp from "../assets/images/Basket-up";
-import NotFound from "../assets/images/NotFound";
+import {ReactComponent as BasketEmpty} from "../assets/images/Basket-empty.svg";
+import {ReactComponent as BasketIn} from "../assets/images/Basket-in.svg";
+import {ReactComponent as BasketMan} from "../assets/images/Basket-man.svg";
+import {ReactComponent as BasketUp} from "../assets/images/Basket-up.svg";
+import {ReactComponent as NotFound} from "../assets/images/NotFound.svg"
 import Card from "../components/card/Card";
 import EditCard from "../components/edit-card/EditCard";
 import Header from "../components/header/Header";
