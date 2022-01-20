@@ -1,23 +1,30 @@
-import * as React from 'react';
-import { Link } from 'react-router-dom';
+import * as React from "react";
 
-interface ISidebarProps {
-}
+import MenuItem from "../menu-item/MenuItem";
+import "./styles.scss";
 
-const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => {
-  return (
-    <nav>
-    <ul>
-      <li>
-        <Link to="/"> тест </Link>
-      </li>
-      <li>
-        <Link to="/commands"> commands </Link>
-      </li>
-      <li><Link to="dsd">404</Link></li>
-    </ul>
+import { ReactComponent as GroupPerson } from "../../assets/icons/group-person.svg";
+import { ReactComponent as Person } from "../../assets/icons/person.svg";
+import { ReactComponent as Input } from "../../assets/icons/input.svg";
+
+interface ISidebarProps {}
+
+const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => (
+  <nav>
+    <div>
+      <MenuItem to="/commands" title="Teams">
+        <GroupPerson />
+      </MenuItem>
+      <MenuItem to="/players" title="Players">
+        <Person />
+      </MenuItem>
+    </div>
+   
+
+    <MenuItem to="/singout" title="Exit">
+        <Input />
+      </MenuItem>
   </nav>
-  );
-};
+);
 
 export default Sidebar;
