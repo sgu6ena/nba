@@ -1,11 +1,21 @@
-.UserAvatar{
-    display: flex;
-    align-items:center;
-    .name{
-        margin: 10px;
-    }
-    svg{
-        color: grey
-    }
-
+@import "../../assets/variables/_variables.scss";
+.UserAvatar {
+  display: flex;
+  align-items: center;
+  .name {
+    font-style: normal;
+    font-weight: 500;
+    font-size: 1em;
+    line-height: 24px;
+    margin: 18px;
+    color: $dark-grey;
+  }
+  img,
+  svg {
+    width: 36px;
+    height: 36px;
+    color: $grey;
+    border-radius: 50%;
+    object-fit: cover;
+  }
 }

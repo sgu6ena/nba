@@ -1,5 +1,5 @@
 import * as React from "react";
-import {ReactComponent as Avatar} from "../../assets/icons/profile.svg";
+import { ReactComponent as Profile } from "../../assets/icons/profile.svg";
 import "./styles.scss";
 
 export interface IUserAvatarProps {
@@ -10,10 +10,20 @@ export interface IUserAvatarProps {
 
 const UserAvatar: React.FC<IUserAvatarProps> = ({ avatarUrl, name, type }) => {
   return (
-    <div className={`UserAvatar ${type}`} style={{display:"flex", alignItems: "center"}} >
-        <div className="name">{name}</div>
-        {avatarUrl? <img className="image" src={avatarUrl} alt={name} /> :  <Avatar width={40} height={40} />}
-     
+    <div
+      className={`UserAvatar ${type}`}
+      style={{
+        display: "flex",
+        alignItems: "center",
+        flexDirection: type === "left" ? "row-reverse" : "row",
+      }}
+    >
+      <div className="name">{name}</div>
+      {avatarUrl ? (
+        <img className="image" src={avatarUrl} alt={name} />
+      ) : (
+        <Profile  />
+      )}
     </div>
   );
 };
