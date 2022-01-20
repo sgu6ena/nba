@@ -6,7 +6,6 @@ import {ReactComponent as BasketUp} from "../assets/images/Basket-up.svg";
 import {ReactComponent as NotFound} from "../assets/images/NotFound.svg"
 import Card from "../components/card/Card";
 import EditCard from "../components/edit-card/EditCard";
-import Header from "../components/header/Header";
 import Table from "../components/table/Table";
 import Button from "../ui/button/Button";
 
