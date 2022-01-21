@@ -17,9 +17,9 @@ const Table: React.FC<ITableProps> = (props: ITableProps) => {
           <tr>
             <td className="number">#</td>
             <td>Player</td>
-            <td>Heigth</td>
-            <td>Weigth</td>
-            <td>Age</td>
+            <td className="hidden-sm">Heigth</td>
+            <td className="hidden-sm" >Weigth</td>
+            <td className="hidden-sm">Age</td>
           </tr>
 
           <Row

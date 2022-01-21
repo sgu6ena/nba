@@ -41,9 +41,9 @@ const Row: React.FC<IRowProps> = ({
           </div>
         </div>
       </td>
-      <td>{height?`${height} sm`:'-'}</td>
-      <td>{weight?`${weight} kg`:'-'}</td>
-      <td>{birthday?age(birthday):''}</td>
+      <td className="hidden-sm">{height?`${height} sm`:'-'}</td>
+      <td className="hidden-sm">{weight?`${weight} kg`:'-'}</td>
+      <td className="hidden-sm">{birthday?age(birthday):''}</td>
     </tr>
   );
 };

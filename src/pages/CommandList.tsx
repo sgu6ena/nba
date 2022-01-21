@@ -7,7 +7,7 @@ export interface ICommandListProps {
 
 export function CommandList (props: ICommandListProps) {
   return (
-    <div style={{ display:"flex", flexWrap: "wrap", gap:"1rem" }}>
+    <div style={{ display:"flex", flexWrap: "wrap", gap:"2em" }}>
       
         <Card
         title="Portland trail blazers"

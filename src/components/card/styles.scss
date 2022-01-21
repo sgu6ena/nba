@@ -1,16 +1,17 @@
 @import "../../assets/variables/_variables.scss";
 
 .card {
-  width: 15em;
-  height: width+15px;
-  max-height: 24em;
-  max-width: 27em;
+
+  height: 24em;
+  width: 27em;
   background: $gradient;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  margin: 3px;
-  flex-grow: 4;
+
+  flex-grow: 1;
+  flex-shrink: 4;
+  // flex-basis: content;
 
 
   img {padding-top: 10px;
@@ -25,9 +26,9 @@
   }
   &_description {
     z-index: 5;
-    height: 100px;
-    padding: 19px;
-    font-size: 1.25rem;
+    height: 6em;
+    padding: 1em;
+    font-size: 1.3em;
     background: $dark-grey;
     border-radius: 0px 0px 4px 4px;
 
@@ -50,7 +51,7 @@
     }
 
     .subtitle {
-      font-size: 14px;
+      font-size: 1em;
       color: $light-grey;
     }
   }

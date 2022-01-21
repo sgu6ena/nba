@@ -9,6 +9,14 @@
     border: 1px solid $light-grey;
     border-radius: 10px 10px 0px 0px;
     color: $grey;
+    @media screen and (max-width: $sm){
+      margin: 0;
+      border:0;
+ 
+      .hidden-sm {
+        display: none;
+      }
+    }
     thead {
       tr {
         th {

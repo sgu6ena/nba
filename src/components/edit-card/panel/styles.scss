@@ -13,7 +13,10 @@
   font-weight: 500;
   font-size: 14px;
   line-height: 24px;
-
+  
+  @media screen and (max-width: $md) {
+    border-radius: 0;
+  }
   .path {
     color: $red;
     text-decoration: none;

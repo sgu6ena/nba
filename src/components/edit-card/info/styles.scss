@@ -5,10 +5,19 @@
   background: $gradient;
   border-radius: 0px 0px 10px 10px;
   color: $white;
+  @media screen and (max-width: $md) {
+    border-radius: 0;
+    flex-direction: column;
+    align-items: center;
+  }
 
   h2 {
     font-size: 1.5em;
     margin-bottom: 1.5em;
+    @media screen and (max-width: $md){
+      width: 100%;
+      text-align: center;
+    }
   }
 
   ul {
@@ -18,14 +27,21 @@
     gap: 2.5rem;
     padding-left: 0;
     list-style-type: none;
-  
+    @media screen and (max-width: $md){
+      gap: 2rem;
+    }
+
     li {
       display: block;
       width: 40%;
       font-style: normal;
       font-weight: 800;
       font-size: 1em;
-  
+      @media screen and (max-width: $md){
+        width: 100%;
+        text-align: center;
+      }
+
       .value {
         font-style: normal;
         font-weight: 500;
@@ -53,4 +69,3 @@
 .red {
   color: $red;
 }
-
