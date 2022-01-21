@@ -13,8 +13,6 @@ const UserAvatar: React.FC<IUserAvatarProps> = ({ avatarUrl, name, type }) => {
     <div
       className={`UserAvatar ${type}`}
       style={{
-        display: "flex",
-        alignItems: "center",
         flexDirection: type === "left" ? "row-reverse" : "row",
       }}
     >
