@@ -21,6 +21,10 @@ code {
   src: url("assets/fonts/AvenirLTStd-Book.otf") format("otf");
 }
 
+a{
+  text-decoration: inherit;
+}
+
 .App {
   width: 100vw;
   height: 100vh;
@@ -34,14 +38,9 @@ code {
     grid-area: header;
   }
   nav {
-    transition: all 0.3s ease-in-out;
-    width: 130px;
     grid-area: nav;
   }
-  // nav:hover{
-  //   transition: all 0.3s ease-in-out;
-  //   width: 230px;
-  // }
+
   main {
     background-color: $lightest-grey1;
     display: flex;

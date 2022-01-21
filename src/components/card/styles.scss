@@ -1,18 +1,33 @@
 @import "../../assets/variables/_variables.scss";
 
 .card {
-  height: 364px;
-  width: 380px;
-  background: linear-gradient(121.57deg, #707070 1.62%, #393939 81.02%);
+  width: 15em;
+  height: width+15px;
+  max-height: 24em;
+  max-width: 27em;
+  background: $gradient;
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  margin:3px;
+  margin: 3px;
+  flex-grow: 4;
 
+
+  img {padding-top: 10px;
+    transition: 0.15s ease-out;
+  }
+  &:hover {
+    img {
+      
+      transition: 0.3s ease-in-out;
+      transform: scale(1.05);
+    }
+  }
   &_description {
+    z-index: 5;
     height: 100px;
     padding: 19px;
-    font-size: 18px;
+    font-size: 1.25rem;
     background: $dark-grey;
     border-radius: 0px 0px 4px 4px;
 
@@ -27,7 +42,7 @@
 
     .title {
       color: $white;
-      font-size: 18px;
+      font-size: 1.25rem;
 
       .red {
         color: $red;
