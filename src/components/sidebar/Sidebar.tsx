@@ -18,6 +18,12 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = (props) => (
       <MenuItem to="/players" title="Players">
         <Person />
       </MenuItem>
+      <MenuItem to="/commands/test" title="Team test">
+        <GroupPerson />
+      </MenuItem>
+      <MenuItem to="/players/test" title="Player test">
+        <Person />
+      </MenuItem>
     </div>
    
 
