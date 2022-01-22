@@ -1,13 +1,18 @@
-import * as React from 'react';
-import {ReactComponent as NotFound} from "../assets/images/NotFound.svg";
+import * as React from "react";
+import { ReactComponent as NotFound } from "../assets/images/NotFound.svg";
+import ImageBox from "../components/image-box/ImageBox";
 
-export interface IPageNotFoundProps {
-}
+export interface IPageNotFoundProps {}
 
-export function PageNotFound (props: IPageNotFoundProps) {
+export function PageNotFound(props: IPageNotFoundProps) {
   return (
-    <div style={{display:"block", margin:"auto"}}>
-      <NotFound  width={300}/>
+    <div style={{ display: "block", margin: "auto" }}>
+      <ImageBox
+        title="Page Not Found"
+        description="Sorry, we can’t find what you’re looking for"
+      >
+        <NotFound width="90%" />
+      </ImageBox>
     </div>
   );
 }

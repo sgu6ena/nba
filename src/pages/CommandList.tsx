@@ -37,7 +37,7 @@ export function CommandList(props: ICommandListProps) {
     <Page>
       <Panel>
         <SearchInput placeholder="Search..." />
-        <Button>Add&nbsp;+</Button>
+        <Button>Add&nbsp;＋</Button>
       </Panel>
       <Content >
         <Card
