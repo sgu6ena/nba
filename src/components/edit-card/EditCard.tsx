@@ -3,7 +3,6 @@ import Info from "./info/Info";
 import Panel from "./panel/Panel";
 import styled from "styled-components";
 
-
 export interface IEditCardProps {
   title: string;
   place?: string;
@@ -12,10 +11,10 @@ export interface IEditCardProps {
 }
 
 const StyledEditCard = styled.div`
-display: block;
-width: 100%;
-font-size: 24px;
-`
+  display: block;
+  width: 100%;
+  font-size: 24px;
+`;
 
 const EditCard: React.FC<IEditCardProps> = ({
   title,
@@ -26,7 +25,7 @@ const EditCard: React.FC<IEditCardProps> = ({
   return (
     <StyledEditCard>
       <Panel type={type} title={title} />
-      <Info avatarUrl={avatarUrl} type={type} title={title}   place={place} />
+      <Info avatarUrl={avatarUrl} type={type} title={title} place={place} />
     </StyledEditCard>
   );
 };

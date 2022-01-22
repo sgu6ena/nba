@@ -8,6 +8,8 @@ import Card from "../components/card/Card";
 import EditCard from "../components/edit-card/EditCard";
 import Table from "../components/table/Table";
 import Button from "../ui/button/Button";
+import Input from "../ui/input/Input";
+import Password from "../ui/Password";
 
 interface ITestProps {}
 
@@ -21,6 +23,12 @@ const Test: React.FunctionComponent<ITestProps> = (props) => {
         width: "100%",
       }}
     >
+      <Password />
+      <Input label="login" />
+      <Input label="login" disabled value="John Smith"/>
+      <Input label="login" error={"required"} value="John Smith" />
+      <Input label="login" value="John Smith" />
+      <br /><br/>
       <Button>Кнопка</Button>
       <Button disabled>Кнопка disabled</Button>
       <Button secondary>Кнопка secondary</Button>
