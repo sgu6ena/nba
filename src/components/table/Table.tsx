@@ -1,13 +1,105 @@
 import * as React from "react";
 import Row from "./Row";
-import "./style.scss";
+// import "./style.scss";
+import styled from "styled-components";
+import * as vars from "../../assets/variables/variables";
 
 export interface ITableProps {}
+
+const StyledTable = styled.table`
+background-color: ${vars.$white};
+border-spacing: 0;
+width: 100%;
+border: 1px solid  ${vars.$lightGrey};
+border-radius: 10px 10px 0px 0px;
+color:  ${vars.$grey};
+
+@media screen and (max-width:  ${vars.$sm}){
+  margin: 0;
+  border:0;
+
+  .hidden-sm {
+    display: none;
+  }
+}
+
+
+thead {
+  tr {
+    th {
+      padding: 14px 32px;
+      font-style: normal;
+      font-weight: 500;
+      font-size: 18px;
+      line-height: 25px;
+      color:  ${vars.$grey};
+      text-align: left;
+    }
+  }
+}
+
+
+tbody {
+  tr {
+    .number {
+      width: 40px;
+      text-align: center;
+    }
+    td {
+      transition: all 0.2s;
+      text-align: left;
+      padding: 7px 32px;
+      border-spacing: 0;
+      border: none;
+      border-top: 1px solid  ${vars.$lightGrey};
+      font-style: normal;
+      font-weight: 500;
+      font-size: 14px;
+      line-height: 24px;
+
+      .player {
+        display: flex;
+        align-items: end;
+
+        .avatar {
+          height: 48px;
+          width: 48px;
+          margin-left: -5px;
+          display: flex;
+          justify-content: center;
+
+          overflow: hidden;
+          border-radius: 50%;
+          margin-right: 15px;
+          img {
+            height: 100%;
+          }
+        }
+        .name {
+          font-size: 1em;
+        }
+        .position {
+          color:  ${vars.$lightGrey};
+          font-size: 0.87em;
+        }
+      }
+    }
+  }
+  tr:hover {
+    transition: all 0.3s;
+    background-color:  ${vars.$lightestGrey1};
+    color:  ${vars.$darkGrey};
+    .position {
+      color:  ${vars.$darkGrey};
+    }
+  }
+}
+`
 
 const Table: React.FC<ITableProps> = (props: ITableProps) => {
   return (
    
-      <table className="table">
+    <StyledTable>
         <thead>
           <tr>
             <th colSpan={5}>заголовок</th>
@@ -56,7 +148,7 @@ const Table: React.FC<ITableProps> = (props: ITableProps) => {
           
             name="Gary Harris "/>
         </tbody>
-      </table>
+      </StyledTable>
  
   );
 };

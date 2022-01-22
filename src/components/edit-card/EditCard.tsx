@@ -1,7 +1,8 @@
 import * as React from "react";
 import Info from "./info/Info";
 import Panel from "./panel/Panel";
-import "./styles.scss";
+import styled from "styled-components";
+
 
 export interface IEditCardProps {
   title: string;
@@ -10,6 +11,12 @@ export interface IEditCardProps {
   type: "command" | "player";
 }
 
+const StyledEditCard = styled.div`
+display: block;
+width: 100%;
+font-size: 24px;
+`
+
 const EditCard: React.FC<IEditCardProps> = ({
   title,
   place,
@@ -17,10 +24,10 @@ const EditCard: React.FC<IEditCardProps> = ({
   type,
 }) => {
   return (
-    <div className="edit-card">
+    <StyledEditCard>
       <Panel type={type} title={title} />
       <Info avatarUrl={avatarUrl} type={type} title={title}   place={place} />
-    </div>
+    </StyledEditCard>
   );
 };
 
