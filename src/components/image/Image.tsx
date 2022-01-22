@@ -1,5 +1,7 @@
 import * as React from "react";
 import "./styles.scss";
+import styled from "styled-components";
+import * as vars from "../../assets/variables/variables";
 
 export interface IImageProps {
   avatarUrl: string;

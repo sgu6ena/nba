@@ -1,6 +1,7 @@
 import React from "react";
 import {ReactComponent as Avatar} from "../../assets/icons/profile.svg";
 
+
 interface IRowProps {
   name: string;
   position: string;
