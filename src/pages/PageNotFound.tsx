@@ -8,7 +8,7 @@ export interface IPageNotFoundProps {}
 export function PageNotFound(props: IPageNotFoundProps) {
   return (
     <LayerPage>
-    <div style={{ display: "block", margin: "auto" }}>
+    <div style={{  margin: "auto" }}>
       <ImageBox
         title="Page Not Found"
         description="Sorry, we can’t find what you’re looking for"

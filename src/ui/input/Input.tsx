@@ -9,6 +9,8 @@ export interface IInputProps {
   value?: string;
   error?: string;
   disabled?: boolean;
+  id?:string;
+
 }
 
 const StyledInput = styled.div`
@@ -27,6 +29,7 @@ const StyledInput = styled.div`
     }
     input {
       transition: all 0.2s;
+      height: 40px;
       padding: 8px 12px;
       border: none;
       background:  ${vars.$lightestGrey1};
@@ -37,7 +40,7 @@ const StyledInput = styled.div`
       font-size: 1em;
       line-height: 171%;
       color:  ${vars.$darkGrey};
-      
+
       &:hover {
         outline: none;
         transition: all 0.2s;
@@ -73,7 +76,7 @@ const Input: React.FC<IInputProps> = ({
   type,
   value,
   placeholder,
-  error,disabled
+  error,disabled, id
 }) => {
   return (
     <StyledInput>
@@ -85,6 +88,8 @@ const Input: React.FC<IInputProps> = ({
           value={value}
           className={error ? "error" : ""}
           disabled={disabled}
+          id={id}
+
         />
         <span>{error}</span>
       </label>

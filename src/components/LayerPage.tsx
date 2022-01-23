@@ -14,7 +14,7 @@ interface ILayerPageProps {
 const StyledLayer = styled.div`
   width: 100vw;
   height: 100vh;
-  display: grid;
+
   display: grid;
   grid-template-rows: 80px auto;
   grid-template-columns: max-content auto;

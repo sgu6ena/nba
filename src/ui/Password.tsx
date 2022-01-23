@@ -5,20 +5,21 @@ import * as vars from "../assets/variables/variables";
 import styled from "styled-components";
 
 const StyledLabel = styled.label`
-  padding-top: 8px;
+
   display: block;
   font-style: normal;
-  font-weight: bold;
-  font-size: 12px;
-  line-height: 14px;
-  color: #828282;
+  font-weight: 500;
+  font-size: 14px;
+  line-height: 24px;
+  color: ${vars.$grey};
+
 `;
 
 const InputGroup = styled.div`
   background: ${vars.$lightestGrey1};
   border-radius: 4px;
-  margin: 8px 0;
-  padding: 4px 0;
+  margin: 8px 0 0 0;
+  padding: 2px 0 ;
   display: flex;
   align-items: center;
   width: 100%;
@@ -28,7 +29,7 @@ const InputGroup = styled.div`
   font-size: 1em;
   line-height: 171%;
   color: ${vars.$darkGrey};
-  
+
   &:hover input,
   &:hover {
     transition: all 0.2s;
