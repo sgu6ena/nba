@@ -43,32 +43,3 @@ code {
 a {
   text-decoration: inherit;
 }
-
-.App {
-  width: 100vw;
-  height: 100vh;
-  display: grid;
-  grid-template-rows: 80px auto;
-  grid-template-columns: max-content auto;
-  grid-template-areas:
-    "header  header"
-    "nav  main";
-  .header {
-    grid-area: header;
-  }
-  nav {
-    grid-area: nav;
-  }
-
-  main {
-    background-color: $lightest-grey1;
-    display: flex;
-    flex-direction:column;
-    padding:  32px 80px;
-    grid-area: main;
-    overflow-y: scroll;
-    @media screen and (max-width: $sm) {
-      padding: 20px 0;
-    }
-  }
-}

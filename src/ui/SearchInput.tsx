@@ -1,5 +1,4 @@
-import React, { useEffect, useState } from "react";
-import { ReactComponent as Eye } from "../assets/icons/eye.svg";
+import React from "react";
 import { ReactComponent as Search } from "../assets/icons/search.svg";
 import * as vars from "../assets/variables/variables";
 import styled from "styled-components";

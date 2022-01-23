@@ -1,11 +1,13 @@
 import * as React from "react";
 import { ReactComponent as NotFound } from "../assets/images/NotFound.svg";
 import ImageBox from "../components/image-box/ImageBox";
+import LayerPage from "../components/LayerPage";
 
 export interface IPageNotFoundProps {}
 
 export function PageNotFound(props: IPageNotFoundProps) {
   return (
+    <LayerPage>
     <div style={{ display: "block", margin: "auto" }}>
       <ImageBox
         title="Page Not Found"
@@ -14,5 +16,6 @@ export function PageNotFound(props: IPageNotFoundProps) {
         <NotFound width="90%" />
       </ImageBox>
     </div>
+    </LayerPage>
   );
 }
