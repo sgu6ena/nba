@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import * as vars from "../../assets/variables/variables"
+import {useRef} from "react";
 
 export interface IInputProps {
   type?: string;
@@ -10,7 +11,7 @@ export interface IInputProps {
   error?: string;
   disabled?: boolean;
   id?:string;
-
+  onChange?:any;
 }
 
 const StyledInput = styled.div`
@@ -71,13 +72,16 @@ const StyledInput = styled.div`
     }
   }
 `;
+
+
 const Input: React.FC<IInputProps> = ({
   label,
   type,
   value,
   placeholder,
-  error,disabled, id
+  error,disabled, id,onChange
 }) => {
+
   return (
     <StyledInput>
       <label>
@@ -89,7 +93,7 @@ const Input: React.FC<IInputProps> = ({
           className={error ? "error" : ""}
           disabled={disabled}
           id={id}
-
+          onChange={onChange}
         />
         <span>{error}</span>
       </label>

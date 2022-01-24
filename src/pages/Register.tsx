@@ -1,13 +1,15 @@
 import * as React from "react";
-import { Link } from "react-router-dom";
+import {Link} from "react-router-dom";
 import Button from "../ui/button/Button";
 import Input from "../ui/input/Input";
 import Password from "../ui/Password";
-import { ReactComponent as BasketUp } from "../assets/images/Basket-up.svg";
+import {ReactComponent as BasketUp} from "../assets/images/Basket-up.svg";
 import styled from "styled-components";
 import * as vars from "../assets/variables/variables";
+import {Controller, useForm} from "react-hook-form";
 
-interface IRegisterProps {}
+interface IRegisterProps {
+}
 
 const Page = styled.div`
   display: flex;
@@ -70,27 +72,58 @@ const ImageBox = styled.div`
 `;
 
 const Register: React.FunctionComponent<IRegisterProps> = (props) => {
+    const [result, setResult] = React.useState("");
+    const {handleSubmit, control, reset} = useForm({
+        defaultValues: {
+            name: "",
+            login: "",
+            password: "",
+            confirmPassword: ""
+        }
+    });
 
-  return (
-    <Page>
-      <RegisterBox>
-        <h1>Sing up</h1>
-        <form className="form" >
-          <Input label="Name" />
-          <Input label="Login" />
-          <Password label="Password" />
-          <Password label="Enter your password again" />
-          <Button>Sing up</Button>
-        </form>
-        <p>
-          Allready a member? <Link to="/login"> Sign in</Link>
-        </p>
-      </RegisterBox>
-      <ImageBox>
-        <BasketUp width="80%" />
-      </ImageBox>
-    </Page>
-  );
+    return (
+        <Page>
+            <RegisterBox>
+                <h1>Sing up</h1>
+                <form className="form" onSubmit={handleSubmit((data) => setResult(JSON.stringify(data)))}>
+                    <Controller
+                        name="name"
+                        control={control}
+                        rules={{required: true}}
+
+                        render={({field}) => <Input {...field} label="Name"/>}
+                    /> <Controller
+                    name="login"
+                    control={control}
+                    rules={{required: true}}
+                    render={({field}) => <Input {...field} label='Login'/>}
+                />
+                    <Controller
+                        name="password"
+                        control={control}
+                        rules={{required: true}}
+                        render={({field}) => <Password {...field} label='Password'/>}
+                    />
+                    <Controller
+                        name="confirmPassword"
+                        control={control}
+                        rules={{required: true}}
+                        render={({field}) => <Password {...field} label='Enter your password again'/>}
+                    />
+
+                    <Button type='submit'>Sing up</Button>
+                </form>
+
+                <p>
+                    Allready a member? <Link to="/login"> Sign in</Link>
+                </p>
+            </RegisterBox>
+            <ImageBox>
+                <BasketUp width="80%"/>
+            </ImageBox>
+        </Page>
+    );
 };
 
 export default Register;
