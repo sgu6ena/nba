@@ -15,38 +15,38 @@ export function CommandList(props: ICommandListProps) {
             title="Portland trail blazers"
             subtitle="Year of foundation: 1970"
             type="command"
-            avatarUrl="https://s3-alpha-sig.figma.com/img/d85a/fc30/fc764029ec6a6e9050f56a57b6ea2570?Expires=1642982400&Signature=Slq8QZfjicklDvPiICWiUsIqEjr2SDJ5ufhSycPPhjryaN7-LBWp~oBgSrEaQJiay7O9TUKH0gU68hSccRbRZLPK~4mB9JmQc~Z66~A1vW0KBZWBw92laC2uAJflxVzE~uMH8oiADk17sIOt5Savc0NY5n~BGlPxbBUpLp4UZaxpTMYM-JKyB6CBlqvk~WNu6eCxujk9QXWNjZnhFq47LTwXi5qmuorNM-iPyyf~MzoEG6lDQaCNJ6EXYhhhitOc3QgkSLJOHyQDOzicFIT7SkQ1LO-q4ve47mNr1jDhGLCjqD9JiGkTpDpaySyYodgnCbAGl~rTt-SAftKr-aFHrw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            avatarUrl="https://1757140519.rsc.cdn77.org/blog/wp-content/uploads/sites/2/2020/06/image28-1012x1024.png"
           />
 
           <Card
             title="Portland trail blazers"
             subtitle="Year of foundation: 1970"
             type="command"
-            avatarUrl="https://s3-alpha-sig.figma.com/img/d85a/fc30/fc764029ec6a6e9050f56a57b6ea2570?Expires=1642982400&Signature=Slq8QZfjicklDvPiICWiUsIqEjr2SDJ5ufhSycPPhjryaN7-LBWp~oBgSrEaQJiay7O9TUKH0gU68hSccRbRZLPK~4mB9JmQc~Z66~A1vW0KBZWBw92laC2uAJflxVzE~uMH8oiADk17sIOt5Savc0NY5n~BGlPxbBUpLp4UZaxpTMYM-JKyB6CBlqvk~WNu6eCxujk9QXWNjZnhFq47LTwXi5qmuorNM-iPyyf~MzoEG6lDQaCNJ6EXYhhhitOc3QgkSLJOHyQDOzicFIT7SkQ1LO-q4ve47mNr1jDhGLCjqD9JiGkTpDpaySyYodgnCbAGl~rTt-SAftKr-aFHrw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            avatarUrl="https://1757140519.rsc.cdn77.org/blog/wp-content/uploads/sites/2/2020/06/image28-1012x1024.png"
           />
           <Card
             title="Portland trail blazers"
             subtitle="Year of foundation: 1970"
             type="command"
-            avatarUrl="https://s3-alpha-sig.figma.com/img/d85a/fc30/fc764029ec6a6e9050f56a57b6ea2570?Expires=1642982400&Signature=Slq8QZfjicklDvPiICWiUsIqEjr2SDJ5ufhSycPPhjryaN7-LBWp~oBgSrEaQJiay7O9TUKH0gU68hSccRbRZLPK~4mB9JmQc~Z66~A1vW0KBZWBw92laC2uAJflxVzE~uMH8oiADk17sIOt5Savc0NY5n~BGlPxbBUpLp4UZaxpTMYM-JKyB6CBlqvk~WNu6eCxujk9QXWNjZnhFq47LTwXi5qmuorNM-iPyyf~MzoEG6lDQaCNJ6EXYhhhitOc3QgkSLJOHyQDOzicFIT7SkQ1LO-q4ve47mNr1jDhGLCjqD9JiGkTpDpaySyYodgnCbAGl~rTt-SAftKr-aFHrw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            avatarUrl="https://1757140519.rsc.cdn77.org/blog/wp-content/uploads/sites/2/2020/06/image28-1012x1024.png"
           />
           <Card
             title="Portland trail blazers"
             subtitle="Year of foundation: 1970"
             type="command"
-            avatarUrl="https://s3-alpha-sig.figma.com/img/d85a/fc30/fc764029ec6a6e9050f56a57b6ea2570?Expires=1642982400&Signature=Slq8QZfjicklDvPiICWiUsIqEjr2SDJ5ufhSycPPhjryaN7-LBWp~oBgSrEaQJiay7O9TUKH0gU68hSccRbRZLPK~4mB9JmQc~Z66~A1vW0KBZWBw92laC2uAJflxVzE~uMH8oiADk17sIOt5Savc0NY5n~BGlPxbBUpLp4UZaxpTMYM-JKyB6CBlqvk~WNu6eCxujk9QXWNjZnhFq47LTwXi5qmuorNM-iPyyf~MzoEG6lDQaCNJ6EXYhhhitOc3QgkSLJOHyQDOzicFIT7SkQ1LO-q4ve47mNr1jDhGLCjqD9JiGkTpDpaySyYodgnCbAGl~rTt-SAftKr-aFHrw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            avatarUrl="https://1757140519.rsc.cdn77.org/blog/wp-content/uploads/sites/2/2020/06/image28-1012x1024.png"
           />
           <Card
             title="Portland trail blazers"
             subtitle="Year of foundation: 1970"
             type="command"
-            avatarUrl="https://s3-alpha-sig.figma.com/img/d85a/fc30/fc764029ec6a6e9050f56a57b6ea2570?Expires=1642982400&Signature=Slq8QZfjicklDvPiICWiUsIqEjr2SDJ5ufhSycPPhjryaN7-LBWp~oBgSrEaQJiay7O9TUKH0gU68hSccRbRZLPK~4mB9JmQc~Z66~A1vW0KBZWBw92laC2uAJflxVzE~uMH8oiADk17sIOt5Savc0NY5n~BGlPxbBUpLp4UZaxpTMYM-JKyB6CBlqvk~WNu6eCxujk9QXWNjZnhFq47LTwXi5qmuorNM-iPyyf~MzoEG6lDQaCNJ6EXYhhhitOc3QgkSLJOHyQDOzicFIT7SkQ1LO-q4ve47mNr1jDhGLCjqD9JiGkTpDpaySyYodgnCbAGl~rTt-SAftKr-aFHrw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            avatarUrl="https://1757140519.rsc.cdn77.org/blog/wp-content/uploads/sites/2/2020/06/image28-1012x1024.png"
           />
           <Card
             title="Portland trail blazers"
             subtitle="Year of foundation: 1970"
             type="command"
-            avatarUrl="https://s3-alpha-sig.figma.com/img/d85a/fc30/fc764029ec6a6e9050f56a57b6ea2570?Expires=1642982400&Signature=Slq8QZfjicklDvPiICWiUsIqEjr2SDJ5ufhSycPPhjryaN7-LBWp~oBgSrEaQJiay7O9TUKH0gU68hSccRbRZLPK~4mB9JmQc~Z66~A1vW0KBZWBw92laC2uAJflxVzE~uMH8oiADk17sIOt5Savc0NY5n~BGlPxbBUpLp4UZaxpTMYM-JKyB6CBlqvk~WNu6eCxujk9QXWNjZnhFq47LTwXi5qmuorNM-iPyyf~MzoEG6lDQaCNJ6EXYhhhitOc3QgkSLJOHyQDOzicFIT7SkQ1LO-q4ve47mNr1jDhGLCjqD9JiGkTpDpaySyYodgnCbAGl~rTt-SAftKr-aFHrw__&Key-Pair-Id=APKAINTVSUGEWH5XD5UA"
+            avatarUrl="https://1757140519.rsc.cdn77.org/blog/wp-content/uploads/sites/2/2020/06/image28-1012x1024.png"
           />
 
     </LayerPage>
