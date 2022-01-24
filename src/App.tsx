@@ -8,8 +8,12 @@ import { Player } from "./pages/Player";
 import { PlayerList } from "./pages/PlayerList";
 import Register from "./pages/Register";
 import Test from "./pages/Test";
+import ApiService from "./services/api";
 
 function App() {
+  const api = new ApiService();
+  api.getPing().then(console.log);
+  api.getVersion().then(console.log)
   return (
     <div className="App">
       <BrowserRouter>
