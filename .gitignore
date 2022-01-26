@@ -27,3 +27,5 @@ yarn-error.log*
 .idea/vcs.xml
 .idea/inspectionProfiles/Project_Default.xml
 .gitignore
+/nba/.idea/
+/.github/

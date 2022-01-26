@@ -41,7 +41,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => (
       <MenuItem to="/login" title="Login test">
         <GroupPerson />
       </MenuItem>
-      <MenuItem to="/registration" title="Registration test">
+      <MenuItem to="/registration" title="Registr test">
         <Person />
       </MenuItem>
     </div>

@@ -7,6 +7,8 @@ import Input from "../ui/input/Input";
 import Password from "../ui/Password";
 import * as vars from "../assets/variables/variables";
 
+import {useForm, Controller} from "react-hook-form";
+
 interface ILoginProps {}
 
 const LoginBox = styled.div`
@@ -16,7 +18,7 @@ const LoginBox = styled.div`
   width: 600px;
   border: 0px solid red;
   flex-direction: column;
-  .form {
+  form {
     padding: 10px;
     max-width: 370px;
     width: 100%;
@@ -41,6 +43,7 @@ const LoginBox = styled.div`
     align-items: center;
     color: ${vars.$grey};
     a {
+    padding:0 .5em;
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
@@ -64,6 +67,13 @@ const ImageBox = styled.div`
 `;
 
 const Login: React.FC<ILoginProps> = (props) => {
+    const [result, setResult] = React.useState("");
+    const { handleSubmit, control, reset } = useForm({
+        defaultValues: {
+            login: "",
+            password:""
+        }
+    });
 
   return (
     <div
@@ -76,17 +86,30 @@ const Login: React.FC<ILoginProps> = (props) => {
     >
       <LoginBox>
         <h1>Sing in</h1>
-        <form  className="form">
-          <Input label="Login" id="login"/>
-          <Password label="Password" />
-          <Button>Sing in</Button>
+
+            <form onSubmit={handleSubmit((data) => setResult(JSON.stringify(data)))}>
+                <Controller
+                    name="login"
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field }) => <Input {...field} label='Login' placeholder='Input login'/>}
+                />
+                <Controller
+                    name="password"
+                    control={control}
+                    rules={{ required: true }}
+                    render={({ field }) => <Password {...field} label='Password' placeholder='Input password'/>}
+                />
+
+          <Button type="submit">Sing in</Button>
         </form>
+
         <p>
           Not a member yet? <Link to="/register"> Sign up</Link>
-        </p>
+        </p> <p>{result}</p>
       </LoginBox>
       <ImageBox>
-        <BasketIn width="80%" />
+        <BasketIn width="80%" type="submit"/>
       </ImageBox>
     </div>
   );

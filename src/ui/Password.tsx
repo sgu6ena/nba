@@ -93,18 +93,20 @@ export interface IPasswordProps {
   disabled?: boolean;
 }
 
-const Password: React.FC<IPasswordProps> = ({ placeholder, label }) => {
+const Password: React.FC<IPasswordProps> = ({ placeholder, label,...props }) => {
   const [preview, setPreview] = useState(true);
   useEffect(() => {}, [preview]);
   return (
     <StyledLabel>
-      {" "}
+
       {label}
       <InputGroup>
         <input
           type={preview ? "password" : "text"}
           className={"password"}
           placeholder={placeholder}
+
+          {...props}
         />
         <button onClick={() => setPreview(!preview)}>
           {!preview ? (

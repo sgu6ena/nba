@@ -20,7 +20,7 @@ const StyledCard = styled.div`
   display: flex;
   flex-direction: column;
    flex-grow: 1;
-  flex-shrink: 8;
+  flex-shrink: 2;
 
   img {
     padding-top: 10px;
