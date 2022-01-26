@@ -38,7 +38,7 @@ const RegisterBox = styled.div`
     font-weight: normal;
     font-size: 36px;
     line-height: 49px;
-    color: #344472;
+    color: ${vars.$blue};
   }
   p {
     font-style: normal;

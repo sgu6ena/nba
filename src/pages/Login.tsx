@@ -32,7 +32,7 @@ const LoginBox = styled.div`
     font-weight: normal;
     font-size: 36px;
     line-height: 49px;
-    color: #344472;
+    color: ;
   }
   p {
     font-style: normal;
