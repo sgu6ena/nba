@@ -20,14 +20,14 @@ export const playerSlice = createSlice({
         playersFetching (state){
           state.isLoading = true;
         },
-        playersFetchingSuccess (state,action: PayloadAction<IPlayer>){
+        playersFetchingSuccess (state,action: PayloadAction<IPlayer[]>){
             state.isLoading = false;
             state.error="";
             state.players = action.payload;
         },
-        playersFetchingError (state, action:PayloadAction){
+        playersFetchingError (state, action:PayloadAction<string>){
             state.isLoading = false;
-            state.error = action.payload
+            state.error = action.payload;
         }
     }
 })
