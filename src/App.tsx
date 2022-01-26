@@ -1,5 +1,9 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { setupStore } from "./store/store";
+
+
 import { Command } from "./pages/Command";
 import { CommandList } from "./pages/CommandList";
 import Login from "./pages/Login";
@@ -10,12 +14,18 @@ import Register from "./pages/Register";
 import Test from "./pages/Test";
 import ApiService from "./services/api";
 
+
+const store = setupStore();
+
 function App() {
+
   const api = new ApiService();
   api.getPing().then(console.log);
   api.getVersion().then(console.log)
+
   return (
     <div className="App">
+      <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -30,6 +40,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
+      </Provider>
     </div>
   );
 }
