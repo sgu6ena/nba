@@ -1,5 +1,9 @@
 import React from "react";
+import { Provider } from "react-redux";
 import { Route, Routes, BrowserRouter } from "react-router-dom";
+import { setupStore } from "./store/store";
+
+
 import { Command } from "./pages/Command";
 import { CommandList } from "./pages/CommandList";
 import Login from "./pages/Login";
@@ -9,9 +13,15 @@ import { PlayerList } from "./pages/PlayerList";
 import Register from "./pages/Register";
 import Test from "./pages/Test";
 
+
+const store = setupStore();
+
 function App() {
+
+
   return (
     <div className="App">
+      <Provider store={store}>
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -26,6 +36,7 @@ function App() {
           <Route path="*" element={<PageNotFound />} />
         </Routes>
       </BrowserRouter>
+      </Provider>
     </div>
   );
 }
