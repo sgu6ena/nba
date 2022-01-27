@@ -1,13 +1,13 @@
 import React from "react";
-import { ReactComponent as Search } from "../assets/icons/search.svg";
+import {ReactComponent as Search} from "../assets/icons/search.svg";
 import * as vars from "../assets/variables/variables";
 import styled from "styled-components";
 
 const InputGroup = styled.div`
   height: 40px;
   width: 350px;
-flex-grow: 0;
-flex-shrink: 1;
+  flex-grow: 0;
+  flex-shrink: 1;
   padding: 8px 12px;
   background-color: #fff;
   display: flex;
@@ -18,13 +18,13 @@ flex-shrink: 1;
   @media (max-width: ${vars.$sm}) {
     width: 100%;
   }
+
   & button {
     font-weight: 300;
     font-size: 20px;
     color: #dadada;
-    padding: 0px;
+    padding: 0;
     margin: 0;
-
     background: transparent;
     border: none;
     outline: none;
@@ -46,23 +46,23 @@ flex-shrink: 1;
 `;
 
 export interface ISearchInputProps {
-  type?: string;
-  label?: string;
-  placeholder?: string;
-  value?: string;
-  error?: string;
-  disabled?: boolean;
+    type?: string;
+    label?: string;
+    placeholder?: string;
+    value?: string;
+    error?: string;
+    disabled?: boolean;
 }
 
-const SearchInput: React.FC<ISearchInputProps> = ({ placeholder, label }) => {
-  return (
-    <InputGroup>
-      <input placeholder={placeholder} />
-      <button>
-        <Search />
-      </button>
-    </InputGroup>
-  );
+const SearchInput: React.FC<ISearchInputProps> = ({placeholder, label}) => {
+    return (
+        <InputGroup>
+            <input placeholder={placeholder}/>
+            <button>
+                <Search/>
+            </button>
+        </InputGroup>
+    );
 };
 
 export default SearchInput;

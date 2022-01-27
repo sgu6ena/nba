@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import * as vars from "../../assets/variables/variables"
-import {useRef} from "react";
+
 
 export interface IInputProps {
   type?: string;
@@ -51,7 +51,7 @@ const StyledInput = styled.div`
         outline: none;
         transition: all 0.2s;
         background:  ${vars.$lightestGrey1};
-        box-shadow: 0px 0px 5px ${vars.$lightestGrey};
+        box-shadow: 0 0 5px ${vars.$lightestGrey};
       }
       &::placeholder {
         transition: all 0.2s;

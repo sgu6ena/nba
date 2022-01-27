@@ -1,13 +1,14 @@
 import * as React from "react";
 import { Link } from "react-router-dom";
 import styled from "styled-components";
+
+import {useForm, Controller} from "react-hook-form";
+import * as vars from "../assets/variables/variables";
+
 import { ReactComponent as BasketIn } from "../assets/images/Basket-in.svg";
 import Button from "../ui/button/Button";
 import Input from "../ui/input/Input";
 import Password from "../ui/Password";
-import * as vars from "../assets/variables/variables";
-
-import {useForm, Controller} from "react-hook-form";
 
 interface ILoginProps {}
 

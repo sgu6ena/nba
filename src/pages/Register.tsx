@@ -1,12 +1,15 @@
 import * as React from "react";
+import styled from "styled-components";
 import {Link} from "react-router-dom";
+import {Controller, useForm} from "react-hook-form";
+
+import * as vars from "../assets/variables/variables";
 import Button from "../ui/button/Button";
 import Input from "../ui/input/Input";
 import Password from "../ui/Password";
 import {ReactComponent as BasketUp} from "../assets/images/Basket-up.svg";
-import styled from "styled-components";
-import * as vars from "../assets/variables/variables";
-import {Controller, useForm} from "react-hook-form";
+
+
 
 interface IRegisterProps {
 }

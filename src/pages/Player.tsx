@@ -1,6 +1,8 @@
 import * as React from 'react';
+
 import EditCard from '../components/edit-card/EditCard';
 import LayerPage from '../components/LayerPage';
+
 export interface IPlayerProps {
 }
 

@@ -1,4 +1,5 @@
 import * as React from "react";
+
 import { ReactComponent as NotFound } from "../assets/images/NotFound.svg";
 import ImageBox from "../components/image-box/ImageBox";
 import LayerPage from "../components/LayerPage";

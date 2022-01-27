@@ -5,7 +5,6 @@ import * as vars from "../assets/variables/variables";
 import styled from "styled-components";
 
 const StyledLabel = styled.label`
-
   display: block;
   font-style: normal;
   font-weight: 500;
@@ -68,14 +67,10 @@ const InputGroup = styled.div`
     font-size: 1rem;
     line-height: 171%;
     color: ${vars.$darkGrey};
-
     width: 100%;
     margin: 0;
     border: 0;
     padding: 4px 12px;
-    font-style: normal;
-  
-
 
     &::placeholder {
       color: ${vars.$lightestGrey};
@@ -108,7 +103,6 @@ const Password: React.FC<IPasswordProps> = ({ placeholder, label,...props }) => 
           type={preview ? "password" : "text"}
           className={"password"}
           placeholder={placeholder}
-
           {...props}
         />
         <button onClick={() => setPreview(!preview)}>

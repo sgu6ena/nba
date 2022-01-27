@@ -1,4 +1,4 @@
-import { applyMiddleware, createSlice, PayloadAction } from "@reduxjs/toolkit";
+import { createSlice, PayloadAction } from "@reduxjs/toolkit";
 import { IPlayer } from "../../models/IPlayer";
 
 interface TeamState{
