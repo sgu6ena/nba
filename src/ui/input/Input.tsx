@@ -38,7 +38,7 @@ const StyledInput = styled.div`
 
       font-style: normal;
       font-weight: 500;
-      font-size: 1em;
+      font-size: 1rem;
       line-height: 171%;
       color:  ${vars.$darkGrey};
 
@@ -53,7 +53,7 @@ const StyledInput = styled.div`
         background:  ${vars.$lightestGrey1};
         box-shadow: 0px 0px 5px ${vars.$lightestGrey};
       }
-      &:placeholder {
+      &::placeholder {
         transition: all 0.2s;
         color: ${vars.$lightestGrey};
       }

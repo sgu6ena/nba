@@ -4,10 +4,12 @@ import {ReactComponent as BasketIn} from "../assets/images/Basket-in.svg";
 import {ReactComponent as BasketMan} from "../assets/images/Basket-man.svg";
 import {ReactComponent as BasketUp} from "../assets/images/Basket-up.svg";
 import {ReactComponent as NotFound} from "../assets/images/NotFound.svg"
+
 import Card from "../components/card/Card";
 import EditCard from "../components/edit-card/EditCard";
 import LayerPage from "../components/LayerPage";
 import Table from "../components/table/Table";
+import ApiService from "../services/api";
 import Button from "../ui/button/Button";
 import Input from "../ui/input/Input";
 import Password from "../ui/Password";
@@ -15,6 +17,15 @@ import Password from "../ui/Password";
 interface ITestProps {}
 
 const Test: React.FunctionComponent<ITestProps> = (props) => {
+  const api = new ApiService();
+  api.getPing().then(console.log);
+  api.getVersion().then(console.log);
+  api
+      .postLogin("string", "string")
+      .then((data) => console.log("успешная авторизация, токен - ", data.token))
+      .catch(() => console.log("ошибка авторизации"));
+
+
   return (
     <LayerPage>
     <div

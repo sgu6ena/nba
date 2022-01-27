@@ -34,6 +34,9 @@ const InputGroup = styled.div`
   &:hover {
     transition: all 0.2s;
     background: ${vars.$lightestGrey};
+    svg{
+      color: white;
+    }
   }
   &:focus {
     outline: none;
@@ -62,20 +65,20 @@ const InputGroup = styled.div`
     background: ${vars.$lightestGrey1};
     font-style: normal;
     font-weight: 500;
-    font-size: 1em;
+    font-size: 1rem;
     line-height: 171%;
     color: ${vars.$darkGrey};
 
     width: 100%;
     margin: 0;
     border: 0;
-    padding: 8px 12px;
+    padding: 4px 12px;
     font-style: normal;
-    font-weight: normal;
-    font-size: 1em;
+  
+
 
     &::placeholder {
-      color: #e0e0e0;
+      color: ${vars.$lightestGrey};
     }
 
     &:focus {
