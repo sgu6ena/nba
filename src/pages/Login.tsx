@@ -11,11 +11,14 @@ import Input from "../ui/input/Input";
 import Password from "../ui/Password";
 import { useAppDispatch } from "../hooks/redux";
 import ApiService from "../services/api";
-import { useAuth } from "../hooks/user-auth";
+
 import { setUser } from "../store/reducers/auth";
+import Spinner from "../ui/spinner/spinner";
 
 interface ILoginProps {}
-
+const ErrorBox = styled.div`
+  height: 2em;
+`;
 const LoginBox = styled.div`
   display: flex;
   align-items: center;
@@ -92,7 +95,7 @@ const Login: React.FC<ILoginProps> = (props) => {
 
   const loged = (login: string, password: string) => {
     setLoading(true);
-    setError('');
+    setError("");
     api
       .postLogin(login, password)
       .then((data: any) => {
@@ -105,8 +108,9 @@ const Login: React.FC<ILoginProps> = (props) => {
           })
         );
       })
-      .catch((e) => {setError(e.message);
-      console.log(e);
+      .catch((e) => {
+        setError(e.message);
+        console.log(e);
       })
       .finally(() => setLoading(false));
   };
@@ -118,12 +122,15 @@ const Login: React.FC<ILoginProps> = (props) => {
         width: "100vw",
         height: "100vh",
         alignItems: "stretch",
+        position: "relative",
       }}
     >
+
+      {isLoading ? <Spinner /> : ""}
       <LoginBox>
         <h1>Sing in</h1>
-        {isLoading ? "loading..." : ""}
-        {isError ? isError : ""}
+
+        <ErrorBox> {isError ? isError : ""}</ErrorBox>
         <form
           onSubmit={handleSubmit(({ login, password }) =>
             loged(login, password)

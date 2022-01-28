@@ -42,6 +42,7 @@ const StyledLayer = styled.div`
 `;
 
 const Page = styled.div`
+
   display: flex;
   justify-content: space-between;
   flex-direction: column;

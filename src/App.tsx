@@ -7,7 +7,7 @@ const store = setupStore();
 
 function App() {
     return (
-        <div className="App">
+        <div className="App" >
             <Provider store={store}>
                 <AppRouter/>
             </Provider>
