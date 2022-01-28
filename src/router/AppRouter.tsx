@@ -1,10 +1,11 @@
 import * as React from "react";
 import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { privateRoutes, publicRoutes } from ".";
+import { useAuth } from "../hooks/user-auth";
 
 const AppRouter: React.FC = () => {
 
-  const auth = false;
+  const auth = useAuth().isAuth;
   return auth ? (
     <BrowserRouter>
       <Routes>

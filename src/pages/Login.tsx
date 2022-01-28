@@ -11,6 +11,8 @@ import Input from "../ui/input/Input";
 import Password from "../ui/Password";
 import { useAppDispatch } from "../hooks/redux";
 import ApiService from "../services/api";
+import { useAuth } from "../hooks/user-auth";
+import { setUser } from "../store/reducers/auth";
 
 interface ILoginProps {}
 
@@ -75,6 +77,7 @@ const Login: React.FC<ILoginProps> = (props) => {
   const dispatch = useAppDispatch();
 
   const [isLoading, setLoading] = React.useState(false);
+  const [isError, setError] = React.useState("");
   const [result, setResult] = React.useState({});
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
@@ -89,12 +92,25 @@ const Login: React.FC<ILoginProps> = (props) => {
 
   const loged = (login: string, password: string) => {
     setLoading(true);
+    setError('');
     api
       .postLogin(login, password)
       .then((data: any) => {
         setResult(data);
-      });
+        dispatch(
+          setUser({
+            name: data.name,
+            token: data.token,
+            avatarUrl: data.avatarUrl,
+          })
+        );
+      })
+      .catch((e) => {setError(e.message);
+      console.log(e);
+      })
+      .finally(() => setLoading(false));
   };
+
   return (
     <div
       style={{
@@ -107,8 +123,8 @@ const Login: React.FC<ILoginProps> = (props) => {
       <LoginBox>
         <h1>Sing in</h1>
         {isLoading ? "loading..." : ""}
+        {isError ? isError : ""}
         <form
-          // onSubmit={handleSubmit((data) => setResult(JSON.stringify(data)))}
           onSubmit={handleSubmit(({ login, password }) =>
             loged(login, password)
           )}

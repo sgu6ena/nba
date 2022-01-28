@@ -4,16 +4,20 @@ import ApiService from "../services/api";
 
 import Card from "../components/card/Card";
 import LayerPage from "../components/LayerPage";
+import { useAuth } from "../hooks/user-auth";
 
 
 export interface ICommandListProps {}
 
 
 export function CommandList(props: ICommandListProps) {
-
+  
+  
+const token = useAuth().token;
     const api = new ApiService();
     let teamsData = api.getTeams().then(data=>data.data).catch(console.log);
-    console.log(teamsData)
+
+    
     let teams: any;
     // @ts-ignore
     teams = teamsData.data.map((team: { name: string; foundationYear: any; imageUrl: string; }) => (<Card
@@ -22,7 +26,7 @@ export function CommandList(props: ICommandListProps) {
         type="command"
         avatarUrl={team.imageUrl}
     />));
-    console.log(teams.data)
+
   return (
     <LayerPage search paginate>
         {teams}
