@@ -10,7 +10,7 @@ interface IHeaders {
 type IMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 export default class ApiService {
-  _apiBaseUrl = `//dev.trainee.dex-it.ru/`;
+  _apiBaseUrl = `http://dev.trainee.dex-it.ru/`;
 
   token: string = "";
 
