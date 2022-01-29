@@ -1,4 +1,6 @@
-import { skipToken } from "@reduxjs/toolkit/query";
+
+import {store} from '../App'
+
 
 interface IHeaders {
   "Content-Type": string;
@@ -9,28 +11,26 @@ interface IHeaders {
 
 type IMethod = "GET" | "POST" | "PUT" | "DELETE";
 
+const mapStateToProps = ( state:any ) => state.user.token;
 export default class ApiService {
+ 
   _apiBaseUrl = `http://dev.trainee.dex-it.ru/`;
 
-  token: string = "";
-
-  headers: any = {
+  headers: any=() => ({
     "Content-Type": "application/json",
     Accept: "application/json",
-    Authorization: "Bearer " + this.token,
+    Authorization: `Bearer ${GetToken()}`,
     cors: "no-cors",
-  };
+  });
 
   getResource = async (url: string) => {
     const res = await fetch(`${this._apiBaseUrl}${url}`, {
-      headers: this.headers,
+      headers: this.headers(),
       method: "GET",
     });
 
+
     if (!res.ok) {
-      // throw new Error(
-      //     `Could not fetch resource: ${url} - status: ${res.status}`
-      // );
       return res.status;
     }
 
@@ -39,7 +39,7 @@ export default class ApiService {
 
   postResource = async (url: string, data: any = {}) => {
     const res = await fetch(`${this._apiBaseUrl}${url}`, {
-      headers: this.headers,
+      headers: this.headers(),
       method: "POST",
       body: JSON.stringify(data),
     });
@@ -81,4 +81,18 @@ export default class ApiService {
   getTeams = async () => {
     return await this.getResource("api/Team/GetTeams");
   };
+  getPlayers = async () => {
+    return await this.getResource("api/Player/GetPlayers");
+  };
+
+
+
+
+}
+
+function GetToken (){
+  const token = store.getState().userReducer.token;
+console.log(token);
+
+  return token;
 }
