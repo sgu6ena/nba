@@ -75,13 +75,14 @@ const ImageBox = styled.div`
 `;
 
 const Login: React.FC<ILoginProps> = (props) => {
+ 
   const api = new ApiService();
-
   const dispatch = useAppDispatch();
 
   const [isLoading, setLoading] = React.useState(false);
   const [isError, setError] = React.useState("");
   const [result, setResult] = React.useState({});
+  
   const { handleSubmit, control, reset } = useForm({
     defaultValues: {
       login: "",
@@ -112,7 +113,7 @@ const Login: React.FC<ILoginProps> = (props) => {
         setError(e.message);
         console.log(e);
       })
-      .finally(() => setLoading(false));
+      .finally(() => setTimeout(()=>setLoading(false), 500));
   };
 
   return (
