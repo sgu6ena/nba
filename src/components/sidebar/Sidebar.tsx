@@ -7,6 +7,7 @@ import * as vars from "../../assets/variables/variables";
 import { ReactComponent as GroupPerson } from "../../assets/icons/group-person.svg";
 import { ReactComponent as Person } from "../../assets/icons/person.svg";
 import { ReactComponent as Input } from "../../assets/icons/input.svg";
+import { RouteNames } from "../../router";
 
 interface ISidebarProps {}
 
@@ -26,22 +27,10 @@ const Nav = styled.nav`
 const Sidebar: React.FunctionComponent<ISidebarProps> = () => (
   <Nav>
     <div>
-      <MenuItem to="/commands" title="Teams">
+      <MenuItem to={RouteNames.TEAMS} title="Teams">
         <GroupPerson />
       </MenuItem>
-      <MenuItem to="/players" title="Players">
-        <Person />
-      </MenuItem>
-      <MenuItem to="/commands/test" title="Team test">
-        <GroupPerson />
-      </MenuItem>
-      <MenuItem to="/players/test" title="Player test">
-        <Person />
-      </MenuItem>
-      <MenuItem to="/login" title="Login test">
-        <GroupPerson />
-      </MenuItem>
-      <MenuItem to="/registration" title="Registr test">
+      <MenuItem to={RouteNames.PLAYERS} title="Players">
         <Person />
       </MenuItem>
     </div>
