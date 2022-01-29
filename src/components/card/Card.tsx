@@ -2,14 +2,16 @@ import * as React from "react";
 import Image from "../image/Image";
 import styled from "styled-components";
 import * as vars from "../../assets/variables/variables";
-
+import { Link } from "react-router-dom";
+import { RouteNames } from "../../router";
 
 interface ICardProps {
   title: string;
   place?: string;
   subtitle: string;
-  avatarUrl: string;
+  avatarUrl: string | null | undefined;
   type: "command" | "player";
+  id?: string |number;
 }
 
 const StyledCard = styled.div`
@@ -19,7 +21,7 @@ const StyledCard = styled.div`
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-   flex-grow: 1;
+  flex-grow: 1;
   flex-shrink: 2;
 
   img {
@@ -51,7 +53,7 @@ const StyledCard = styled.div`
     flex-shrink: 0;
 
     h3 {
-      margin:0;
+      margin: 0;
       color: ${vars.$white};
       font-size: 1.25rem;
       span {
@@ -72,19 +74,22 @@ const Card: React.FunctionComponent<ICardProps> = ({
   place,
   avatarUrl,
   type,
+  id
 }) => {
   return (
-    <StyledCard>
-      <Image avatarUrl={avatarUrl} title={title} type={type} />
+    <Link to={type==="player"?`${RouteNames.PLAYERS}/${id}`:`${RouteNames.TEAMS}/${id}`}>
+      <StyledCard>
+        <Image avatarUrl={avatarUrl} title={title} type={type} />
 
-      <article>
-        <h3>
-          {title}
-          <span> {place}</span>
-        </h3>
-        <div>{subtitle}</div>
-      </article>
-    </StyledCard>
+        <article>
+          <h3>
+            {title}
+            <span> {place}</span>
+          </h3>
+          <div>{subtitle}</div>
+        </article>
+      </StyledCard>
+    </Link>
   );
 };
 
