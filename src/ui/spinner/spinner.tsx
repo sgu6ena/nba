@@ -8,17 +8,17 @@ const Container = styled.div`
   top: 0;
   left: 0;
   display: flex;
-  justofy-content: center;
+  justify-content: center;
   align-items: center;
   height: 100vh;
   width: 100vw;
   z-index: 20;
-  background: rgba(255, 255, 255, 0.5);
+  background: rgba(255, 255, 255, 0.7);
 `;
 const Basketball = styled.div`
   position: relative;
   top: 50px;
-  left: calc(50vw - 50px);
+  left:  -50px;
 
   .ball {
     position: absolute;
@@ -28,7 +28,7 @@ const Basketball = styled.div`
     height: 100px;
     overflow: hidden;
     border: 3px solid #333;
-    animation: bounce 2s ease-in infinite;
+    animation: bounce 1s ease-in infinite;
   }
 
   @keyframes bounce {
@@ -98,7 +98,7 @@ const Basketball = styled.div`
     top: 95px;
     z-index: -1;
     left: 3px;
-    animation: scale 2s ease-in infinite;
+    animation: scale 1s ease-in infinite;
   }
 
   @keyframes scale {

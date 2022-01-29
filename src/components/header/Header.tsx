@@ -4,6 +4,7 @@ import Logo from "../../assets/images/logo.png";
 import Avatar from "../user-avatar/UserAvatar";
 import styled from "styled-components";
 import * as vars from "../../assets/variables/variables";
+import { useAuth } from "../../hooks/user-auth";
 
 export interface IHeaderProps {}
 
@@ -22,12 +23,13 @@ box-shadow: 0px 1px 10px rgba(209, 209, 209, 0.5);
 `
 
 const Header: React.FC<IHeaderProps> = () => {
+  const user = useAuth();
   return (
     <StylesHeader>
       <Link to="/">
         <img src={Logo} alt="logo" height="48" />
       </Link>
-      <Avatar name="John Smith" avatarUrl="https://cdn.vox-cdn.com/thumbor/N6-QGX2FaDUgPW3-RRqoM3dfpkQ=/1400x1050/filters:format(jpeg)/cdn.vox-cdn.com/uploads/chorus_asset/file/19979927/jomi_avatar_nickleodeon_ringer.jpg" />
+      <Avatar name={user.name} avatarUrl={user.avatarUrl} />
     </StylesHeader>
   );
 };
