@@ -8,6 +8,7 @@ interface IImageBoxProps {
 }
 
 const Box = styled.div`
+
   padding: 50px 100px;
   border-radius: 15px;
   background-color:  ${vars.$white};

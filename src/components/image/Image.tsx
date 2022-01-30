@@ -15,9 +15,9 @@ const Image: React.FC<IImageProps> = ({ avatarUrl, title, type }) => {
       {avatarUrl ? (
         <img className="image" src={avatarUrl} alt={title} />
       ) : type === "player" ? (
-        <Person width="100" height="100" />
+        <Person width="100" height="100" color="black" />
       ) : (
-        <PersonList  width="100" height="100"  />
+        <PersonList  width="100" height="100" color="black"   />
       )}
     </div>
   );

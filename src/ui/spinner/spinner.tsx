@@ -18,7 +18,7 @@ const Container = styled.div`
 const Basketball = styled.div`
   position: relative;
   top: 50px;
-  left:  -50px;
+  left:  0;
 
   .ball {
     position: absolute;
@@ -122,11 +122,12 @@ const Basketball = styled.div`
   .text {
     padding: 70px 25px;
     color: grey;
-    font: sans-serif;
+    font: 14px sans-serif;
   }
 `;
 
 const Spinner: React.FunctionComponent<ISpinnerProps> = (props) => {
+  React.useEffect(() => {setTimeout(()=>{},5000)},[])
   return (
     <Container>
       <Basketball>

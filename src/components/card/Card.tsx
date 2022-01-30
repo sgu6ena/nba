@@ -24,14 +24,14 @@ const StyledCard = styled.div`
   flex-grow: 1;
   flex-shrink: 2;
 
-  img {
+  img, svg {
     padding-top: 10px;
     transition: 0.15s ease-out;
   }
   &:hover {
-    img {
+    img,svg {
       transition: 0.3s ease-in-out;
-      transform: scale(1.05);
+      transform: scale(1.1);
     }
   }
 
