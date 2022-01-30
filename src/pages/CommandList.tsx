@@ -1,44 +1,41 @@
 import * as React from "react";
 
-import ApiService from "../services/api";
-
 import Card from "../components/card/Card";
 import LayerPage from "../components/LayerPage";
-import { useAuth } from "../hooks/user-auth";
+import { useAppDispatch, useAppSelector } from "../hooks/redux";
+import { fetchTeams } from "../store/reducers/ActionCreators";
+import Spinner from "../ui/spinner/spinner";
 
 export interface ICommandListProps {}
 
 export function CommandList(props: ICommandListProps) {
-  const token = useAuth().token;
-  const api = new ApiService();
-  const [teams, setTeams] = React.useState([]);
+  const dispatch = useAppDispatch();
+  const { teams, isLoading, error } = useAppSelector(
+    (state) => state.teamReducer
+  );
 
   React.useEffect(() => {
-    api
-      .getTeams()
-      .then((res) => res.data)
-      .then((teams) => 
-        setTeams(() =>
-          teams.map(
-            (team:any) => (
-              <Card
-                title={team.name}
-                subtitle={team.foundationYear? `Year of foundation: ${team.foundationYear}` :''}
-                type="command"
-                avatarUrl={team.imageUrl}
-                key={team.id}
-                id={team.id}
-              />
-            )
-          )
-        )
-      )
-      .catch(console.log);
+    dispatch(fetchTeams());
   }, []);
 
   return (
     <LayerPage search paginate>
-      {teams}
+      {isLoading && <Spinner />}
+      {error}
+      {teams.map((team: any) => (
+        <Card
+          title={team.name}
+          subtitle={
+            team.foundationYear
+              ? `Year of foundation: ${team.foundationYear}`
+              : ""
+          }
+          type="command"
+          avatarUrl={team.imageUrl}
+          key={team.id}
+          id={team.id}
+        />
+      ))}
     </LayerPage>
   );
 }

@@ -1,10 +1,12 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import playerReducer from "./reducers/PlayerSlice"
+import teamReducer from "./reducers/TeamSlice"
 import userReducer from "./reducers/auth"
 
 
 const rootReducer = combineReducers({
  playerReducer,
+ teamReducer,
  userReducer
 });
 

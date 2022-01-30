@@ -18,6 +18,7 @@ import Spinner from "../ui/spinner/spinner";
 interface ILoginProps {}
 const ErrorBox = styled.div`
   height: 2em;
+  font-size: 14px;
 `;
 const LoginBox = styled.div`
   display: flex;
@@ -75,45 +76,27 @@ const ImageBox = styled.div`
 `;
 
 const Login: React.FC<ILoginProps> = (props) => {
- 
   const api = new ApiService();
-  const dispatch = useAppDispatch();
 
+  const dispatch = useAppDispatch();
   const [isLoading, setLoading] = React.useState(false);
-  const [isError, setError] = React.useState("");
-  const [result, setResult] = React.useState({});
-  
-  const { handleSubmit, control, reset } = useForm({
+  const [error, setError] = React.useState("");
+
+  const { handleSubmit, control } = useForm({
     defaultValues: {
       login: "",
       password: "",
     },
   });
-
-  React.useEffect(() => {
-    JSON.stringify(result) ? setLoading(false) : setLoading(true);
-  }, [result]);
-
-  const loged = (login: string, password: string) => {
+  const onSubmit = async (data: { login: string; password: string }) => {
     setLoading(true);
-    setError("");
     api
-      .postLogin(login, password)
-      .then((data: any) => {
-        setResult(data);
-        dispatch(
-          setUser({
-            name: data.name,
-            token: data.token,
-            avatarUrl: data.avatarUrl,
-          })
-        );
-      })
+      .postLogin(data.login, data.password)
+      .then((data) => dispatch(setUser(data)))
       .catch((e) => {
         setError(e.message);
-        console.log(e);
       })
-      .finally(() => setTimeout(()=>setLoading(false), 500));
+      .finally(() => setLoading(false));
   };
 
   return (
@@ -126,17 +109,12 @@ const Login: React.FC<ILoginProps> = (props) => {
         position: "relative",
       }}
     >
-
-      {isLoading ? <Spinner /> : ""}
-      <LoginBox>
+      {isLoading && <Spinner />}
+      <LoginBox>    <ErrorBox> {error && error}</ErrorBox>
         <h1>Sing in</h1>
 
-        <ErrorBox> {isError ? isError : ""}</ErrorBox>
-        <form
-          onSubmit={handleSubmit(({ login, password }) =>
-            loged(login, password)
-          )}
-        >
+    
+        <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="login"
             control={control}
@@ -166,7 +144,7 @@ const Login: React.FC<ILoginProps> = (props) => {
         </p>
       </LoginBox>
       <ImageBox>
-        <BasketIn width="80%" type="submit" />
+        <BasketIn width="80%" />
       </ImageBox>
     </div>
   );

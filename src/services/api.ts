@@ -2,16 +2,15 @@
 import {store} from '../App'
 
 
-interface IHeaders {
-  "Content-Type": string;
-  Accept: string;
-  Authorization?: string;
-  cors?: string;
-}
+// interface IHeaders {
+//   "Content-Type": string;
+//   Accept: string;
+//   Authorization?: string;
+//   cors?: string;
+// }
 
-type IMethod = "GET" | "POST" | "PUT" | "DELETE";
+// type IMethod = "GET" | "POST" | "PUT" | "DELETE";
 
-const mapStateToProps = ( state:any ) => state.user.token;
 export default class ApiService {
  
   _apiBaseUrl = `http://dev.trainee.dex-it.ru/`;
@@ -19,7 +18,7 @@ export default class ApiService {
   headers: any=() => ({
     "Content-Type": "application/json",
     Accept: "application/json",
-    Authorization: `Bearer ${GetToken()}`,
+    Authorization: `Bearer ${store.getState().userReducer.token}`,
     cors: "no-cors",
   });
 
@@ -84,15 +83,4 @@ export default class ApiService {
   getPlayers = async () => {
     return await this.getResource("api/Player/GetPlayers");
   };
-
-
-
-
-}
-
-function GetToken (){
-  const token = store.getState().userReducer.token;
-console.log(token);
-
-  return token;
 }
