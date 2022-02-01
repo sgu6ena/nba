@@ -1,15 +1,4 @@
-
 import {store} from '../App'
-
-
-// interface IHeaders {
-//   "Content-Type": string;
-//   Accept: string;
-//   Authorization?: string;
-//   cors?: string;
-// }
-
-// type IMethod = "GET" | "POST" | "PUT" | "DELETE";
 
 export default class ApiService {
  
@@ -27,6 +16,8 @@ export default class ApiService {
       headers: this.headers(),
       method: "GET",
     });
+
+
 
 
     if (!res.ok) {
