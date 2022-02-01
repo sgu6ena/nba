@@ -1,18 +1,19 @@
 import * as React from "react";
 import styled from "styled-components";
-import {Link} from "react-router-dom";
-import {Controller, useForm} from "react-hook-form";
+import { Link } from "react-router-dom";
+import { Controller, useForm } from "react-hook-form";
 
 import * as vars from "../assets/variables/variables";
 import Button from "../ui/button/Button";
 import Input from "../ui/input/Input";
 import Password from "../ui/Password";
-import {ReactComponent as BasketUp} from "../assets/images/Basket-up.svg";
+import { ReactComponent as BasketUp } from "../assets/images/Basket-up.svg";
+import Spinner from "../ui/spinner/spinner";
+import ApiService from "../services/api";
+import { useAppDispatch } from "../hooks/redux";
+import { setUser } from "../store/reducers/auth";
 
-
-
-interface IRegisterProps {
-}
+interface IRegisterProps {}
 
 const Page = styled.div`
   display: flex;
@@ -33,7 +34,7 @@ const RegisterBox = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
   }
 
   h1 {
@@ -52,6 +53,7 @@ const RegisterBox = styled.div`
     align-items: center;
     color: ${vars.$grey};
     a {
+      padding: 0 0.5em;
       font-style: normal;
       font-weight: 500;
       font-size: 14px;
@@ -73,60 +75,123 @@ const ImageBox = styled.div`
     display: none;
   }
 `;
+const ErrorBox = styled.div`
+  height: 2em;
+  font-size: 14px;
+`;
 
 const Register: React.FunctionComponent<IRegisterProps> = (props) => {
-    const [result, setResult] = React.useState("");
-    const {handleSubmit, control, reset} = useForm({
-        defaultValues: {
-            name: "",
-            login: "",
-            password: "",
-            confirmPassword: ""
-        }
-    });
+  const api = new ApiService();
 
-    return (
-        <Page>
-            <RegisterBox>
-                <h1>Sing up</h1>
-                <form className="form" onSubmit={handleSubmit((data) => setResult(JSON.stringify(data)))}>
-                    <Controller
-                        name="name"
-                        control={control}
-                        rules={{required: true}}
+  const dispatch = useAppDispatch();
+  const [isLoading, setLoading] = React.useState(false);
+  const [formError, setFormError] = React.useState("");
+  const [result, setResult] = React.useState("");
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
+    defaultValues: {
+      name: "",
+      login: "",
+      password: "",
+      confirmPassword: "",
+    },
+  });
 
-                        render={({field}) => <Input {...field} label="Name"/>}
-                    /> <Controller
-                    name="login"
-                    control={control}
-                    rules={{required: true}}
-                    render={({field}) => <Input {...field} label='Login'/>}
-                />
-                    <Controller
-                        name="password"
-                        control={control}
-                        rules={{required: true}}
-                        render={({field}) => <Password {...field} label='Password'/>}
-                    />
-                    <Controller
-                        name="confirmPassword"
-                        control={control}
-                        rules={{required: true}}
-                        render={({field}) => <Password {...field} label='Enter your password again'/>}
-                    />
+  const onSubmit = async (data: {
+    name: string;
+    login: string;
+    password: string;
+    confirmPassword: string;
+  }) => {
+    setLoading(true);
+    if (data.password === data.confirmPassword) {
+      api
+        .postRegister(data.login, data.password, data.name)
+        .then((data) => dispatch(setUser(data)))
+        .catch((e) => {
+          setFormError(e.message);
+        })
+        .finally(() => setLoading(false));
+    } else {
+      setFormError("Пароли не совпадают");
+      setLoading(false);
+    }
+  };
 
-                    <Button type='submit'>Sing up</Button>
-                </form>
+  return (
+    <Page>
+      <RegisterBox>
+        {isLoading && <Spinner />}
 
-                <p>
-                    Allready a member? <Link to="/login"> Sign in</Link>
-                </p>
-            </RegisterBox>
-            <ImageBox>
-                <BasketUp width="80%"/>
-            </ImageBox>
-        </Page>
-    );
+        <h1>Sing up</h1>
+        <ErrorBox>{formError && formError}</ErrorBox>
+        <form className="form" onSubmit={handleSubmit(onSubmit)}>
+          <Controller
+            name="name"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Input
+                {...field}
+                label="Name"
+                placeholder="Name"
+                error={errors.name && "Name is required"}
+              />
+            )}
+          />{" "}
+          <Controller
+            name="login"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Input
+                {...field}
+                label="Login"
+                placeholder="Login"
+                error={errors.login && "Login is required"}
+              />
+            )}
+          />
+          <Controller
+            name="password"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Password
+                {...field}
+                label="Password"
+                placeholder="Password"
+                error={errors.password && "Password is required"}
+              />
+            )}
+          />
+          <Controller
+            name="confirmPassword"
+            control={control}
+            rules={{ required: true }}
+            render={({ field }) => (
+              <Password
+                {...field}
+                label="Enter your password again"
+                placeholder="Confirm password"
+                error={errors.confirmPassword && "Confirm password is required"}
+              />
+            )}
+          />
+          <Button type="submit">Sing up</Button>
+        </form>
+        <p>
+          Allready a member? <Link to="/login"> Sign in</Link>
+        </p>
+      </RegisterBox>
+      <ImageBox>
+        <BasketUp width="80%" />
+      </ImageBox>
+    </Page>
+  );
 };
 
 export default Register;

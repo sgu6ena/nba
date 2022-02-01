@@ -33,7 +33,7 @@ const LoginBox = styled.div`
     width: 100%;
     display: flex;
     flex-direction: column;
-    gap: 20px;
+    gap: 10px;
   }
 
   h1 {
@@ -42,6 +42,9 @@ const LoginBox = styled.div`
     font-size: 36px;
     line-height: 49px;
     color: #052587;
+  }
+  button{
+    margin-top: 10px;
   }
   p {
     font-style: normal;
@@ -80,21 +83,26 @@ const Login: React.FC<ILoginProps> = (props) => {
 
   const dispatch = useAppDispatch();
   const [isLoading, setLoading] = React.useState(false);
-  const [error, setError] = React.useState("");
+  const [formError, setFormError] = React.useState("");
 
-  const { handleSubmit, control } = useForm({
+  const {
+    handleSubmit,
+    control,
+    formState: { errors },
+  } = useForm({
     defaultValues: {
       login: "",
       password: "",
     },
   });
+
   const onSubmit = async (data: { login: string; password: string }) => {
     setLoading(true);
     api
       .postLogin(data.login, data.password)
       .then((data) => dispatch(setUser(data)))
       .catch((e) => {
-        setError(e.message);
+        setFormError(e.message);
       })
       .finally(() => setLoading(false));
   };
@@ -110,17 +118,25 @@ const Login: React.FC<ILoginProps> = (props) => {
       }}
     >
       {isLoading && <Spinner />}
-      <LoginBox>    <ErrorBox> {error && error}</ErrorBox>
-        <h1>Sing in</h1>
+      <LoginBox>
 
-    
+        <ErrorBox>
+
+          {errors.login?.message} {formError && formError}
+        </ErrorBox>
+        <h1>Sing in</h1>
         <form onSubmit={handleSubmit(onSubmit)}>
           <Controller
             name="login"
             control={control}
             rules={{ required: true }}
             render={({ field }) => (
-              <Input {...field} label="Login" placeholder="Input login" />
+              <Input
+                {...field}
+                label="Login"
+                placeholder="Input login"
+                error={errors.login && "Login is required"}
+              />
             )}
           />
           <Controller
@@ -132,13 +148,13 @@ const Login: React.FC<ILoginProps> = (props) => {
                 {...field}
                 label="Password"
                 placeholder="Input password"
+                error={errors.password && "Password is required"}
               />
             )}
           />
 
           <Button type="submit">Sing in</Button>
         </form>
-
         <p>
           Not a member yet? <Link to="/register"> Sign up</Link>
         </p>
