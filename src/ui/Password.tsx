@@ -11,7 +11,14 @@ const StyledLabel = styled.label`
   font-size: 14px;
   line-height: 24px;
   color: ${vars.$grey};
-
+  span {
+      display: block;
+      height: 10px;
+      transition: all 0.2s;
+      font-size: 10px;
+      line-height: 150%;
+      color: ${vars.$lightestRed};
+    }
 `;
 
 const InputGroup = styled.div`
@@ -28,7 +35,9 @@ const InputGroup = styled.div`
   font-size: 1em;
   line-height: 171%;
   color: ${vars.$darkGrey};
-
+ &.error{
+  border: 1px solid ${vars.$lightestRed};
+ }
   &:hover input,
   &:hover {
     transition: all 0.2s;
@@ -80,6 +89,7 @@ const InputGroup = styled.div`
       outline: none;
     }
   }
+
 `;
 
 export interface IPasswordProps {
@@ -91,14 +101,14 @@ export interface IPasswordProps {
   disabled?: boolean;
 }
 
-const Password: React.FC<IPasswordProps> = ({ placeholder, label,...props }) => {
+const Password: React.FC<IPasswordProps> = ({ placeholder, label, error, ...props }) => {
   const [preview, setPreview] = useState(true);
   useEffect(() => {}, [preview]);
   return (
     <StyledLabel>
 
       {label}
-      <InputGroup>
+      <InputGroup className={error ? "error" : ""} >
         <input
           type={preview ? "password" : "text"}
           className={"password"}
@@ -113,6 +123,7 @@ const Password: React.FC<IPasswordProps> = ({ placeholder, label,...props }) => 
           )}
         </button>
       </InputGroup>
+      <span>{error}</span>
     </StyledLabel>
   );
 };

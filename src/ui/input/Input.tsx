@@ -1,7 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import * as vars from "../../assets/variables/variables"
-
+import * as vars from "../../assets/variables/variables";
 
 export interface IInputProps {
   type?: string;
@@ -10,12 +9,11 @@ export interface IInputProps {
   value?: string;
   error?: string;
   disabled?: boolean;
-  id?:string;
-  onChange?:any;
+  id?: string;
+  onChange?: any;
 }
 
 const StyledInput = styled.div`
-
   label {
     display: flex;
     flex-direction: column;
@@ -25,7 +23,7 @@ const StyledInput = styled.div`
       font-weight: 500;
       font-size: 14px;
       line-height: 24px;
-      color:  ${vars.$grey};
+      color: ${vars.$grey};
       margin-bottom: 8px;
     }
     input {
@@ -33,24 +31,24 @@ const StyledInput = styled.div`
       height: 40px;
       padding: 8px 12px;
       border: none;
-      background:  ${vars.$lightestGrey1};
+      background: ${vars.$lightestGrey1};
       border-radius: 4px;
 
       font-style: normal;
       font-weight: 500;
       font-size: 1rem;
       line-height: 171%;
-      color:  ${vars.$darkGrey};
+      color: ${vars.$darkGrey};
 
       &:hover {
         outline: none;
         transition: all 0.2s;
-        background:  ${vars.$lightestGrey};
+        background: ${vars.$lightestGrey};
       }
       &:focus {
         outline: none;
         transition: all 0.2s;
-        background:  ${vars.$lightestGrey1};
+        background: ${vars.$lightestGrey1};
         box-shadow: 0 0 5px ${vars.$lightestGrey};
       }
       &::placeholder {
@@ -65,23 +63,27 @@ const StyledInput = styled.div`
       }
     }
     span {
+      display: block;
+      height: 10px;
       transition: all 0.2s;
-      font-size: 0.75em;
+      font-size: 10px;
       line-height: 150%;
       color: ${vars.$lightestRed};
     }
   }
 `;
 
-
 const Input: React.FC<IInputProps> = ({
   label,
   type,
   value,
   placeholder,
-  error,disabled, id,onChange
+  error,
+  disabled,
+  id,
+  onChange,
+  ...props
 }) => {
-
   return (
     <StyledInput>
       <label>
@@ -94,6 +96,8 @@ const Input: React.FC<IInputProps> = ({
           disabled={disabled}
           id={id}
           onChange={onChange}
+         { ...props}
+    
         />
         <span>{error}</span>
       </label>
