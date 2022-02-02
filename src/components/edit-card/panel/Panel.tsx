@@ -1,6 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
 import * as vars from "../../../assets/variables/variables";
+import Path from "../../path/path";
 // import "./styles.scss";
 
 export interface IPanelProps {
@@ -26,10 +27,6 @@ const StyledPanel = styled.div`
     border-radius: 0;
   }
 
-  .path {
-    color: ${vars.$red};
-    text-decoration: none;
-  }
   .btn {
     border: none;
     background-color: transparent;
@@ -51,11 +48,7 @@ const StyledPanel = styled.div`
 const Panel: React.FC<IPanelProps> = ({ type, title }) => {
   return (
     <StyledPanel>
-      <div>
-        <span className="path">{type === "command" ? "Teams" : "Players"}</span>
-       {` / `}
-        <span className="path"> {title}</span>
-      </div>
+      <Path title={title} type={type}/>
       <div>
         <button className="btn pensil" title="edit"></button>
         <button className="btn trash" title="delete"></button>
