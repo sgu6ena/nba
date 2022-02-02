@@ -1,4 +1,4 @@
-import React, {ReactComponentElement, ReactElement} from "react";
+import React from "react";
 import {Command} from "../pages/Command";
 import {CommandList} from "../pages/CommandList";
 import Login from "../pages/Login";
@@ -6,7 +6,8 @@ import {PageNotFound} from "../pages/PageNotFound";
 import {Player} from "../pages/Player";
 import {PlayerList} from "../pages/PlayerList";
 import Register from "../pages/Register";
-import Test from "../pages/Test";
+import Welcome from "../pages/Welcome";
+
 
 export interface IRoute {
     path: string;
@@ -20,7 +21,7 @@ export enum RouteNames {
     TEAM = "/commands/:id",
     PLAYERS = "/players",
     PLAYER = "/players/:id",
-    TEST = "/"
+    HOME = "/"
 }
 
 export const publicRoutes: IRoute[] = [
@@ -35,5 +36,5 @@ export const privateRoutes: IRoute[] = [
     {path: RouteNames.PLAYERS, element: <PlayerList/>},
     {path: RouteNames.PLAYER, element: <Player/>},
     {path: "*", element: <PageNotFound/>},
-    {path: RouteNames.TEST, element: <Test/>}
+    {path: RouteNames.HOME, element: <Welcome />}
 ];

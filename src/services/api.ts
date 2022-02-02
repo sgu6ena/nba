@@ -18,11 +18,13 @@ export default class ApiService {
       method: "GET",
     });
 
-
-
-
     if (!res.ok) {
-      return res.status;
+      if ( errors[res.status]) {
+        throw new Error(errors[res.status]);
+      } else
+        throw new Error(
+          `Could not fetch resource: ${url} - status: ${res.status}`
+        );
     }
 
     return await res.json();
