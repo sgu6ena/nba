@@ -1,4 +1,5 @@
 import {store} from '../App'
+import errors  from "./apiErrors"
 
 export default class ApiService {
  
@@ -35,8 +36,8 @@ export default class ApiService {
     });
 
     if (!res.ok) {
-      if (res.status === 401) {
-        throw new Error(`Login or password are incorrect`);
+      if ( errors[res.status]) {
+        throw new Error(errors[res.status]);
       } else
         throw new Error(
           `Could not fetch resource: ${url} - status: ${res.status}`
