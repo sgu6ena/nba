@@ -20,7 +20,7 @@ const Nav = styled.nav`
   flex-direction: column;
   align-items: center;
   justify-content: space-between;
-  transition: all 3s;
+  /* transition: all 3s; */
   .menu-wrapper {
     width: 100%;
   }
@@ -33,11 +33,11 @@ const Nav = styled.nav`
     top: 81px;
     left: -200px;
     display: none;
-    transition: all 3s;
+    /* transition: all 3s; */
     width: 200px;
     height: calc(100% - 80px);
     &.active {
-      transition: all 3s;
+      /* transition: all 3s; */
       left: 0px;
       display: flex;
     }

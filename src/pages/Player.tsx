@@ -1,20 +1,32 @@
-import * as React from 'react';
+import * as React from "react";
+import { useParams } from "react-router-dom";
 
-import EditCard from '../components/edit-card/EditCard';
-import LayerPage from '../components/LayerPage';
+import EditCard from "../components/edit-card/EditCard";
+import LayerPage from "../components/LayerPage";
+import { useAppSelector } from "../hooks/redux";
+import { PageNotFound } from "./PageNotFound";
 
-export interface IPlayerProps {
-}
+export interface IPlayerProps {}
 
-export function Player (props: IPlayerProps) {
+export function Player(props: IPlayerProps) {
+  const params = useParams();
+
+
+  const { players, isLoading, error } = useAppSelector(
+    (state) => state.playerReducer
+  );
+
+  const thisPlayer = players.find((p) => p.id?.toString() === params.id);
+
   return (
-     <LayerPage>
-      <EditCard
-        title="Jaylen Adams"
-        place="#10"
-        type="player"
-        avatarUrl="https://www.pngplay.com/wp-content/uploads/6/Michael-Jordan-Basketball-Player-Face-PNG.png"
-      />
+    <LayerPage>
+      {thisPlayer ? (
+        <EditCard data={thisPlayer}
+          type="player"
+        />
+      ) : (
+        <PageNotFound />
+      )}
     </LayerPage>
   );
 }

@@ -1,15 +1,11 @@
 import * as React from "react";
-import Image from "../../image/Image";
+
 import styled from "styled-components";
 import * as vars from "../../../assets/variables/variables";
-// import "./styles.scss";
-
-export interface IInfoProps {
-  avatarUrl: string;
-  title: string;
-  type: "command" | "player";
-  place?: string;
-}
+import { IPlayer } from "../../../models/IPlayer";
+import { ITeam } from "../../../models/ITeam";
+import InfoPlayer from "./InfoPlayer";
+import InfoTeam from "./InfoTeam";
 
 const StyledInfo = styled.div`
   display: flex;
@@ -17,7 +13,7 @@ const StyledInfo = styled.div`
   border-radius: 0px 0px 10px 10px;
   color: ${vars.$white};
 
-  @media screen and (max-width:  ${vars.$md}) {
+  @media screen and (max-width: ${vars.$md}) {
     border-radius: 0;
     flex-direction: column;
     align-items: center;
@@ -52,14 +48,14 @@ const StyledInfo = styled.div`
   }
 `;
 
-const Value = styled.div`
+export const Value = styled.div`
   font-style: normal;
   font-weight: 500;
   font-size: 0.75em;
   line-height: 2em;
 `;
 
-const StyledUl = styled.ul`
+export const StyledUl = styled.ul`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
@@ -71,7 +67,7 @@ const StyledUl = styled.ul`
     gap: 2rem;
   }
 
- li {
+  li {
     display: block;
     width: 40%;
     font-style: normal;
@@ -84,44 +80,21 @@ const StyledUl = styled.ul`
     }
   }
 `;
+interface IInfoProps {
+  data: IPlayer | ITeam;
+  type: "command" | "player";
+}
 
-const Info: React.FC<IInfoProps> = ({ avatarUrl, type, title, place }) => {
+const Info: React.FC<IInfoProps> = ({ data, type }) => {
   return (
-
     <StyledInfo>
-      <div className={`left ${type}`}>
-        <Image avatarUrl={avatarUrl} type={type} />
-      </div>
-
-      <div className={`right ${type}`}>
-        <h2>
-          {title} <span> {place}</span>
-        </h2>
-        <StyledUl>
-          <li>
-            Position
-            <Value>Forvard</Value>
-          </li>
-          <li>
-            Position
-            <Value>Forvard</Value>
-          </li>
-          <li>
-            Position
-            <Value>Forvard</Value>
-          </li>
-          <li>
-            Position
-            <Value>Forvard</Value>
-          </li>
-          <li>
-            Position
-            <Value>Forvard</Value>
-          </li>
-        </StyledUl>
-      </div>
+      {/* @ts-ignore */}
+      {type === "player" ? InfoPlayer(data) : InfoTeam(data)}
     </StyledInfo>
   );
 };
+
+
+
 
 export default Info;

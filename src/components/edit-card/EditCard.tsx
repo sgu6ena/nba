@@ -2,11 +2,11 @@ import * as React from "react";
 import Info from "./info/Info";
 import Panel from "./panel/Panel";
 import styled from "styled-components";
+import { IPlayer } from "../../models/IPlayer";
+import { ITeam } from "../../models/ITeam";
 
 export interface IEditCardProps {
-  title: string;
-  place?: string;
-  avatarUrl: string;
+  data: IPlayer | ITeam;
   type: "command" | "player";
 }
 
@@ -16,16 +16,11 @@ const StyledEditCard = styled.div`
   font-size: 24px;
 `;
 
-const EditCard: React.FC<IEditCardProps> = ({
-  title,
-  place,
-  avatarUrl,
-  type,
-}) => {
+const EditCard: React.FC<IEditCardProps> = ({ data, type }) => {
   return (
     <StyledEditCard>
-      <Panel type={type} title={title} />
-      <Info avatarUrl={avatarUrl} type={type} title={title} place={place} />
+      <Panel type={type} title={data.name} />
+      <Info type={type} data={data} />
     </StyledEditCard>
   );
 };
