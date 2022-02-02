@@ -12,7 +12,7 @@ export function Player(props: IPlayerProps) {
   const params = useParams();
 
 
-  const { players, isLoading, error } = useAppSelector(
+  const { players } = useAppSelector(
     (state) => state.playerReducer
   );
 

@@ -5,6 +5,7 @@ import Sidebar from "./sidebar/Sidebar";
 import * as vars from "../assets/variables/variables";
 import SearchInput from "../ui/SearchInput";
 import Button from "../ui/button/Button";
+import { Link } from "react-router-dom";
 
 interface ILayerPageProps {
   search?: boolean;
@@ -78,7 +79,7 @@ const LayerPage: React.FunctionComponent<ILayerPageProps> = ({
           {search ? (
             <Panel>
               <SearchInput placeholder="Search..." />
-              <Button>Add&nbsp;＋</Button>
+              <Link to="add"><Button>Add&nbsp;＋</Button></Link>
             </Panel>
           ) : (
             ""

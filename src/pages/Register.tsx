@@ -86,7 +86,6 @@ const Register: React.FunctionComponent<IRegisterProps> = (props) => {
   const dispatch = useAppDispatch();
   const [isLoading, setLoading] = React.useState(false);
   const [formError, setFormError] = React.useState("");
-  const [result, setResult] = React.useState("");
   const {
     handleSubmit,
     control,

@@ -14,6 +14,7 @@ export interface IInputProps {
 }
 
 const StyledInput = styled.div`
+width: 100%;
   label {
     display: flex;
     flex-direction: column;

@@ -13,19 +13,18 @@ export function Command(props: ICommandProps) {
   const params = useParams();
 
 
-  const { teams, isLoading, error } = useAppSelector(
+  const { teams} = useAppSelector(
     (state) => state.teamReducer
   );
 
   const thisteam = teams.find((t) => t.id?.toString() === params.id);
+
   return (
     <LayerPage>
        {thisteam ? (
       <EditCard
-        // title="Portland trail blazers"
         data={thisteam}
         type="command"
-        // avatarUrl="https://1757140519.rsc.cdn77.org/blog/wp-content/uploads/sites/2/2020/06/image28-1012x1024.png"
       />):(
         <PageNotFound/>
       )}
