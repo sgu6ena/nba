@@ -1,10 +1,10 @@
 import * as React from "react";
 import styled from "styled-components";
-import LayerPage from "../components/LayerPage";
-import Path from "../components/path/path";
+import LayerPage from "../common/components/LayerPage";
+import Path from "../common/components/path/path";
 import * as vars from "../common/variables/colors";
-import Input from "../ui/input/Input";
-import CustomSelect from "../ui/CustomSelect/CustomSelect";
+import Input from "../common/ui/input/Input";
+import CustomSelect from "../common/ui/CustomSelect/CustomSelect";
 
 export interface IPlayerAddProps {}
 

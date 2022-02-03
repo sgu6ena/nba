@@ -1,7 +1,7 @@
 import React from "react";
 import {Provider} from "react-redux";
-import {setupStore} from "./store/store";
-import AppRouter from "./router/AppRouter";
+import {setupStore} from "./core/redux/store";
+import AppRouter from "./core/router/AppRouter";
 
 export const store = setupStore();
 

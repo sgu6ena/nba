@@ -1,8 +1,8 @@
 import * as React from "react";
-import { setUser } from "../store/reducers/auth";
-import { useAppDispatch } from "../hooks/redux";
+import { setUser } from "../core/auth";
+import { useAppDispatch } from "../core/redux/redux";
 import { useForm, Controller } from "react-hook-form";
-import ApiService from "../services/api";
+import ApiService from "../api/api";
 import { Link } from "react-router-dom";
 
 import styled from "styled-components";
@@ -10,10 +10,10 @@ import * as colors from "../common/variables/colors";
 import * as sizes from "../common/variables/sizes";
 
 import { ReactComponent as BasketIn } from "../assets/images/Basket-in.svg";
-import Button from "../ui/button/Button";
-import Input from "../ui/input/Input";
-import Password from "../ui/Password";
-import Spinner from "../ui/spinner/spinner";
+import Button from "../common/ui/button/Button";
+import Input from "../common/ui/input/Input";
+import Password from "../common/ui/Password";
+import Spinner from "../common/ui/spinner/spinner";
 
 interface ILoginProps {}
 

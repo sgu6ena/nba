@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import { ReactComponent as NotFound } from "../assets/images/NotFound.svg";
-import ImageBox from "../components/image-box/ImageBox";
-import LayerPage from "../components/LayerPage";
+import ImageBox from "../common/components/image-box/ImageBox";
+import LayerPage from "../common/components/LayerPage";
 
 export interface IPageNotFoundProps {}
 

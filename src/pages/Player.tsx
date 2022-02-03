@@ -1,9 +1,9 @@
 import * as React from "react";
 import { useParams } from "react-router-dom";
 
-import EditCard from "../components/edit-card/EditCard";
-import LayerPage from "../components/LayerPage";
-import { useAppSelector } from "../hooks/redux";
+import EditCard from "../common/components/edit-card/BigCard";
+import LayerPage from "../common/components/LayerPage";
+import { useAppSelector } from "../core/redux/redux";
 import { PageNotFound } from "./PageNotFound";
 
 export interface IPlayerProps {}

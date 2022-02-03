@@ -1,10 +1,10 @@
 import React from "react";
 
 import { ReactComponent as BasketUp } from "../assets/images/Basket-up.svg";
-import ImageBox from "../components/image-box/ImageBox";
+import ImageBox from "../common/components/image-box/ImageBox";
 
-import LayerPage from "../components/LayerPage";
-import ApiService from "../services/api";
+import LayerPage from "../common/components/LayerPage";
+import ApiService from "../api/api";
 
 const Welcome: React.FC = () => {
   const api = new ApiService();

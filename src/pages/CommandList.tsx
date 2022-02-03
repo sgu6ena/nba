@@ -1,10 +1,11 @@
 import * as React from "react";
 
-import Card from "../components/card/Card";
-import LayerPage from "../components/LayerPage";
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchTeams } from "../store/reducers/ActionCreators";
-import Spinner from "../ui/spinner/spinner";
+import Card from "../common/components/card/Card";
+import LayerPage from "../common/components/LayerPage";
+import { useAppDispatch, useAppSelector } from "../core/redux/redux";
+
+import Spinner from "../common/ui/spinner/spinner";
+import {fetchTeams} from "../modules/teams/action";
 
 export interface ICommandListProps {}
 

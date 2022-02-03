@@ -9,6 +9,6 @@ export enum RouteNames {
     HOME = "/",
     PLAYER_ADD = "/players/add",
     PLAYER_EDIT = "/players/:id/edit",
-    TEAM_ADD = "/players/add",
-    TEAM_EDIT = "/players/:id/edit",
+    TEAM_ADD = "/commands/add",
+    TEAM_EDIT = "/commands/:id/edit",
 }

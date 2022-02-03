@@ -1,14 +1,12 @@
 import * as React from "react";
-
-import { useAppDispatch, useAppSelector } from "../hooks/redux";
-import { fetchPlayers } from "../store/reducers/ActionCreators";
-import { IPlayer } from "../models/IPlayer";
-
-import Card from "../components/card/Card";
-import LayerPage from "../components/LayerPage";
-import Spinner from "../ui/spinner/spinner";
-import ImageBox from "../components/image-box/ImageBox";
+import { useAppDispatch, useAppSelector } from "../core/redux/redux";
+import { IPlayer } from "../modules/players/interfaces/IPlayer";
+import Card from "../common/components/card/Card";
+import LayerPage from "../common/components/LayerPage";
+import Spinner from "../common/ui/spinner/spinner";
+import ImageBox from "../common/components/image-box/ImageBox";
 import { ReactComponent as BasketUp } from "../assets/images/Basket-up.svg";
+import {fetchPlayers} from "../modules/players/actions";
 
 export interface IPlayerListProps {}
 

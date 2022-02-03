@@ -5,14 +5,14 @@ import { Controller, useForm } from "react-hook-form";
 import * as colors from "../common/variables/colors";
 import * as sizes from "../common/variables/sizes";
 
-import Button from "../ui/button/Button";
-import Input from "../ui/input/Input";
-import Password from "../ui/Password";
+import Button from "../common/ui/button/Button";
+import Input from "../common/ui/input/Input";
+import Password from "../common/ui/Password";
 import { ReactComponent as BasketUp } from "../assets/images/Basket-up.svg";
-import Spinner from "../ui/spinner/spinner";
-import ApiService from "../services/api";
-import { useAppDispatch } from "../hooks/redux";
-import { setUser } from "../store/reducers/auth";
+import Spinner from "../common/ui/spinner/spinner";
+import ApiService from "../api/api";
+import { useAppDispatch } from "../core/redux/redux";
+import { setUser } from "../core/auth";
 
 interface IRegisterProps {}
 
