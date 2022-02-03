@@ -1,6 +1,6 @@
 import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import playerReducer from "../../modules/players/playerSlice"
-import teamReducer from "../../modules/teams/TeamSlice"
+import teamReducer from "../../modules/teams/teamSlice"
 import userReducer from "../auth"
 
 

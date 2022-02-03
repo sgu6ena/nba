@@ -9,9 +9,11 @@ import CustomSelect from "../common/ui/CustomSelect/CustomSelect";
 export interface IPlayerAddProps {}
 
 const options = [
-  { value: "chocolate", label: "Chocolate" },
-  { value: "strawberry", label: "Strawberry" },
-  { value: "vanilla", label: "Vanilla" },
+  { value: "CenterForward", label: "Center forward" },
+  { value: "GuardForward", label: "Guard forward" },
+  { value: "Forward", label: "Forward" },
+  { value: "Center", label: "Center" },
+  { value: "Guard", label: "Guard" },
 ];
 
 export function PlayerAdd(props: IPlayerAddProps) {

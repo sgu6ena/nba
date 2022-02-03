@@ -1,6 +1,6 @@
 import ApiService from "../../api/api";
 import {AppDispatch} from "../../core/redux/store";
-import {teamSlice} from "./TeamSlice";
+import {teamSlice} from "./teamSlice";
 
 
 const api = new ApiService();
