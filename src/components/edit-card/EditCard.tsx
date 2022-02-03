@@ -10,11 +10,6 @@ export interface IEditCardProps {
   type: "command" | "player";
 }
 
-const StyledEditCard = styled.div`
-  display: block;
-  width: 100%;
-  font-size: 24px;
-`;
 
 const EditCard: React.FC<IEditCardProps> = ({ data, type }) => {
   return (
@@ -26,3 +21,9 @@ const EditCard: React.FC<IEditCardProps> = ({ data, type }) => {
 };
 
 export default EditCard;
+
+const StyledEditCard = styled.div`
+  display: block;
+  width: 100%;
+  font-size: 24px;
+`;

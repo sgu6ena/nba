@@ -3,6 +3,25 @@ import styled from "styled-components";
 
 interface ISpinnerProps {}
 
+const Spinner: React.FunctionComponent<ISpinnerProps> = (props) => {
+  React.useEffect(() => {
+    setTimeout(() => {}, 5000);
+  }, []);
+  return (
+    <Container>
+      <Basketball>
+        <div className="ball">
+          <div className="lines"></div>
+        </div>
+        <div className="shadow"></div>
+        <div className="text">loading...</div>
+      </Basketball>
+    </Container>
+  );
+};
+
+export default Spinner;
+
 const Container = styled.div`
   position: absolute;
   top: 0;
@@ -18,7 +37,7 @@ const Container = styled.div`
 const Basketball = styled.div`
   position: relative;
   top: 50px;
-  left:  0;
+  left: 0;
 
   .ball {
     position: absolute;
@@ -125,20 +144,3 @@ const Basketball = styled.div`
     font: 14px sans-serif;
   }
 `;
-
-const Spinner: React.FunctionComponent<ISpinnerProps> = (props) => {
-  React.useEffect(() => {setTimeout(()=>{},5000)},[])
-  return (
-    <Container>
-      <Basketball>
-        <div className="ball">
-          <div className="lines"></div>
-        </div>
-        <div className="shadow"></div>
-        <div className="text">loading...</div>
-      </Basketball>
-    </Container>
-  );
-};
-
-export default Spinner;

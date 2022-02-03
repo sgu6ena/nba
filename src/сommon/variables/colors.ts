@@ -12,7 +12,4 @@ export const $blue = `#344472`;
 
 export const $gradient = `linear-gradient(120deg, #707070 0%, #393939 100%)`;
 
-export const $sm = `576px`;
-export const $md = `720px`;
-export const $lg = `940px`;
-export const $xl = `1140px`;
+

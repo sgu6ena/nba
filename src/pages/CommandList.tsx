@@ -26,7 +26,7 @@ export function CommandList(props: ICommandListProps) {
         <Card
           title={team.name}
           subtitle={
-            team.foundationYear && `Year of foundation: ${team.foundationYear}`
+            team.foundationYear  ? `Year of foundation: ${team.foundationYear}` :''
           }
           type="command"
           avatarUrl={team.imageUrl}

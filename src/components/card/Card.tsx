@@ -1,9 +1,10 @@
 import * as React from "react";
 import Image from "../image/Image";
 import styled from "styled-components";
-import * as vars from "../../assets/variables/variables";
+import * as vars from "../../сommon/variables/colors";
 import { Link } from "react-router-dom";
-import { RouteNames } from "../../router";
+import { RouteNames } from "../../сommon/variables/RouteNames";
+
 
 interface ICardProps {
   title: string;

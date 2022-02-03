@@ -6,6 +6,7 @@ import { useAuth } from "../hooks/user-auth";
 const AppRouter: React.FC = () => {
 
   const auth = useAuth().isAuth;
+  
   return auth ? (
     <BrowserRouter>
       <Routes>

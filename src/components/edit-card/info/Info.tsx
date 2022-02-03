@@ -1,19 +1,37 @@
 import * as React from "react";
 
 import styled from "styled-components";
-import * as vars from "../../../assets/variables/variables";
+import * as colors from "../../../сommon/variables/colors";
+import * as sizes from "../../../сommon/variables/sizes"
 import { IPlayer } from "../../../models/IPlayer";
 import { ITeam } from "../../../models/ITeam";
 import InfoPlayer from "./InfoPlayer";
 import InfoTeam from "./InfoTeam";
 
+
+interface IInfoProps {
+  data: IPlayer | ITeam;
+  type: "command" | "player";
+}
+
+const Info: React.FC<IInfoProps> = ({ data, type }) => {
+  return (
+    <StyledInfo>
+      {/* @ts-ignore */}
+      {type === "player" ? InfoPlayer(data) : InfoTeam(data)}
+    </StyledInfo>
+  );
+};
+
+export default Info;
+
 const StyledInfo = styled.div`
   display: flex;
-  background: ${vars.$gradient};
+  background: ${colors.$gradient};
   border-radius: 0px 0px 10px 10px;
-  color: ${vars.$white};
+  color: ${colors.$white};
 
-  @media screen and (max-width: ${vars.$md}) {
+  @media screen and (max-width: ${sizes.$md}) {
     border-radius: 0;
     flex-direction: column;
     align-items: center;
@@ -23,10 +41,10 @@ const StyledInfo = styled.div`
     font-size: 1.5em;
     margin-bottom: 1.5em;
     span {
-      color: ${vars.$red};
+      color: ${colors.$red};
     }
 
-    @media screen and (max-width: ${vars.$md}) {
+    @media screen and (max-width: ${sizes.$md}) {
       width: 100%;
       text-align: center;
     }
@@ -63,7 +81,7 @@ export const StyledUl = styled.ul`
   padding-left: 0;
   list-style-type: none;
 
-  @media screen and (max-width: ${vars.$md}) {
+  @media screen and (max-width: ${sizes.$md}) {
     gap: 2rem;
   }
 
@@ -74,27 +92,9 @@ export const StyledUl = styled.ul`
     font-weight: 800;
     font-size: 1em;
 
-    @media screen and (max-width: ${vars.$md}) {
+    @media screen and (max-width: ${sizes.$md}) {
       width: 100%;
       text-align: center;
     }
   }
 `;
-interface IInfoProps {
-  data: IPlayer | ITeam;
-  type: "command" | "player";
-}
-
-const Info: React.FC<IInfoProps> = ({ data, type }) => {
-  return (
-    <StyledInfo>
-      {/* @ts-ignore */}
-      {type === "player" ? InfoPlayer(data) : InfoTeam(data)}
-    </StyledInfo>
-  );
-};
-
-
-
-
-export default Info;

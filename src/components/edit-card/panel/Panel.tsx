@@ -1,21 +1,37 @@
 import * as React from "react";
 import styled from "styled-components";
-import * as vars from "../../../assets/variables/variables";
+import * as colors from "../../../сommon/variables/colors";
+import * as sizes from "../../../сommon/variables/sizes"
 import Path from "../../path/path";
-// import "./styles.scss";
+
 
 export interface IPanelProps {
   title: string;
   type: string;
 }
 
+const Panel: React.FC<IPanelProps> = ({ type, title }) => {
+  return (
+    <StyledPanel>
+      <Path title={title} type={type}/>
+      <div>
+        <button className="btn pensil" title="edit"></button>
+        <button className="btn trash" title="delete"></button>
+      </div>
+    </StyledPanel>
+  );
+};
+
+export default Panel;
+
+
 const StyledPanel = styled.div`
   display: flex;
   align-items: center;
   justify-content: space-between;
   width: 100%;
-  background: ${vars.$white};
-  border: 0.5px solid ${vars.$lightGrey};
+  background: ${colors.$white};
+  border: 0.5px solid ${colors.$lightGrey};
   border-radius: 10px 10px 0px 0px;
   height: 69px;
   padding: 32px;
@@ -23,7 +39,7 @@ const StyledPanel = styled.div`
   font-size: 14px;
   line-height: 24px;
 
-  @media screen and (max-width: ${vars.$md}) {
+  @media screen and (max-width: ${sizes.$md}) {
     border-radius: 0;
   }
 
@@ -44,17 +60,3 @@ const StyledPanel = styled.div`
     content: url("data:image/svg+xml;charset=UTF-8,%3csvg width='24' height='24' viewBox='0 0 24 24' fill='none' xmlns='http://www.w3.org/2000/svg'%3e%3cpath fill-rule='evenodd' clip-rule='evenodd' d='M15.5001 4H18.0001C18.5501 4 19.0001 4.45 19.0001 5C19.0001 5.55 18.5501 6 18.0001 6H6.00012C5.45012 6 5.00012 5.55 5.00012 5C5.00012 4.45 5.45012 4 6.00012 4H8.50012L9.21012 3.29C9.39012 3.11 9.65012 3 9.91012 3H14.0901C14.3501 3 14.6101 3.11 14.7901 3.29L15.5001 4ZM8.00004 21C6.90004 21 6.00004 20.1 6.00004 19V9.00004C6.00004 7.90004 6.90004 7.00004 8.00004 7.00004H16C17.1 7.00004 18 7.90004 18 9.00004V19C18 20.1 17.1 21 16 21H8.00004Z' fill='%23E4163A'/%3e%3c/svg%3e ");
   }
 `;
-
-const Panel: React.FC<IPanelProps> = ({ type, title }) => {
-  return (
-    <StyledPanel>
-      <Path title={title} type={type}/>
-      <div>
-        <button className="btn pensil" title="edit"></button>
-        <button className="btn trash" title="delete"></button>
-      </div>
-    </StyledPanel>
-  );
-};
-
-export default Panel;

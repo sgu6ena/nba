@@ -3,7 +3,8 @@ import { Link } from "react-router-dom";
 import Logo from "../../assets/images/logo.png";
 import Avatar from "../user-avatar/UserAvatar";
 import styled from "styled-components";
-import * as vars from "../../assets/variables/variables";
+import * as colors from "../../сommon/variables/colors";
+import * as sizes from "../../сommon/variables/sizes";
 import { useAuth } from "../../hooks/user-auth";
 
 export interface IHeaderProps {}
@@ -11,7 +12,7 @@ export interface IHeaderProps {}
 const StylesHeader = styled.header`
   padding: 10px 30px;
   position: fixed;
-  background-color: ${vars.$white};
+  background-color: ${colors.$white};
   height: 80px;
   top: 0;
   left: 0;
@@ -27,7 +28,7 @@ const StylesHeader = styled.header`
     border: none;
     padding:10px;
   }
-  @media screen and (max-width: ${vars.$md}) {
+  @media screen and (max-width: ${sizes.$md}) {
    
     button{ 
     display: inline;

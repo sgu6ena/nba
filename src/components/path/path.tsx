@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import * as vars from "../../assets/variables/variables";
+import * as vars from "../../сommon/variables/colors";
 
 
 export interface IPanelProps {

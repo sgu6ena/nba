@@ -1,6 +1,7 @@
 import React from "react";
-import {ReactComponent as Search} from "../assets/icons/search.svg";
-import * as vars from "../assets/variables/variables";
+import { ReactComponent as Search } from "../assets/icons/search.svg";
+import * as colors from "../сommon/variables/colors";
+import * as sizes from "../сommon/variables/sizes";
 import styled from "styled-components";
 
 const InputGroup = styled.div`
@@ -15,7 +16,7 @@ const InputGroup = styled.div`
   border-radius: 4px;
   border: 0.5px solid #d1d1d1;
 
-  @media (max-width: ${vars.$sm}) {
+  @media (max-width: ${sizes.$sm}) {
     width: 100%;
   }
 
@@ -41,28 +42,28 @@ const InputGroup = styled.div`
     font-size: 14px;
     line-height: 24px;
 
-    color: ${vars.$grey};
+    color: ${colors.$grey};
   }
 `;
 
 export interface ISearchInputProps {
-    type?: string;
-    label?: string;
-    placeholder?: string;
-    value?: string;
-    error?: string;
-    disabled?: boolean;
+  type?: string;
+  label?: string;
+  placeholder?: string;
+  value?: string;
+  error?: string;
+  disabled?: boolean;
 }
 
-const SearchInput: React.FC<ISearchInputProps> = ({placeholder, label}) => {
-    return (
-        <InputGroup>
-            <input placeholder={placeholder}/>
-            <button>
-                <Search/>
-            </button>
-        </InputGroup>
-    );
+const SearchInput: React.FC<ISearchInputProps> = ({ placeholder, label }) => {
+  return (
+    <InputGroup>
+      <input placeholder={placeholder} />
+      <button>
+        <Search />
+      </button>
+    </InputGroup>
+  );
 };
 
 export default SearchInput;
