@@ -2,8 +2,8 @@ import * as React from "react";
 
 import MenuItem from "../menu-item/MenuItem";
 import styled from "styled-components";
-import * as colors from "../../сommon/variables/colors";
-import * as sizes from "../../сommon/variables/sizes";
+import * as colors from "../../common/variables/colors";
+import * as sizes from "../../common/variables/sizes";
 
 import { ReactComponent as GroupPerson } from "../../assets/icons/group-person.svg";
 import { ReactComponent as Person } from "../../assets/icons/person.svg";
@@ -11,7 +11,7 @@ import { ReactComponent as Input } from "../../assets/icons/input.svg";
 
 import Avatar from "../user-avatar/UserAvatar";
 import { useAuth } from "../../hooks/user-auth";
-import { RouteNames } from "../../сommon/variables/RouteNames";
+import { RouteNames } from "../../common/variables/RouteNames";
 
 interface ISidebarProps {}
 

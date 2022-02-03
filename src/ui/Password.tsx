@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { ReactComponent as Eye } from "../assets/icons/eye.svg";
 import { ReactComponent as CloseEye } from "../assets/icons/close-eye.svg";
-import * as colors from "../сommon/variables/colors";
+import * as colors from "../common/variables/colors";
 import styled from "styled-components";
 
 export interface IPasswordProps {

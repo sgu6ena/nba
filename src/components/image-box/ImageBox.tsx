@@ -1,7 +1,7 @@
 import * as React from "react";
 import styled from "styled-components";
-import * as colors from "../../сommon/variables/colors";
-import * as sizes from "../../сommon/variables/sizes";
+import * as colors from "../../common/variables/colors";
+import * as sizes from "../../common/variables/sizes";
 
 interface IImageBoxProps {
   title: string;

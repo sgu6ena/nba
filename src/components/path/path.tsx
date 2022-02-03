@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import * as vars from "../../сommon/variables/colors";
+import * as colors from "../../common/variables/colors";
 
 
 export interface IPanelProps {
@@ -10,7 +10,7 @@ export interface IPanelProps {
 
 const StyledPath = styled.div`
   .path {
-    color: ${vars.$red};
+    color: ${colors.$red};
     text-decoration: none;
   }
 `;

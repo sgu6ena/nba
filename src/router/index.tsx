@@ -8,7 +8,7 @@ import { PlayerAdd } from "../pages/PlayerAdd";
 import { PlayerList } from "../pages/PlayerList";
 import Register from "../pages/Register";
 import Welcome from "../pages/Welcome";
-import { RouteNames } from "../сommon/variables/RouteNames";
+import { RouteNames } from "../common/variables/RouteNames";
 
 export interface IRoute {
   path: string;

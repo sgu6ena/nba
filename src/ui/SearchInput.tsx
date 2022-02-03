@@ -1,7 +1,7 @@
 import React from "react";
 import { ReactComponent as Search } from "../assets/icons/search.svg";
-import * as colors from "../сommon/variables/colors";
-import * as sizes from "../сommon/variables/sizes";
+import * as colors from "../common/variables/colors";
+import * as sizes from "../common/variables/sizes";
 import styled from "styled-components";
 
 const InputGroup = styled.div`

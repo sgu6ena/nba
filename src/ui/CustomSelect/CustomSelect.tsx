@@ -1,7 +1,7 @@
 import * as React from "react";
 import Select from "react-select";
 import styled from "styled-components";
-import * as colors from "../../сommon/variables/colors";
+import * as colors from "../../common/variables/colors";
 
 interface ICustomSelectProps {
   label?: string;

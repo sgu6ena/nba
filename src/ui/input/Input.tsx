@@ -1,6 +1,6 @@
 import * as React from "react";
 import styled from "styled-components";
-import * as colors from "../../сommon/variables/colors";
+import * as colors from "../../common/variables/colors";
 
 export interface IInputProps {
   type?: string;

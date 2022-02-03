@@ -1,9 +1,9 @@
 import * as React from "react";
 import Image from "../image/Image";
 import styled from "styled-components";
-import * as vars from "../../сommon/variables/colors";
+import * as vars from "../../common/variables/colors";
 import { Link } from "react-router-dom";
-import { RouteNames } from "../../сommon/variables/RouteNames";
+import { RouteNames } from "../../common/variables/RouteNames";
 
 
 interface ICardProps {

@@ -2,8 +2,8 @@ import * as React from "react";
 import styled from "styled-components";
 import { Link } from "react-router-dom";
 import { Controller, useForm } from "react-hook-form";
-import * as colors from "../сommon/variables/colors";
-import * as sizes from "../сommon/variables/sizes";
+import * as colors from "../common/variables/colors";
+import * as sizes from "../common/variables/sizes";
 
 import Button from "../ui/button/Button";
 import Input from "../ui/input/Input";

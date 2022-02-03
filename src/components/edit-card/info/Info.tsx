@@ -1,8 +1,8 @@
 import * as React from "react";
 
 import styled from "styled-components";
-import * as colors from "../../../сommon/variables/colors";
-import * as sizes from "../../../сommon/variables/sizes"
+import * as colors from "../../../common/variables/colors";
+import * as sizes from "../../../common/variables/sizes"
 import { IPlayer } from "../../../models/IPlayer";
 import { ITeam } from "../../../models/ITeam";
 import InfoPlayer from "./InfoPlayer";
