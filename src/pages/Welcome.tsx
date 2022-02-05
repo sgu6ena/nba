@@ -4,10 +4,11 @@ import { ReactComponent as BasketUp } from "../assets/images/Basket-up.svg";
 import ImageBox from "../common/components/image-box/ImageBox";
 
 import LayerPage from "../common/components/LayerPage";
-import ApiService from "../api/api";
+import {api} from "../api/api";
+
 
 const Welcome: React.FC = () => {
-  const api = new ApiService();
+
   const [version, setVersion] = React.useState("");
   api.getVersion().then((data) => setVersion(data));
 

@@ -23,7 +23,7 @@ const ImageInput: React.FC<IImageInputProps> = () => {
     };
 
     return (<>
-            <StyledInputImage style={{background: ` url(${path})  `, backgroundSize: "cover"}}>
+            <StyledInputImage style={{background: ` url(${path}) center  no-repeat `, backgroundSize: "contain"}}>
                 <input onChange={changeHandler} type="file" hidden/>
                 <input type="text" value={src} hidden disabled/>
             </StyledInputImage>

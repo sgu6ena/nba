@@ -52,7 +52,7 @@ export default class ApiService {
 
     _postImage = async (url: string, data: any) => {
         const res = await fetch(`${this._apiBaseUrl}${url}`, {
-                headers: {
+            headers: {
                 Accept: "application/json",
                 Authorization: `Bearer ${store.getState().userReducer.token}`,
                 cors: "no-cors",
@@ -73,8 +73,9 @@ export default class ApiService {
         return await res.json();
     };
 
-    getPing = async () => {
-        return await this.getResource(`/api/echo/ping`);
+     getPing = async () => {
+        return await api.getResource(`/api/echo/ping`);
+
     };
     getVersion = async () => {
         return await this.getResource(`/api/echo/version`);
@@ -102,9 +103,11 @@ export default class ApiService {
         return await this.getResource("/api/Player/GetPlayers");
     };
 
-    postImage = async (data:any) => {
+    postImage = async (data: any) => {
         const formData = new FormData();
         formData.append('file', data ? data : null);
         return await this._postImage('/api/Image/SaveImage', formData);
     }
 }
+
+export const api = new ApiService();
