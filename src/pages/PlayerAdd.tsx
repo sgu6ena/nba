@@ -5,6 +5,7 @@ import Path from "../common/components/path/path";
 import * as vars from "../common/variables/colors";
 import Input from "../common/ui/input/Input";
 import CustomSelect from "../common/ui/CustomSelect/CustomSelect";
+import ImageInput from "../common/ui/ImageInput";
 
 export interface IPlayerAddProps {}
 
@@ -25,7 +26,7 @@ export function PlayerAdd(props: IPlayerAddProps) {
           <div
             style={{ display: "flex", flexDirection: "column", width: "100%" }}
           >
-            <img src="d" alt="d" />{" "}
+            <ImageInput />
           </div>
           <div
             style={{ display: "flex", flexDirection: "column", width: "100%" }}
