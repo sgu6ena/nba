@@ -4,12 +4,12 @@ import {useEffect, useState} from "react";
 import ApiService from "../../api/api";
 
 export interface IImageInputProps {
-
+    value?: string | null;
 }
 
-const ImageInput: React.FC<IImageInputProps> = () => {
+const ImageInput: React.FC<IImageInputProps> = ({value}) => {
 
-    const [src, setSrc] = useState('');
+    const [src, setSrc] = useState(value || '');
     const [path, setPath] = useState('');
     const api = new ApiService();
 
