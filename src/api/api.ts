@@ -1,5 +1,6 @@
 import {store} from '../App'
 import errors from "./apiErrors"
+import {IPlayer} from "../modules/players/interfaces/IPlayer";
 
 export default class ApiService {
 
@@ -99,15 +100,23 @@ export default class ApiService {
     getTeams = async () => {
         return await this.getResource("/api/Team/GetTeams");
     };
+    getPositions = async () => {
+        return await this.getResource('/api/Player/GetPositions');
+    }
     getPlayers = async () => {
         return await this.getResource("/api/Player/GetPlayers");
     };
 
-    postImage = async (data: any) => {
+    postImage = async (data: Blob) => {
         const formData = new FormData();
-        formData.append('file', data ? data : null);
+        formData.append('file', data ? data : '');
         return await this._postImage('/api/Image/SaveImage', formData);
     }
+
+    postPlayer = async (data:IPlayer)=>{
+        return await  this.postResource( '/api/Player/Add', data)
+    }
+
 }
 
 export const api = new ApiService();

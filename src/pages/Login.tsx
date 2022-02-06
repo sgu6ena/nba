@@ -1,106 +1,107 @@
 import * as React from "react";
-import { setUser } from "../core/auth";
-import { useAppDispatch } from "../core/redux/redux";
-import { useForm, Controller } from "react-hook-form";
-import ApiService from "../api/api";
-import { Link } from "react-router-dom";
+import {setUser} from "../core/auth";
+import {useAppDispatch} from "../core/redux/redux";
+import {useForm, Controller} from "react-hook-form";
+import {api} from "../api/api";
+import {Link} from "react-router-dom";
 
 import styled from "styled-components";
 import * as colors from "../common/variables/colors";
 import * as sizes from "../common/variables/sizes";
 
-import { ReactComponent as BasketIn } from "../assets/images/Basket-in.svg";
+import {ReactComponent as BasketIn} from "../assets/images/Basket-in.svg";
 import Button from "../common/ui/button/Button";
 import Input from "../common/ui/input/Input";
 import Password from "../common/ui/Password";
 import Spinner from "../common/ui/spinner/spinner";
 
-interface ILoginProps {}
+interface ILoginProps {
+}
 
 const Login: React.FC<ILoginProps> = (props) => {
-  const api = new ApiService();
 
-  const dispatch = useAppDispatch();
-  const [isLoading, setLoading] = React.useState(false);
-  const [formError, setFormError] = React.useState("");
 
-  const {
-    handleSubmit,
-    control,
-    formState: { errors },
-  } = useForm({
-    defaultValues: {
-      login: "",
-      password: "",
-    },
-  });
+    const dispatch = useAppDispatch();
+    const [isLoading, setLoading] = React.useState(false);
+    const [formError, setFormError] = React.useState("");
 
-  const onSubmit = async (data: { login: string; password: string }) => {
-    setLoading(true);
-    api
-      .postLogin(data.login, data.password)
-      .then((data) => dispatch(setUser(data)))
-      .catch((e) => {
-        setFormError(e.message);
-      })
-      .finally(() => setLoading(false));
-  };
+    const {
+        handleSubmit,
+        control,
+        formState: {errors},
+    } = useForm({
+        defaultValues: {
+            login: "",
+            password: "",
+        },
+    });
 
-  return (
-    <div
-      style={{
-        display: "flex",
-        width: "100vw",
-        height: "100vh",
-        alignItems: "stretch",
-        position: "relative",
-      }}
-    >
-      {isLoading && <Spinner />}
-      <LoginBox>
-        <ErrorBox>
-          {errors.login?.message} {formError && formError}
-        </ErrorBox>
-        <h1>Sing in</h1>
-        <form onSubmit={handleSubmit(onSubmit)}>
-          <Controller
-            name="login"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Input
-                {...field}
-                label="Login"
-                placeholder="Input login"
-                error={errors.login && "Login is required"}
-              />
-            )}
-          />
-          <Controller
-            name="password"
-            control={control}
-            rules={{ required: true }}
-            render={({ field }) => (
-              <Password
-                {...field}
-                label="Password"
-                placeholder="Input password"
-                error={errors.password && "Password is required"}
-              />
-            )}
-          />
+    const onSubmit = async (data: { login: string; password: string }) => {
+        setLoading(true);
+        api
+            .postLogin(data.login, data.password)
+            .then((data) => dispatch(setUser(data)))
+            .catch((e) => {
+                setFormError(e.message);
+            })
+            .finally(() => setLoading(false));
+    };
 
-          <Button type="submit">Sing in</Button>
-        </form>
-        <p>
-          Not a member yet? <Link to="/register"> Sign up</Link>
-        </p>
-      </LoginBox>
-      <ImageBox>
-        <BasketIn width="80%" />
-      </ImageBox>
-    </div>
-  );
+    return (
+        <div
+            style={{
+                display: "flex",
+                width: "100vw",
+                height: "100vh",
+                alignItems: "stretch",
+                position: "relative",
+            }}
+        >
+            {isLoading && <Spinner/>}
+            <LoginBox>
+                <ErrorBox>
+                    {errors.login?.message} {formError && formError}
+                </ErrorBox>
+                <h1>Sing in</h1>
+                <form onSubmit={handleSubmit(onSubmit)}>
+                    <Controller
+                        name="login"
+                        control={control}
+                        rules={{required: true}}
+                        render={({field}) => (
+                            <Input
+                                {...field}
+                                label="Login"
+                                placeholder="Input login"
+                                error={errors.login && "Login is required"}
+                            />
+                        )}
+                    />
+                    <Controller
+                        name="password"
+                        control={control}
+                        rules={{required: true}}
+                        render={({field}) => (
+                            <Password
+                                {...field}
+                                label="Password"
+                                placeholder="Input password"
+                                error={errors.password && "Password is required"}
+                            />
+                        )}
+                    />
+
+                    <Button type="submit">Sing in</Button>
+                </form>
+                <p>
+                    Not a member yet? <Link to="/register"> Sign up</Link>
+                </p>
+            </LoginBox>
+            <ImageBox>
+                <BasketIn width="80%"/>
+            </ImageBox>
+        </div>
+    );
 };
 
 export default Login;

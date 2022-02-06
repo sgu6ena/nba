@@ -4,17 +4,19 @@ import LayerPage from "../common/components/LayerPage";
 import Path from "../common/components/path/path";
 import * as vars from "../common/variables/colors";
 
-export interface ITeamAddProps {}
-
+export interface ITeamAddProps {
+}
 
 
 export function TeamAdd(props: ITeamAddProps) {
     return (
         <LayerPage>
             <StyledBox>
-                <Path type="player" title="Add New Team" />
+                <Path type="player" title="Add New Team"/>
 
             </StyledBox>
+            <div style={{textAlign:"center", width:"100%"}}> coming soon...</div>
+
         </LayerPage>
     );
 }

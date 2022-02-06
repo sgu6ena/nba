@@ -12,18 +12,6 @@ import {IPlayer} from "../modules/players/interfaces/IPlayer";
 export interface IPlayerAddProps {
 }
 
-const playerInit: IPlayer =  {
-    id: 924,
-    name: 'Грустный баскетболист',
-    number: 12,
-    position: 'Forward',
-    team: 27,
-
-    height: 199,
-    weight: 87,
-    avatarUrl: 'https://i.pinimg.com/originals/fe/fe/08/fefe087ef0c57e7e348c4babe7f9a953.png'
-}
-
 
 export function PlayerAdd(props: IPlayerAddProps) {
 
@@ -31,7 +19,7 @@ export function PlayerAdd(props: IPlayerAddProps) {
         <LayerPage>
             <StyledBox>
                 <Path type="player" title="Add New Player"/>
-                <FormPlayer data={playerInit}/>
+                <FormPlayer />
             </StyledBox>
         </LayerPage>
     );

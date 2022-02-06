@@ -3,7 +3,7 @@ export interface IPlayer {
   number?: number;
   position: string;
   team?: number;
-  birthday?: Date;
+  birthday?:  string;
   height?: number;
   weight?: number;
   avatarUrl?: string | null;
