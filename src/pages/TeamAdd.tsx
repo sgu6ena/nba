@@ -13,10 +13,8 @@ export function TeamAdd(props: ITeamAddProps) {
         <LayerPage>
             <StyledBox>
                 <Path type="player" title="Add New Team"/>
-
             </StyledBox>
             <div style={{textAlign:"center", width:"100%"}}> coming soon...</div>
-
         </LayerPage>
     );
 }

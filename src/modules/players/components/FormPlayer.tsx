@@ -25,7 +25,7 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
     useEffect(() => {
         api.getTeams().then((res) => {
                 setTeams(res.data.map((i: ITeam) => ({
-                        value: i.id,
+                        value: i.id?.toString(),
                         label: i.name,
                     })
                 ));
@@ -35,7 +35,7 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
 
     useEffect(() => {
         api.getPositions().then((res) => {
-            setPositions(res.map((i: string) => ({
+                setPositions(res.map((i: string) => ({
                         value: i,
                         label: i,
                     })
@@ -50,29 +50,28 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
         formState: {errors},
     } = useForm({
         defaultValues: data || {
-
-            name: 'any name',
-            number: 0,
+            name: '',
+            number: undefined,
             position: '',
-            team: 0,
-
-            height: 0,
-            weight: 0,
+            team: undefined,
+            height: undefined,
+            weight: undefined,
             avatarUrl: ''
-
         },
     });
 
-    const onSubmit = async(formdata: any) => {
+    const onSubmit = async (formdata: IPlayer) => {
+        formdata.birthday = formdata?.birthday ? formdata.birthday.concat(`T00:00:00.000Z`) : undefined;
         console.log(formdata);
+        api.postPlayer(formdata)
 
 
     }
 
-    return (
-        <Form  onSubmit={handleSubmit(onSubmit)}>
-            <Col>
 
+    return (
+        <Form onSubmit={handleSubmit(onSubmit)}>
+            <Col>
                 <Controller
                     name="avatarUrl"
                     control={control}
@@ -83,7 +82,6 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
                         />
                     )}
                 />
-
             </Col>
             <Col>
                 <Controller
@@ -99,24 +97,25 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
                         />
                     )}
                 />
-                {/*<Controller*/}
-                {/*    name="position"*/}
-                {/*    control={control}*/}
-                {/*    rules={{required: true}}*/}
-                {/*    render={({field}) => (*/}
-                {/*       */}
-                {/*    )}*/}
-                {/*/> */}
-                <CustomSelect options={positions} label={"Position"} isClearable/>
-                {/*<Controller*/}
-                {/*    name="team"*/}
-                {/*    control={control}*/}
-                {/*    rules={{required: false}}*/}
-                {/*    render={({field}) => (*/}
-                {/*        */}
-                {/*    )}*/}
-                {/*/>*/}
-                <CustomSelect options={teams} label={"Team"} isClearable/>
+                <Controller
+                    name="position"
+                    control={control}
+                    rules={{required: true}}
+                    render={({field}) => (
+                        <CustomSelect options={positions}  {...field}
+                                      label={"Position"} isClearable/>
+                    )}
+                />
+
+                <Controller
+                    name="position"
+                    control={control}
+                    rules={{required: false}}
+                    render={({field}) => (
+                        <CustomSelect options={teams}  {...field}
+                                      label={"Teams"} isClearable/>
+                    )}
+                />
                 <TwoColumns>
                     <Controller
                         name="height"
@@ -127,7 +126,6 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
                                 {...field}
                                 label="Height (cm)"
                                 placeholder="Input height"
-
                             />
                         )}
                     />
@@ -143,7 +141,6 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
                             />
                         )}
                     />
-
                 </TwoColumns>
                 <TwoColumns>
 
@@ -151,13 +148,13 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
                         name="birthday"
                         control={control}
                         rules={{required: false}}
-                        // defaultValue={data.birthday?.slice(0, 10)}
                         render={({field}) => (
                             <Input
                                 {...field}
                                 label="Birthday"
                                 placeholder="Birthday"
                                 type={"date"}
+
                             />
                         )}
                     />
@@ -177,7 +174,6 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
                 <TwoColumns>
                     <div><Link to={RouteNames.PLAYERS}><Button secondary>Cancel</Button></Link></div>
                     <div><Button type={'submit'}>Save</Button></div>
-
                 </TwoColumns>
             </Col>
         </Form>
@@ -185,36 +181,36 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
 }
 
 const Form = styled.form`
-  gap:20px;
+  gap: 20px;
   display: flex;
-  flex-wrap:wrap;
+  flex-wrap: wrap;
   padding: 48px 0;
 
 `;
 
 const Col = styled.div`
-    flex-grow:1;
-    flex-shrink:1;
-   display: flex;
-   flex-direction: column;  
+  flex-grow: 1;
+  flex-shrink: 1;
+  display: flex;
+  flex-direction: column;
 `
 
 const TwoColumns = styled.div`
-   display: flex;
-    gap:20px;
-      @media screen and (max-width: ${sizes.$sm}){
-      display:block;
-    flex-wrap:wrap;
-     gap:0px;
+  display: flex;
+  gap: 20px;
+  @media screen and (max-width: ${sizes.$sm}) {
+    display: block;
+    flex-wrap: wrap;
+    gap: 0px;
   }
-    div{
 
-    display:block;
-    width:100%;
-    button{    margin-top:20px;
-    
-     width:100%;
-     
+  div {
+    display: block;
+    width: 100%;
+
+    button {
+      margin-top: 20px;
+      width: 100%;
     }
-    }
+  }
 `
