@@ -31,10 +31,10 @@ export default class ApiService {
         return await res.json();
     };
 
-    postResource = async (url: string, data: any = {}) => {
+    postResource = async (url: string, data: any = {}, method: string= "POST") => {
         const res = await fetch(`${this._apiBaseUrl}${url}`, {
             headers: this.headers(),
-            method: "POST",
+            method: method,
             body: JSON.stringify(data),
         });
 
@@ -115,6 +115,9 @@ export default class ApiService {
 
     postPlayer = async (data:IPlayer)=>{
         return await  this.postResource( '/api/Player/Add', data)
+    }
+    putPlayer = async (data:IPlayer)=>{
+        return await  this.postResource( `/api/Player/Update`, data, "PUT")
     }
 
 }

@@ -4,28 +4,30 @@ import LayerPage from "../common/components/LayerPage";
 import Path from "../common/components/path/path";
 import * as vars from "../common/variables/colors";
 import {FormPlayer} from "../modules/players/components/FormPlayer";
+import {useParams} from "react-router-dom";
+import {useAppSelector} from "../core/redux/redux";
 
 
-export interface IPlayerAddProps {
+export interface IPlayerEditProps {
 }
 
 
-export function PlayerAdd(props: IPlayerAddProps) {
-const data = {"id": 925,
-        "name": "Клевая прическа",
-        "number": 13,
-        "position": "Forward",
-        "team": 27,
-        "birthday": "2000-02-03T21:35:11.917",
-        "height": 199,
-        "weight": 87,
-        "avatarUrl": "https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4299.png"
-}
+export function PlayerEdit(props: IPlayerEditProps) {
+    const params = useParams();
+
+
+    const { players } = useAppSelector(
+        (state) => state.playerReducer
+    );
+
+    const thisPlayer = players.find((p) => p.id?.toString() === params.id);
+
+
     return (
         <LayerPage>
             <StyledBox>
                 <Path type="player" title="Add New Player"/>
-                <FormPlayer />
+                <FormPlayer data={thisPlayer}/>
             </StyledBox>
         </LayerPage>
     );

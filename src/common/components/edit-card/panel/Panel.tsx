@@ -3,6 +3,7 @@ import styled from "styled-components";
 import * as colors from "../../../variables/colors";
 import * as sizes from '../../../variables/sizes'
 import Path from "../../path/path";
+import {Link} from "react-router-dom";
 
 
 export interface IPanelProps {
@@ -15,7 +16,7 @@ const Panel: React.FC<IPanelProps> = ({ type, title }) => {
     <StyledPanel>
       <Path title={title} type={type}/>
       <div>
-        <button className="btn pencil" title="edit"></button>
+        <Link to={"edit"} className="btn pencil" title="edit"/>
         <button className="btn trash" title="delete"></button>
       </div>
     </StyledPanel>

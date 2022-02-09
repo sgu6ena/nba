@@ -21,7 +21,7 @@ const LayerPage: React.FunctionComponent<ILayerPageProps> = ({
   return (
     <StyledLayer>
       <Header />
-      <Sidebar />;
+      <Sidebar />
       <main>
         <Page>
           {search ? (
@@ -36,7 +36,7 @@ const LayerPage: React.FunctionComponent<ILayerPageProps> = ({
         </Page>
       </main>
     </StyledLayer>
-  );
+  )
 };
 
 export default LayerPage;

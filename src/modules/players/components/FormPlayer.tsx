@@ -12,6 +12,8 @@ import {RouteNames} from "../../../common/variables/RouteNames";
 import {useEffect, useState} from "react";
 import {api} from "../../../api/api";
 import {ITeam} from "../../teams/interfaces/ITeam";
+import Spinner from "../../../common/ui/spinner/spinner";
+
 
 export interface IFormPlayerProps {
     data?: IPlayer;
@@ -21,6 +23,9 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
 
     const [teams, setTeams] = useState([]);
     const [positions, setPositions] = useState([]);
+    const [isLoading, setIsLoading] = useState(false);
+    const [message, setMessage] = useState('');
+
 
     useEffect(() => {
         api.getTeams().then((res) => {
@@ -49,135 +54,148 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
         control,
         formState: {errors},
     } = useForm({
-        defaultValues: data || {
-            name: '',
-            number: undefined,
-            position: '',
-            team: undefined,
-            height: undefined,
-            weight: undefined,
-            avatarUrl: ''
-        },
+        defaultValues: data || {},
     });
 
     const onSubmit = async (formdata: IPlayer) => {
-        formdata.birthday = formdata?.birthday ? formdata.birthday.concat(`T00:00:00.000Z`) : undefined;
-        console.log(formdata);
-        api.postPlayer(formdata)
+        setMessage('');
+        setIsLoading(true);
+        formdata.avatarUrl = document.querySelector('input[name=avatarUrl]')?.getAttribute('value');
 
+        if (formdata.id) {
+            api.putPlayer(formdata)
+                .then(() => setMessage('ok'))
+                .catch((e) => setMessage('error ' + e))
+                .finally(()=>setIsLoading(false))
+        } else {
+            api.postPlayer(formdata)
+                .then(() => setMessage('ok'))
+                .catch((e) => setMessage('error ' + e))
+                .finally(()=>setIsLoading(false))
+        }
 
     }
 
 
-    return (
-        <Form onSubmit={handleSubmit(onSubmit)}>
-            <Col>
+
+return (
+    <Form onSubmit={handleSubmit(onSubmit)}>
+        <Col>
+            <Controller
+                name="avatarUrl"
+                control={control}
+                rules={{required: false}}
+                render={({field}) => (
+                    <ImageInput
+                        {...field}
+                    />
+                )}
+            />
+        </Col>
+        <Col>
+            <Controller
+                name="name"
+                control={control}
+                rules={{required: true}}
+                render={({field}) => (
+                    <Input
+                        {...field}
+                        label="Name"
+                        placeholder="Input name"
+                    />
+                )}
+            />
+            <Controller
+                name="position"
+                control={control}
+                rules={{required: true}}
+                render={({field: {onChange, value}}) => (
+                    <CustomSelect options={positions}
+                                  value={positions.find(({value: value1}) => value1 === value)}
+                                  onChange={(val: any) => onChange(val.value)}
+                                  label={"Position"}
+                                  isClearable/>
+                )}
+            />
+
+            <Controller
+                name="team"
+                control={control}
+                rules={{required: false}}
+                render={({field: {onChange, value}}) => (
+                    <CustomSelect options={teams}
+                                  value={teams.find(({value: value1}) => value1 === value)}
+                                  onChange={(val: any) => onChange(val.value)}
+                                  label={"Teams"}
+                                  isClearable/>
+                )}
+            />
+            <TwoColumns>
                 <Controller
-                    name="avatarUrl"
+                    name="height"
                     control={control}
                     rules={{required: false}}
-                    render={({field}) => (
-                        <ImageInput
-                            {...field}
-                        />
-                    )}
-                />
-            </Col>
-            <Col>
-                <Controller
-                    name="name"
-                    control={control}
-                    rules={{required: true}}
                     render={({field}) => (
                         <Input
                             {...field}
-                            label="Name"
-                            placeholder="Input name"
+                            label="Height (cm)"
+                            placeholder="Input height"
+                        />
+                    )}
+                />
+                <Controller
+                    name="weight"
+                    control={control}
+                    rules={{required: false}}
+                    render={({field}) => (
+                        <Input
+                            {...field}
+                            label="Weight (kg)"
+                            placeholder="Input weight"
+                        />
+                    )}
+                />
+            </TwoColumns>
+            <TwoColumns>
+
+
+                <Controller
+                    name="birthday"
+                    control={control}
+                    rules={{required: false}}
+                    render={({field}) => (
+                        <Input
+                            {...field}
+                            label="Birthday"
+                            placeholder="Birthday"
+                            type="datetime-local"
 
                         />
                     )}
                 />
                 <Controller
-                    name="position"
-                    control={control}
-                    rules={{required: true}}
-                    render={({field}) => (
-                        <CustomSelect options={positions}  {...field}
-                                      label={"Position"} isClearable/>
-                    )}
-                />
-
-                <Controller
-                    name="position"
+                    name="number"
                     control={control}
                     rules={{required: false}}
                     render={({field}) => (
-                        <CustomSelect options={teams}  {...field}
-                                      label={"Teams"} isClearable/>
+                        <Input
+                            {...field}
+                            label="Number"
+                            placeholder="Input number"
+                        />
                     )}
                 />
-                <TwoColumns>
-                    <Controller
-                        name="height"
-                        control={control}
-                        rules={{required: false}}
-                        render={({field}) => (
-                            <Input
-                                {...field}
-                                label="Height (cm)"
-                                placeholder="Input height"
-                            />
-                        )}
-                    />
-                    <Controller
-                        name="weight"
-                        control={control}
-                        rules={{required: false}}
-                        render={({field}) => (
-                            <Input
-                                {...field}
-                                label="Weight (kg)"
-                                placeholder="Input weight"
-                            />
-                        )}
-                    />
-                </TwoColumns>
-                <TwoColumns>
+            </TwoColumns>
+            <TwoColumns>
+                <div><Link to={RouteNames.PLAYERS}><Button secondary>Cancel</Button></Link></div>
+                <div><Button type={'submit'}>Save</Button></div>
+            </TwoColumns>
+            {message}
+            {isLoading && <Spinner/>}
+        </Col>
 
-                    <Controller
-                        name="birthday"
-                        control={control}
-                        rules={{required: false}}
-                        render={({field}) => (
-                            <Input
-                                {...field}
-                                label="Birthday"
-                                placeholder="Birthday"
-                                type={"date"}
-
-                            />
-                        )}
-                    />
-                    <Controller
-                        name="number"
-                        control={control}
-                        rules={{required: false}}
-                        render={({field}) => (
-                            <Input
-                                {...field}
-                                label="Number"
-                                placeholder="Input number"
-                            />
-                        )}
-                    />
-                </TwoColumns>
-                <TwoColumns>
-                    <div><Link to={RouteNames.PLAYERS}><Button secondary>Cancel</Button></Link></div>
-                    <div><Button type={'submit'}>Save</Button></div>
-                </TwoColumns>
-            </Col>
-        </Form>
-    )
+    </Form>
+);
 }
 
 const Form = styled.form`

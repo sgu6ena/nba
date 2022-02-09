@@ -36,7 +36,7 @@ const Sidebar: React.FunctionComponent<ISidebarProps> = () => {
         <Input />
       </MenuItem>
     </Nav>
-  );
+  )
 };
 
 export default Sidebar;

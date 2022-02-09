@@ -7,7 +7,7 @@ interface ICustomSelectProps {
     label?: string;
     options: { value: string; label: string }[];
     isClearable?: boolean;
-    value?: string;
+    value?: string | number ;
     onChange?: any;
 }
 
@@ -55,8 +55,7 @@ const CustomSelect: React.FunctionComponent<ICustomSelectProps> = ({
                     {...props}
                     styles={customStyles}
                     className="select"
-
-                    theme={(theme) => ({
+                                     theme={(theme) => ({
                         ...theme,
                         borderRadius: 4,
                         border: "none",

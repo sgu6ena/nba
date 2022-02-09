@@ -11,6 +11,7 @@ import {TeamAdd} from "../../pages/TeamAdd";
 import Login from "../../pages/Login";
 import Register from "../../pages/Register";
 import Welcome from "../../pages/Welcome";
+import {PlayerEdit} from "../../pages/PlayerEdit";
 
 
 export interface IRoute {
@@ -33,4 +34,6 @@ export const privateRoutes: IRoute[] = [
     {path: RouteNames.HOME, element: <Welcome/>},
     {path: RouteNames.PLAYER_ADD, element: <PlayerAdd/>},
     {path: RouteNames.TEAM_ADD, element: <TeamAdd/>},
+    {path: RouteNames.PLAYER_EDIT, element: <PlayerEdit/>},
+
 ];
