@@ -1,6 +1,7 @@
 import {store} from '../App'
 import errors from "./apiErrors"
 import {IPlayer} from "../modules/players/interfaces/IPlayer";
+import {ITeam} from "../modules/teams/interfaces/ITeam";
 
 export default class ApiService {
 
@@ -120,6 +121,12 @@ export default class ApiService {
         return await  this.postResource( `/api/Player/Update`, data, "PUT")
     }
 
+    postTeam = async (data:ITeam)=>{
+        return await  this.postResource( '/api/Team/Add', data)
+    }
+    putTeam = async (data:ITeam)=>{
+        return await  this.postResource( `/api/Team/Update`, data, "PUT")
+    }
 }
 
 export const api = new ApiService();

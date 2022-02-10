@@ -2,35 +2,35 @@ import * as React from "react";
 import Image from "../image/Image";
 import styled from "styled-components";
 import * as vars from "../../variables/colors";
-import { Link } from "react-router-dom";
-import { RouteNames } from "../../variables/RouteNames";
+import {Link} from "react-router-dom";
 
 
 interface ICardProps {
-  title: string;
-  place?: string;
-  subtitle: string;
-  avatarUrl: string | null | undefined;
-  type: "command" | "player";
-  id?: string |number;
+    title: string;
+    place?: string;
+    subtitle: string;
+    avatarUrl: string | null | undefined;
+    type: "command" | "player";
+    id?: string | number;
 }
 
 const StyledCard = styled.div`
+  flex-grow: 1;
+  flex-shrink: 1;
   height: 24em;
   width: 24em;
   background: ${vars.$gradient};
   border-radius: 4px;
   display: flex;
   flex-direction: column;
-  flex-grow: 1;
-  flex-shrink: 2;
 
   img, svg {
     padding-top: 10px;
     transition: 0.15s ease-out;
   }
+
   &:hover {
-    img,svg {
+    img, svg {
       transition: 0.3s ease-in-out;
       transform: scale(1.1);
     }
@@ -57,6 +57,7 @@ const StyledCard = styled.div`
       margin: 0;
       color: ${vars.$white};
       font-size: 1.25rem;
+
       span {
         color: ${vars.$red};
       }
@@ -66,32 +67,33 @@ const StyledCard = styled.div`
       font-size: 1em;
       color: ${vars.$lightGrey};
     }
+
+
   }
 `;
 
 const Card: React.FunctionComponent<ICardProps> = ({
-  title,
-  subtitle,
-  place,
-  avatarUrl,
-  type,
-  id
-}) => {
-  return (
-    <Link to={`${id}`}>
-      <StyledCard>
-        <Image avatarUrl={avatarUrl} title={title} type={type} />
-
-        <article>
-          <h3>
-            {title}
-            <span> {place}</span>
-          </h3>
-          <div>{subtitle}</div>
-        </article>
-      </StyledCard>
-    </Link>
-  );
+                                                       title,
+                                                       subtitle,
+                                                       place,
+                                                       avatarUrl,
+                                                       type,
+                                                       id
+                                                   }) => {
+    return (
+        <Link to={`${id}`} className={"flex-link"}>
+            <StyledCard>
+                <Image avatarUrl={avatarUrl} title={title} type={type}/>
+                <article>
+                    <h3>
+                        {title}
+                        <span> {place}</span>
+                    </h3>
+                    <div>{subtitle}</div>
+                </article>
+            </StyledCard>
+        </Link>
+    );
 };
 
 export default Card;

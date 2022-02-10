@@ -6,6 +6,8 @@ import LayerPage from "../common/components/LayerPage";
 import Table from "../common/components/table/Table";
 import { useAppSelector } from "../core/redux/redux";
 import { PageNotFound } from "./PageNotFound";
+import ImageBox from "../common/components/image-box/ImageBox";
+import {ReactComponent as NotFound} from "../assets/images/NotFound.svg";
 
 export interface ICommandProps {}
 
@@ -21,7 +23,14 @@ export function Command(props: ICommandProps) {
       {thisteam ? (
         <EditCard data={thisteam} type="command" />
       ) : (
-        <PageNotFound />
+          <div style={{  margin: "auto" }}>
+            <ImageBox
+                title="Team Not Found"
+                description="Sorry, we can’t find this team"
+            >
+              <NotFound width="90%" />
+            </ImageBox>
+          </div>
       )}
       <Table />
     </LayerPage>

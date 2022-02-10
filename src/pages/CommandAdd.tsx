@@ -3,18 +3,19 @@ import styled from "styled-components";
 import LayerPage from "../common/components/LayerPage";
 import Path from "../common/components/path/path";
 import * as vars from "../common/variables/colors";
+import {FormTeam} from "../modules/teams/components/FormTeam";
 
 export interface ITeamAddProps {
 }
 
 
-export function TeamAdd(props: ITeamAddProps) {
+export function CommandAdd(props: ITeamAddProps) {
     return (
         <LayerPage>
             <StyledBox>
                 <Path type="player" title="Add New Team"/>
+                <FormTeam />
             </StyledBox>
-            <div style={{textAlign:"center", width:"100%"}}> coming soon...</div>
         </LayerPage>
     );
 }

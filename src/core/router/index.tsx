@@ -7,11 +7,12 @@ import {PageNotFound} from "../../pages/PageNotFound";
 import {Player} from "../../pages/Player";
 import {PlayerAdd} from "../../pages/PlayerAdd";
 import {PlayerList} from "../../pages/PlayerList";
-import {TeamAdd} from "../../pages/TeamAdd";
+import {CommandAdd} from "../../pages/CommandAdd";
 import Login from "../../pages/Login";
 import Register from "../../pages/Register";
 import Welcome from "../../pages/Welcome";
 import {PlayerEdit} from "../../pages/PlayerEdit";
+import {CommandEdit} from "../../pages/CommandEdit";
 
 
 export interface IRoute {
@@ -33,7 +34,7 @@ export const privateRoutes: IRoute[] = [
     {path: "*", element: <PageNotFound/>},
     {path: RouteNames.HOME, element: <Welcome/>},
     {path: RouteNames.PLAYER_ADD, element: <PlayerAdd/>},
-    {path: RouteNames.TEAM_ADD, element: <TeamAdd/>},
+    {path: RouteNames.TEAM_ADD, element: <CommandAdd/>},
     {path: RouteNames.PLAYER_EDIT, element: <PlayerEdit/>},
-
+    {path: RouteNames.TEAM_EDIT, element: <CommandEdit/>},
 ];
