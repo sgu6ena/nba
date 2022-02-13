@@ -133,9 +133,7 @@ const LoginBox = styled.div`
     line-height: 49px;
     color: #052587;
   }
-  button {
-    margin-top: 10px;
-  }
+
   p {
     font-style: normal;
     font-weight: 500;

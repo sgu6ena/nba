@@ -67,7 +67,7 @@ const StyledLayer = styled.div`
     grid-area: main;
     overflow-y: scroll;
     @media screen and (max-width: ${sizes.$sm}) {
-      padding: 20px 10px;
+      padding: 20px 5px;
     }
   }
 `;
@@ -94,10 +94,7 @@ const Content = styled.div`
   display: flex;
   flex-wrap: wrap;
   justify-content: flex-start;
- 
   gap: 2em;
+  flex-direction: column;
 
-  &:after {
-    content: "";
-    flex: auto;
 `;

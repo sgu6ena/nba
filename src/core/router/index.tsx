@@ -13,6 +13,7 @@ import Register from "../../pages/Register";
 import Welcome from "../../pages/Welcome";
 import {PlayerEdit} from "../../pages/PlayerEdit";
 import {CommandEdit} from "../../pages/CommandEdit";
+import Logout from "../../pages/Logout";
 
 
 export interface IRoute {
@@ -27,14 +28,15 @@ export const publicRoutes: IRoute[] = [
 ];
 
 export const privateRoutes: IRoute[] = [
+    {path: "*", element: <PageNotFound/>},
     {path: RouteNames.TEAMS, element: <CommandList/>},
     {path: RouteNames.TEAM, element: <Command/>},
     {path: RouteNames.PLAYERS, element: <PlayerList/>},
     {path: RouteNames.PLAYER, element: <Player/>},
-    {path: "*", element: <PageNotFound/>},
     {path: RouteNames.HOME, element: <Welcome/>},
     {path: RouteNames.PLAYER_ADD, element: <PlayerAdd/>},
     {path: RouteNames.TEAM_ADD, element: <CommandAdd/>},
     {path: RouteNames.PLAYER_EDIT, element: <PlayerEdit/>},
     {path: RouteNames.TEAM_EDIT, element: <CommandEdit/>},
+    {path: RouteNames.LOGOUT, element: <Logout/>}
 ];

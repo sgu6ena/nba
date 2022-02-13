@@ -3,38 +3,39 @@ import { StyledUl, Value } from "./Info";
 import Image from "../../image/Image";
 import {IPlayer} from "../../../../modules/players/interfaces/IPlayer";
 
-const InfoPlayer = (data: IPlayer) => {
+const InfoPlayer = ({avatarUrl, birthday, height, name, number, position, team, weight}: IPlayer) => {
+  const age =birthday ? Math.round((+new Date() - +new Date(birthday))/(60*60*24*365*1000)) : '-';
     return (
       <>
         <div className={`left player`}>
-          <Image avatarUrl={data.avatarUrl} type={"player"} />
+          <Image avatarUrl={avatarUrl} type={"player"} />
         </div>
-  
+
         <div className={`right player`}>
           <h2>
-            {data.name} <span> {data.number && " #" + data.number}</span>
+            {name} <span> {number && " #" + number}</span>
           </h2>
           <StyledUl>
             <li>
               Position
-              <Value>{data.position ? data.position : "-"}</Value>
+              <Value>{position ? position : "-"}</Value>
             </li>
             <li>
               Team
-              <Value>{data.team}</Value>
+              <Value>{team}</Value>
             </li>
             <li>
               Weigth
-              <Value>{data.weight ? data.weight : "-"}</Value>
+              <Value>{weight ? weight : "-"}</Value>
             </li>
-  
+
             <li>
               Heigth
-              <Value>{data.height ? data.height : "-"}</Value>
+              <Value>{height ? height : "-"}</Value>
             </li>
             <li>
               Age
-              <Value></Value>
+              <Value>{age}</Value>
             </li>
           </StyledUl>
         </div>

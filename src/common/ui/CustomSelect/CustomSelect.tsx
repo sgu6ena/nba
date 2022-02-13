@@ -31,6 +31,7 @@ const customStyles = {
         state: { isSelected: boolean; isFocused: boolean }
     ) => ({
         ...provided,
+        width:"50px",
         borderBottom: "1px solid lightgrey",
         background: state.isSelected
             ? colors.$lightRed
@@ -99,5 +100,6 @@ const StyledLabel = styled.label`
     outline: none;
     border: none;
     padding: 5px 0 0 0;
+    width: 100%;
   }
 `;

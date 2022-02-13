@@ -12,6 +12,7 @@ const StyledPath = styled.div`
   .path {
     color: ${colors.$red};
     text-decoration: none;
+    font-size: 14px;
   }
 `;
 

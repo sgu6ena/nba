@@ -5,7 +5,7 @@ import * as sizes from "../../variables/sizes";
 
 interface IImageBoxProps {
   title: string;
-  description: string;
+  description?: string;
 }
 
 const ImageBox: React.FunctionComponent<IImageBoxProps> = ({

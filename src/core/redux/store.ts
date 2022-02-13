@@ -2,6 +2,7 @@ import { combineReducers, configureStore } from "@reduxjs/toolkit";
 import playerReducer from "../../modules/players/playerSlice"
 import teamReducer from "../../modules/teams/teamSlice"
 import userReducer from "../auth"
+import {api} from "../../api/api";
 
 
 const rootReducer = combineReducers({
@@ -13,7 +14,12 @@ const rootReducer = combineReducers({
 export const setupStore = () => {
   return configureStore({
     reducer: rootReducer,
-  
+      middleware: getDefaultMiddleware =>
+          getDefaultMiddleware({
+              thunk: {
+                  extraArgument: api
+              }
+          })
   });
 };
 

@@ -3,7 +3,7 @@ import { useParams } from "react-router-dom";
 
 import EditCard from "../common/components/edit-card/BigCard";
 import LayerPage from "../common/components/LayerPage";
-import Table from "../common/components/table/Table";
+import Table from "../modules/teams/components/table/Table";
 import { useAppSelector } from "../core/redux/redux";
 import { PageNotFound } from "./PageNotFound";
 import ImageBox from "../common/components/image-box/ImageBox";

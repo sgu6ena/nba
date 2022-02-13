@@ -11,4 +11,5 @@ export enum RouteNames {
     PLAYER_EDIT = "/players/:id/edit",
     TEAM_ADD = "/commands/add",
     TEAM_EDIT = "/commands/:id/edit",
+    LOGOUT = "/singout",
 }

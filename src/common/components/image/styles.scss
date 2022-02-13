@@ -2,12 +2,13 @@
   display: flex;
   justify-content: center;
   align-items: end;
-  height:90%;
+  height:100%;
 
   .image {  
     object-fit: contain;
     width: 20em;
     max-width: 100%;
+
   }
 }
 
