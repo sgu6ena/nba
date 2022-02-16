@@ -4,15 +4,12 @@ import { useParams } from "react-router-dom";
 import EditCard from "../common/components/edit-card/BigCard";
 import LayerPage from "../common/components/LayerPage";
 import { useAppSelector } from "../core/redux/redux";
-import { PageNotFound } from "./PageNotFound";
+
 import ImageBox from "../common/components/image-box/ImageBox";
 import {ReactComponent as NotFound} from "../assets/images/NotFound.svg";
 
-export interface IPlayerProps {}
-
-export function Player(props: IPlayerProps) {
+export function Player() {
   const params = useParams();
-
 
   const { players } = useAppSelector(
     (state) => state.playerReducer

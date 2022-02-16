@@ -11,6 +11,8 @@ import {useState} from "react";
 import ReactPaginate from "react-paginate";
 import styled from "styled-components";
 import {fetchTeams} from "../modules/teams/teamSlice";
+import ImageBox from "../common/components/image-box/ImageBox";
+import {ReactComponent as BasketUp} from "../assets/images/Basket-up.svg";
 
 export interface ICommandListProps {
 }
@@ -43,28 +45,42 @@ export function CommandList(props: ICommandListProps) {
         <LayerPage search paginate>
             {isLoading && <Spinner/>}
             {error}
-            <FlexBox>            {currentTeams.map((team: any) => (
-                <Card
-                    title={team.name}
-                    subtitle={
-                        team.foundationYear ?? `Year of foundation: ${team.foundationYear}`
-                    }
-                    type="command"
-                    avatarUrl={team.imageUrl}
-                    key={team.id}
-                    id={team.id}
-                />
-            ))}</FlexBox>
+            {teams.length ? (<>
+                    <FlexBox>
+                        {currentTeams.map((team: any) => (
+                            <Card
+                                title={team.name}
+                                subtitle={
+                                    team.foundationYear ?? `Year of foundation: ${team.foundationYear}`
+                                }
+                                type="command"
+                                avatarUrl={team.imageUrl}
+                                key={team.id}
+                                id={team.id}
+                            />
+                        ))}
+                    </FlexBox>
 
-            <FlexBox>
-                <ReactPaginate onPageChange={handlePageClick}
-                               pageCount={Math.ceil(teams.length / teamsPerPage)}
-                               containerClassName={"pagination"}
-                               activeClassName={"active"}
-                               previousLabel={"❮"}
-                               nextLabel={"❯"}
-                />
-            </FlexBox>
+                    <FlexBox>
+                        <ReactPaginate onPageChange={handlePageClick}
+                                       pageCount={Math.ceil(teams.length / teamsPerPage)}
+                                       containerClassName={"pagination"}
+                                       activeClassName={"active"}
+                                       previousLabel={"❮"}
+                                       nextLabel={"❯"}
+                        />
+                    </FlexBox></>)
+                :
+                (
+                    <div style={{margin: "auto"}}>
+                        <ImageBox
+                            title="Empty here"
+                            description="Add new teams to continue"
+                        >
+                            <BasketUp width="100%" height="auto"/>
+                        </ImageBox>
+                    </div>
+                )}
 
 
         </LayerPage>

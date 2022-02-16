@@ -6,11 +6,7 @@ import * as vars from "../common/variables/colors";
 import {FormPlayer} from "../modules/players/components/FormPlayer";
 
 
-export interface IPlayerAddProps {
-}
-
-
-export function PlayerAdd(props: IPlayerAddProps) {
+export function PlayerAdd() {
 const data = {"id": 925,
         "name": "Клевая прическа",
         "number": 13,

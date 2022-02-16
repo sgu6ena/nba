@@ -7,12 +7,13 @@ import {IPlayer} from "../interfaces/IPlayer";
 import Button from "../../../common/ui/button/Button";
 import * as sizes from "../../../common/variables/sizes";
 import {Controller, useForm} from "react-hook-form";
-import {Link} from "react-router-dom";
+import {Link, Navigate, useNavigate} from "react-router-dom";
 import {RouteNames} from "../../../common/variables/RouteNames";
 import {useEffect, useState} from "react";
 import {api} from "../../../api/api";
 import {ITeam} from "../../teams/interfaces/ITeam";
 import Spinner from "../../../common/ui/spinner/spinner";
+import {toast, Toaster} from "react-hot-toast";
 
 
 export interface IFormPlayerProps {
@@ -24,7 +25,7 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
     const [teams, setTeams] = useState([]);
     const [positions, setPositions] = useState([]);
     const [isLoading, setIsLoading] = useState(false);
-    const [message, setMessage] = useState('');
+    const navigate = useNavigate();
 
 
     useEffect(() => {
@@ -58,19 +59,21 @@ export const FormPlayer: React.FC<IFormPlayerProps> = ({data}) => {
     });
 
     const onSubmit = async (formdata: IPlayer) => {
-        setMessage('');
+
         setIsLoading(true);
         formdata.avatarUrl = document.querySelector('input[name=avatarUrl]')?.getAttribute('value');
 
         if (formdata.id) {
             api.putPlayer(formdata)
-                .then(() => setMessage('ok'))
-                .catch((e) => setMessage('error ' + e))
+
+                .then(() => navigate(-1))
+                .catch((e) => toast.error('error ' + e))
                 .finally(()=>setIsLoading(false))
         } else {
             api.postPlayer(formdata)
-                .then(() => setMessage('ok'))
-                .catch((e) => setMessage('error ' + e))
+
+                .then(() => navigate(-1))
+                .catch((e) => toast.error('error ' + e))
                 .finally(()=>setIsLoading(false))
         }
 
@@ -187,10 +190,11 @@ return (
                 />
             </TwoColumns>
             <TwoColumns>
-                <div><Link to={RouteNames.PLAYERS}><Button secondary>Cancel</Button></Link></div>
+                <div><Button secondary onClick={()=>navigate(-1)}>Cancel</Button></div>
                 <div><Button type={'submit'}>Save</Button></div>
             </TwoColumns>
-            {message}
+
+            <Toaster />
             {isLoading && <Spinner/>}
         </Col>
 

@@ -4,7 +4,7 @@ import {ReactComponent as BasketIn} from "../assets/images/Basket-in.svg";
 import ImageBox from "../common/components/image-box/ImageBox";
 
 import LayerPage from "../common/components/LayerPage";
-import {api} from "../api/api";
+
 import Button from "../common/ui/button/Button";
 import {RouteNames} from "../common/variables/RouteNames";
 import {Link} from "react-router-dom";
@@ -15,8 +15,6 @@ import {removeUser} from "../core/auth";
 const Logout: React.FC = () => {
 
     const dispatch = useAppDispatch();
-
-
     return (
         <LayerPage>
             <div style={{margin: "auto"}}>

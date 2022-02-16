@@ -14,9 +14,9 @@ import ApiService from "../api/api";
 import { useAppDispatch } from "../core/redux/redux";
 import { setUser } from "../core/auth";
 
-interface IRegisterProps {}
 
-const Register: React.FunctionComponent<IRegisterProps> = (props) => {
+
+const Register: React.FunctionComponent = () => {
   const api = new ApiService();
 
   const dispatch = useAppDispatch();

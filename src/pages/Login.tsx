@@ -15,10 +15,7 @@ import Input from "../common/ui/input/Input";
 import Password from "../common/ui/Password";
 import Spinner from "../common/ui/spinner/spinner";
 
-interface ILoginProps {
-}
-
-const Login: React.FC<ILoginProps> = (props) => {
+const Login: React.FC = () => {
 
 
     const dispatch = useAppDispatch();

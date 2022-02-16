@@ -31,13 +31,13 @@ const Password: React.FC<IPasswordProps> = ({
           placeholder={placeholder}
           {...props}
         />
-        <button onClick={() => setPreview(!preview)}>
+        <EyeBox onClick={() => setPreview(!preview)}>
           {!preview ? (
             <Eye width={16} height={16} />
           ) : (
             <CloseEye width={16} height={16} />
           )}
-        </button>
+        </EyeBox>
       </InputGroup>
       <span>{error}</span>
     </StyledLabel>
@@ -45,7 +45,12 @@ const Password: React.FC<IPasswordProps> = ({
 };
 
 export default Password;
-
+const EyeBox = styled.div`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+`
 const StyledLabel = styled.label`
   display: block;
   font-style: normal;

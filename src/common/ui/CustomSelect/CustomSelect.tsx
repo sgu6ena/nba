@@ -31,7 +31,7 @@ const customStyles = {
         state: { isSelected: boolean; isFocused: boolean }
     ) => ({
         ...provided,
-        width:"50px",
+
         borderBottom: "1px solid lightgrey",
         background: state.isSelected
             ? colors.$lightRed

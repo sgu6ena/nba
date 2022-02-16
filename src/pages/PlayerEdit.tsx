@@ -8,13 +8,8 @@ import {useParams} from "react-router-dom";
 import {useAppSelector} from "../core/redux/redux";
 
 
-export interface IPlayerEditProps {
-}
-
-
-export function PlayerEdit(props: IPlayerEditProps) {
+export function PlayerEdit() {
     const params = useParams();
-
 
     const { players } = useAppSelector(
         (state) => state.playerReducer

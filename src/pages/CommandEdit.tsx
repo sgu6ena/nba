@@ -7,11 +7,8 @@ import {FormTeam} from "../modules/teams/components/FormTeam";
 import {useParams} from "react-router-dom";
 import {useAppSelector} from "../core/redux/redux";
 
-export interface ITeamEditProps {
-}
 
-
-export function CommandEdit(props: ITeamEditProps) {
+export function CommandEdit() {
     const params = useParams();
 
 

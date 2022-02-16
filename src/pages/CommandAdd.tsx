@@ -5,11 +5,8 @@ import Path from "../common/components/path/path";
 import * as vars from "../common/variables/colors";
 import {FormTeam} from "../modules/teams/components/FormTeam";
 
-export interface ITeamAddProps {
-}
 
-
-export function CommandAdd(props: ITeamAddProps) {
+export function CommandAdd() {
     return (
         <LayerPage>
             <StyledBox>
