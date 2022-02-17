@@ -10,7 +10,6 @@ export interface IBigCardProps {
   type: "command" | "player";
 }
 
-
 const BigCard: React.FC<IBigCardProps> = ({ data, type }) => {
   return (
     <StyledEditCard>

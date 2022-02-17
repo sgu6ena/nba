@@ -15,9 +15,10 @@ interface ICardProps {
 }
 
 const StyledCard = styled.div`
+  max-width: 400px;
   flex-grow: 1;
   flex-shrink: 1;
-  height: 24em;
+  height:24em ;
   width: 24em;
   background: ${vars.$gradient};
   border-radius: 4px;

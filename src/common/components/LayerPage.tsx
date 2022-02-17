@@ -24,14 +24,6 @@ const LayerPage: React.FunctionComponent<ILayerPageProps> = ({
       <Sidebar />
       <main>
         <Page>
-          {search ? (
-            <Panel>
-              <SearchInput placeholder="Search..." />
-              <Link to="add"><Button>Add&nbsp;＋</Button></Link>
-            </Panel>
-          ) : (
-            ""
-          )}
           <Content>{children}</Content>
         </Page>
       </main>

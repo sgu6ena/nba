@@ -11,6 +11,10 @@ import ReactPaginate from "react-paginate";
 import styled from "styled-components";
 import {useState} from "react";
 import {fetchPlayers} from "../modules/players/playerSlice";
+import SearchInput from "../common/ui/SearchInput";
+import {Link} from "react-router-dom";
+import Button from "../common/ui/button/Button";
+import * as sizes from "../common/variables/sizes";
 
 export interface IPlayerListProps {
 }
@@ -19,6 +23,8 @@ export function PlayerList(props: IPlayerListProps) {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [playersPerPage, setplayersPerPage] = useState(6);
+    const [search, setSearch] = useState('');
+
 
     const dispatch = useAppDispatch();
     const {players, isLoading, error} = useAppSelector(
@@ -29,21 +35,29 @@ export function PlayerList(props: IPlayerListProps) {
         dispatch(fetchPlayers());
     }, []);
 
+
+
     const handlePageClick = (e: any) => {
         const selectedPage = e.selected;
         setCurrentPage(selectedPage + 1)
     };
-
+    const filterPlayers = players.filter(item => item.name.toUpperCase().includes(search));
     const indexOfLastTeam = currentPage * playersPerPage;
     const indexOfFirstTeam = indexOfLastTeam - playersPerPage;
-    const currentPlayers = players.slice(indexOfFirstTeam, indexOfLastTeam)
+    const currentPlayers = filterPlayers.slice(indexOfFirstTeam, indexOfLastTeam)
 
+    const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+        setSearch(e.target.value.toUpperCase());
+    }
     return (
-        <LayerPage search paginate>
+        <LayerPage >
             {isLoading && <Spinner/>}
             {error}
-
-            {players.length ? (
+            <Panel>
+                <SearchInput placeholder="Search..." onChange={handleChange} />
+                <Link to="add"><Button>Add&nbsp;＋</Button></Link>
+            </Panel>
+            {filterPlayers.length ? (
                 <>
                     <FlexBox>
                         {currentPlayers.map((player: IPlayer) => (
@@ -59,7 +73,7 @@ export function PlayerList(props: IPlayerListProps) {
                     </FlexBox>
                     <FlexBox>
                         <ReactPaginate onPageChange={handlePageClick}
-                                       pageCount={Math.ceil(players.length / playersPerPage)}
+                                       pageCount={Math.ceil(filterPlayers.length / playersPerPage)}
                                        containerClassName={"pagination"}
                                        activeClassName={"active"}
                                        previousLabel={"❮"}
@@ -87,3 +101,14 @@ const FlexBox = styled.div`
   gap: 2em;
   flex-wrap: wrap;
 `
+
+
+const Panel = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  @media (max-width: ${sizes.$sm}) {
+    flex-direction: column;
+  }
+`;
