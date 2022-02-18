@@ -136,24 +136,32 @@ return (
                 <Controller
                     name="height"
                     control={control}
-                    rules={{required: false}}
+                    rules={{required: false, min:0, max:250, pattern: {
+                        value: /\d{1,3}/,
+                        message: "Wrong data"
+                    }}}
                     render={({field}) => (
                         <Input
                             {...field}
                             label="Height (cm)"
                             placeholder="Input height"
+                            error={errors.height && "Wrong height"}
                         />
                     )}
                 />
                 <Controller
                     name="weight"
                     control={control}
-                    rules={{required: false}}
+                    rules={{required: false, min:0, max:250, pattern: {
+                            value: /\d{1,3}/,
+                            message: "Wrong data"
+                        }}}
                     render={({field}) => (
                         <Input
                             {...field}
                             label="Weight (kg)"
                             placeholder="Input weight"
+                            error={errors.weight && "Wrong weight"}
                         />
                     )}
                 />
@@ -178,12 +186,16 @@ return (
                 <Controller
                     name="number"
                     control={control}
-                    rules={{required: false}}
+                    rules={{required: false, min:0, max:999, pattern: {
+                            value: /\d{1,3}/,
+                            message: "Wrong data"
+                        }}}
                     render={({field}) => (
                         <Input
                             {...field}
                             label="Number"
                             placeholder="Input number"
+                            error={errors.number && "Wrong number"}
                         />
                     )}
                 />

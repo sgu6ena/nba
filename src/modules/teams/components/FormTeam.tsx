@@ -84,13 +84,14 @@ export const FormTeam: React.FC<IFormTeamProps> = ({data}) => {
                 <Controller
                     name="foundationYear"
                     control={control}
-                    rules={{required: false}}
+                    rules={{required: false, min:1981, max: new Date().getFullYear()}}
                     render={({field}) => (
                         <Input
                             {...field}
                             type={"number"}
                             label="Foundation Year"
                             placeholder="Input Year"
+                            error={errors.foundationYear&& 'Wrong year' }
                         />
                     )}
                 />
