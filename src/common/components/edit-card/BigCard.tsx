@@ -8,12 +8,13 @@ import { ITeam } from "../../../modules/teams/interfaces/ITeam";
 export interface IBigCardProps {
   data: IPlayer | ITeam;
   type: "command" | "player";
+  onDelete?:React.FormEventHandler<HTMLButtonElement>;
 }
 
-const BigCard: React.FC<IBigCardProps> = ({ data, type }) => {
+const BigCard: React.FC<IBigCardProps> = ({ data, type , onDelete}) => {
   return (
     <StyledEditCard>
-      <Panel type={type} title={data.name} />
+      <Panel type={type} title={data.name} onDelete={onDelete} />
       <Info type={type} data={data} />
     </StyledEditCard>
   );

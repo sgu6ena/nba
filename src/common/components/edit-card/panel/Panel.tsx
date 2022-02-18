@@ -6,12 +6,15 @@ import Path from "../../path/path";
 import {Link} from "react-router-dom";
 
 
+
 export interface IPanelProps {
     title: string;
     type: string;
+    onDelete?:React.FormEventHandler<HTMLButtonElement>;
 }
 
-const Panel: React.FC<IPanelProps> = ({type, title}) => {
+const Panel: React.FC<IPanelProps> = ({type, title, onDelete}) => {
+
     return (
         <StyledPanel>
             <Path title={title} type={type}/>
@@ -19,7 +22,7 @@ const Panel: React.FC<IPanelProps> = ({type, title}) => {
                 <Link to={"edit"}>
                     <button className="btn pencil" title="edit"></button>
                 </Link>
-                <button className="btn trash" title="delete"></button>
+                <button className="btn trash" title="delete" onClick={onDelete}></button>
             </div>
         </StyledPanel>
     );

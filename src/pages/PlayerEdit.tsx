@@ -21,7 +21,7 @@ export function PlayerEdit() {
     return (
         <LayerPage>
             <StyledBox>
-                <Path type="player" title="Add New Player"/>
+                <Path type="player" title="Edit Player"/>
                 <FormPlayer data={thisPlayer}/>
             </StyledBox>
         </LayerPage>

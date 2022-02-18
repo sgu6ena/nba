@@ -32,7 +32,7 @@ export default class ApiService {
         return await res.json();
     };
 
-    postResource = async (url: string, data: any = {}, method: string= "POST") => {
+    postResource = async (url: string, data: any = {}, method: string = "POST") => {
         const res = await fetch(`${this._apiBaseUrl}${url}`, {
             headers: this.headers(),
             method: method,
@@ -75,13 +75,21 @@ export default class ApiService {
         return await res.json();
     };
 
-     getPing = async () => {
+    postImage = async (data: Blob) => {
+        const formData = new FormData();
+        formData.append('file', data ? data : '');
+        return await this._postImage('/api/Image/SaveImage', formData);
+    }
+
+
+    getPing = async () => {
         return await api.getResource(`/api/echo/ping`);
 
     };
     getVersion = async () => {
         return await this.getResource(`/api/echo/version`);
     };
+
 
     postLogin = async (login: string, pass: string) => {
         return await this.postResource(`/api/Auth/SignIn`, {
@@ -98,35 +106,44 @@ export default class ApiService {
         });
     };
 
+
     getTeams = async () => {
         return await this.getResource("/api/Team/GetTeams");
     };
+
+    postTeam = async (data: ITeam) => {
+        return await this.postResource('/api/Team/Add', data);
+    }
+
+    putTeam = async (data: ITeam) => {
+        return await this.postResource(`/api/Team/Update`, data, "PUT");
+    }
+    deleteTeam = async (id: number | string) => {
+        return await this.postResource(  '/api/Team/Delete?id='+ id,{}, 'DELETE');
+    }
+
+
     getPositions = async () => {
         return await this.getResource('/api/Player/GetPositions');
     }
+
     getPlayers = async () => {
         return await this.getResource("/api/Player/GetPlayers");
     };
 
-    postImage = async (data: Blob) => {
-        const formData = new FormData();
-        formData.append('file', data ? data : '');
-        return await this._postImage('/api/Image/SaveImage', formData);
+    postPlayer = async (data: IPlayer) => {
+        return await this.postResource('/api/Player/Add', data);
     }
 
-    postPlayer = async (data:IPlayer)=>{
-        return await  this.postResource( '/api/Player/Add', data)
-    }
-    putPlayer = async (data:IPlayer)=>{
-        return await  this.postResource( `/api/Player/Update`, data, "PUT")
+    putPlayer = async (data: IPlayer) => {
+        return await this.postResource(`/api/Player/Update`, data, "PUT");
     }
 
-    postTeam = async (data:ITeam)=>{
-        return await  this.postResource( '/api/Team/Add', data)
+    deletePlayer = async (id: number | string) => {
+        return await this.postResource('/api/Player/Delete?id='+ id,{}, 'DELETE');
     }
-    putTeam = async (data:ITeam)=>{
-        return await  this.postResource( `/api/Team/Update`, data, "PUT")
-    }
+
+
 }
 
 export const api = new ApiService();

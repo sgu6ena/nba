@@ -7,16 +7,7 @@ import {FormPlayer} from "../modules/players/components/FormPlayer";
 
 
 export function PlayerAdd() {
-const data = {"id": 925,
-        "name": "Клевая прическа",
-        "number": 13,
-        "position": "Forward",
-        "team": 27,
-        "birthday": "2000-02-03T21:35:11.917",
-        "height": 199,
-        "weight": 87,
-        "avatarUrl": "https://a.espncdn.com/combiner/i?img=/i/headshots/nba/players/full/4299.png"
-}
+
     return (
         <LayerPage>
             <StyledBox>
