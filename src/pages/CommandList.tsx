@@ -16,12 +16,11 @@ import SearchInput from "../common/ui/SearchInput";
 import {Link} from "react-router-dom";
 import Button from "../common/ui/button/Button";
 import * as sizes from "../common/variables/sizes";
+import CustomSelect from "../common/ui/CustomSelect/CustomSelect";
 
+const pages = [{value: '6', label: '6'}, {value: '12', label: '12'}, {value: '24', label: '24'}];
 
-export interface ICommandListProps {
-}
-
-export function CommandList(props: ICommandListProps) {
+export function CommandList() {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [teamsPerPage, setTeamsPerPage] = useState(6);
@@ -46,13 +45,17 @@ export function CommandList(props: ICommandListProps) {
         setCurrentPage(selectedPage + 1)
     };
 
-    const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
+    const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value.toUpperCase());
+    }
+
+    const pageChange = (e: any) => {
+        setTeamsPerPage(e.value)
     }
     return (
         <LayerPage>
             <Panel>
-                <SearchInput placeholder="Search..."  onChange={handleChange}/>
+                <SearchInput placeholder="Search..." onChange={handleChange}/>
                 <Link to="add"><Button>Add&nbsp;＋</Button></Link>
             </Panel>
             {isLoading && <Spinner/>}
@@ -73,7 +76,7 @@ export function CommandList(props: ICommandListProps) {
                         ))}
                     </FlexBox>
 
-                    <FlexBox>
+                    <FlexPage>
                         <ReactPaginate onPageChange={handlePageClick}
                                        pageCount={Math.ceil(filterTeams.length / teamsPerPage)}
                                        containerClassName={"pagination"}
@@ -81,7 +84,9 @@ export function CommandList(props: ICommandListProps) {
                                        previousLabel={"❮"}
                                        nextLabel={"❯"}
                         />
-                    </FlexBox></>)
+                        <CustomSelect pages  value={pages[0]} onChange={pageChange} options={pages} placeholder={teamsPerPage.toString()} />
+
+                    </FlexPage></>)
                 :
                 (
                     <div style={{margin: "auto"}}>
@@ -103,6 +108,12 @@ const FlexBox = styled.div`
   display: flex;
   gap: 2em;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const FlexPage = styled(FlexBox)`
+  justify-content: space-between;
 `
 
 const Panel = styled.div`

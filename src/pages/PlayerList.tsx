@@ -15,11 +15,11 @@ import SearchInput from "../common/ui/SearchInput";
 import {Link} from "react-router-dom";
 import Button from "../common/ui/button/Button";
 import * as sizes from "../common/variables/sizes";
+import CustomSelect from "../common/ui/CustomSelect/CustomSelect";
 
-export interface IPlayerListProps {
-}
+const pages = [{value: '6', label: '6'}, {value: '12', label: '12'}, {value: '24', label: '24'}];
 
-export function PlayerList(props: IPlayerListProps) {
+export function PlayerList() {
 
     const [currentPage, setCurrentPage] = useState(1);
     const [playersPerPage, setplayersPerPage] = useState(6);
@@ -49,6 +49,9 @@ export function PlayerList(props: IPlayerListProps) {
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value.toUpperCase());
     }
+    const pageChange = (e: any) => {
+        setplayersPerPage(e.value)
+    }
     return (
         <LayerPage >
             {isLoading && <Spinner/>}
@@ -71,7 +74,7 @@ export function PlayerList(props: IPlayerListProps) {
                             />
                         ))}
                     </FlexBox>
-                    <FlexBox>
+                    <FlexPage>
                         <ReactPaginate onPageChange={handlePageClick}
                                        pageCount={Math.ceil(filterPlayers.length / playersPerPage)}
                                        containerClassName={"pagination"}
@@ -79,7 +82,8 @@ export function PlayerList(props: IPlayerListProps) {
                                        previousLabel={"❮"}
                                        nextLabel={"❯"}
                         />
-                    </FlexBox>
+                        <CustomSelect pages  value={pages[0]} onChange={pageChange} options={pages} placeholder={playersPerPage.toString()} />
+                    </FlexPage>
                 </>
             ) : (
                 <div style={{margin: "auto"}}>
@@ -100,9 +104,13 @@ const FlexBox = styled.div`
   display: flex;
   gap: 2em;
   flex-wrap: wrap;
+  justify-content: flex-start;
+  align-items: center;
+`;
+
+const FlexPage = styled(FlexBox)`
+  justify-content: space-between;
 `
-
-
 const Panel = styled.div`
   display: flex;
   justify-content: space-between;

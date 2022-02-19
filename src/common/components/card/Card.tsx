@@ -15,8 +15,8 @@ interface ICardProps {
 }
 
 const StyledCard = styled.div`
-  max-width: 400px;
-  flex-grow: 1;
+  //max-width: 400px;
+  //flex-grow: 1;
   flex-shrink: 1;
   height:24em ;
   width: 24em;
@@ -38,7 +38,7 @@ const StyledCard = styled.div`
   }
 
   article {
-    z-index: 5;
+
     height: 6em;
     padding: 1em;
     font-size: 1.3em;

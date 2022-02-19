@@ -5,49 +5,54 @@ import * as colors from "../../variables/colors";
 
 interface ICustomSelectProps {
     label?: string;
-    options: { value: string; label: string }[];
+    options: { value: string; label: string; }[];
     isClearable?: boolean;
-    value?: string | number ;
+    value?: string | number|{ value: string; label: string;};
     onChange?: any;
+    pages?: boolean;
+
+    placeholder?:string;
 }
 
 
-const customStyles = {
-    dropdownIndicator: (provided: any) => ({
-        ...provided,
-        color: colors.$grey,
-        borderLeft: `1px solid ${colors.$lightestGrey}`,
-        margin: "2px 0",
-    }),
-
-    menuList: (provided: any) => ({
-        ...provided,
-        background: ` ${colors.$white}`,
-        padding: "0",
-        borderRadius: "4px",
-    }),
-    option: (
-        provided: any,
-        state: { isSelected: boolean; isFocused: boolean }
-    ) => ({
-        ...provided,
-
-        borderBottom: "1px solid lightgrey",
-        background: state.isSelected
-            ? colors.$lightRed
-            : state.isFocused
-                ? colors.$lightestRed
-                : "white",
-        color: state.isSelected ? colors.$white : state.isFocused ? colors.$white : colors.$grey,
-        hover: "blue",
-    }),
-};
-
 const CustomSelect: React.FunctionComponent<ICustomSelectProps> = ({
+                                                                       pages,
                                                                        value,
                                                                        label,
                                                                        ...props
                                                                    }) => {
+    const customStyles = {
+        dropdownIndicator: (provided: any) => ({
+            ...provided,
+            color: colors.$grey,
+            borderLeft: `1px solid ${colors.$lightestGrey}`,
+            margin: "2px 0",
+        }),
+
+        menuList: (provided: any) => ({
+            ...provided,
+            background: ` ${colors.$white}`,
+            padding: "0",
+            borderRadius: "4px",
+            marginTop: pages ? "-180px" : '',
+
+        }),
+        option: (
+            provided: any,
+            state: { isSelected: boolean; isFocused: boolean }
+        ) => ({
+            ...provided,
+
+            borderBottom: "1px solid lightgrey",
+            background: state.isSelected
+                ? colors.$lightRed
+                : state.isFocused
+                    ? colors.$lightestRed
+                    : "white",
+            color: state.isSelected ? colors.$white : state.isFocused ? colors.$white : colors.$grey,
+            hover: "blue",
+        }),
+    };
     return (
         <div>
             <StyledLabel>
@@ -56,13 +61,13 @@ const CustomSelect: React.FunctionComponent<ICustomSelectProps> = ({
                     {...props}
                     styles={customStyles}
                     className="select"
-                                     theme={(theme) => ({
+                    theme={(theme) => ({
                         ...theme,
                         borderRadius: 4,
-                        border: "none",
+                        border: pages ? '1px solid grey' :"none",
                         colors: {
                             ...theme.colors,
-                            neutral0: colors.$lightestGrey1,
+                            neutral0: pages ? colors.$white : colors.$lightestGrey1,
                             primary50: colors.$lightRed,
                             primary75: colors.$lightestRed,
                             primary: colors.$lightestGrey,
@@ -97,8 +102,8 @@ const StyledLabel = styled.label`
   }
 
   .select {
-    outline: none;
-    border: none;
+    //outline: none;
+    //border: none;
     padding: 5px 0 0 0;
     width: 100%;
   }

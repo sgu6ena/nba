@@ -90,3 +90,9 @@ const Content = styled.div`
   flex-direction: column;
 
 `;
+
+const Content2 = styled.div`
+  display: grid;
+  gap: 2em;
+  
+`
