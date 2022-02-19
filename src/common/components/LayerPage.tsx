@@ -88,6 +88,7 @@ const Content = styled.div`
   justify-content: flex-start;
   gap: 2em;
   flex-direction: column;
+  flex-basis: 100%;
 
 `;
 

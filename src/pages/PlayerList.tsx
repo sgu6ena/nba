@@ -106,6 +106,8 @@ const FlexBox = styled.div`
   flex-wrap: wrap;
   justify-content: flex-start;
   align-items: center;
+
+
 `;
 
 const FlexPage = styled(FlexBox)`
