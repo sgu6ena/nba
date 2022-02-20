@@ -54,14 +54,14 @@ export function CommandList() {
     }
     return (
         <LayerPage>
-            <Panel>
+            <FlexBox>
                 <SearchInput placeholder="Search..." onChange={handleChange}/>
                 <Link to="add"><Button>Add&nbsp;＋</Button></Link>
-            </Panel>
+            </FlexBox>
             {isLoading && <Spinner/>}
             {error}
             {teams.length ? (<>
-                    <FlexBox>
+                    <Grid>
                         {currentTeams.map((team: any) => (
                             <Card
                                 title={team.name}
@@ -74,9 +74,9 @@ export function CommandList() {
                                 id={team.id}
                             />
                         ))}
-                    </FlexBox>
+                    </Grid>
 
-                    <FlexPage>
+                    <FlexBox>
                         <ReactPaginate onPageChange={handlePageClick}
                                        pageCount={Math.ceil(filterTeams.length / teamsPerPage)}
                                        containerClassName={"pagination"}
@@ -86,7 +86,7 @@ export function CommandList() {
                         />
                         <CustomSelect pages  value={pages[0]} onChange={pageChange} options={pages} placeholder={teamsPerPage.toString()} />
 
-                    </FlexPage></>)
+                    </FlexBox></>)
                 :
                 (
                     <div style={{margin: "auto"}}>
@@ -108,20 +108,31 @@ const FlexBox = styled.div`
   display: flex;
   gap: 2em;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-`;
-
-const FlexPage = styled(FlexBox)`
-  justify-content: space-between;
-`
-
-const Panel = styled.div`
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  @media (max-width: ${sizes.$sm}) {
+
+  @media (max-width: ${sizes.$md}) {
     flex-direction: column;
+   a{ 
+     width: 100%;
+     button{
+       width: 100%;
+     }
+   }  
   }
 `;
+
+
+
+const Grid = styled.div`
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(3,1fr);
+  @media (max-width: ${sizes.$xl}) {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  @media (max-width: ${sizes.$sm}) {
+    grid-template-columns: repeat(1,1fr);
+  }
+`

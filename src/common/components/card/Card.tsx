@@ -2,6 +2,7 @@ import * as React from "react";
 import Image from "../image/Image";
 import styled from "styled-components";
 import * as vars from "../../variables/colors";
+import * as sizes from "../../variables/sizes";
 import {Link} from "react-router-dom";
 
 
@@ -16,10 +17,10 @@ interface ICardProps {
 
 const StyledCard = styled.div`
   //max-width: 400px;
-  //flex-grow: 1;
+  flex-grow: 1;
   flex-shrink: 1;
   height:24em ;
-  width: 24em;
+  width: 20em;
   background: ${vars.$gradient};
   border-radius: 4px;
   display: flex;
@@ -58,7 +59,9 @@ const StyledCard = styled.div`
       margin: 0;
       color: ${vars.$white};
       font-size: 1.25rem;
-
+      @media (max-width: ${sizes.$md}) {
+        font-size: 1.15rem;
+      }
       span {
         color: ${vars.$red};
       }

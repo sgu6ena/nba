@@ -56,13 +56,13 @@ export function PlayerList() {
         <LayerPage >
             {isLoading && <Spinner/>}
             {error}
-            <Panel>
+            <FlexBox>
                 <SearchInput placeholder="Search..." onChange={handleChange} />
                 <Link to="add"><Button>Add&nbsp;＋</Button></Link>
-            </Panel>
+            </FlexBox>
             {filterPlayers.length ? (
                 <>
-                    <FlexBox>
+                    <Grid>
                         {currentPlayers.map((player: IPlayer) => (
                             <Card
                                 title={player.name}
@@ -73,8 +73,8 @@ export function PlayerList() {
                                 id={player.id}
                             />
                         ))}
-                    </FlexBox>
-                    <FlexPage>
+                    </Grid>
+                    <FlexBox>
                         <ReactPaginate onPageChange={handlePageClick}
                                        pageCount={Math.ceil(filterPlayers.length / playersPerPage)}
                                        containerClassName={"pagination"}
@@ -83,7 +83,7 @@ export function PlayerList() {
                                        nextLabel={"❯"}
                         />
                         <CustomSelect pages  value={pages[0]} onChange={pageChange} options={pages} placeholder={playersPerPage.toString()} />
-                    </FlexPage>
+                    </FlexBox>
                 </>
             ) : (
                 <div style={{margin: "auto"}}>
@@ -104,21 +104,28 @@ const FlexBox = styled.div`
   display: flex;
   gap: 2em;
   flex-wrap: wrap;
-  justify-content: flex-start;
-  align-items: center;
-
-
-`;
-
-const FlexPage = styled(FlexBox)`
-  justify-content: space-between;
-`
-const Panel = styled.div`
-  display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 16px;
-  @media (max-width: ${sizes.$sm}) {
+  @media (max-width: ${sizes.$md}) {
     flex-direction: column;
-  }
+    a{
+      width: 100%;
+      button{
+        width: 100%;
+      }
+    }
+
+
 `;
+const Grid = styled.div`
+  display: grid;
+  grid-gap: 2em;
+  grid-template-columns: repeat(3,1fr);
+  @media (max-width: ${sizes.$xl}) {
+    grid-template-columns: repeat(2,1fr);
+  }
+
+  @media (max-width: ${sizes.$sm}) {
+    grid-template-columns: repeat(1,1fr);
+  }
+`

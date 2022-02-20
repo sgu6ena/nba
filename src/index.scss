@@ -45,7 +45,11 @@ a {
   text-decoration: inherit;
 }
 
-
+a.flex-link {
+  flex-shrink: 1;
+  display: flex;
+  flex-grow: 1;
+}
 
 .pagination {
   padding: 0;
