@@ -107,8 +107,12 @@ export default class ApiService {
     };
 
 
-    getTeams = async () => {
-        return await this.getResource("/api/Team/GetTeams");
+    getTeams = async (page: number = 1, size: number = 6) => {
+        return await this.getResource(`/api/Team/GetTeams?Page=${page}&PageSize=${size}`);
+    };
+
+    getTeam = async (id: string = '') => {
+        return await this.getResource(`/api/Team/Get?id=${id}`);
     };
 
     postTeam = async (data: ITeam) => {
@@ -118,8 +122,9 @@ export default class ApiService {
     putTeam = async (data: ITeam) => {
         return await this.postResource(`/api/Team/Update`, data, "PUT");
     }
+
     deleteTeam = async (id: number | string) => {
-        return await this.postResource(  '/api/Team/Delete?id='+ id,{}, 'DELETE');
+        return await this.postResource('/api/Team/Delete?id=' + id, {}, 'DELETE');
     }
 
 
@@ -127,8 +132,17 @@ export default class ApiService {
         return await this.getResource('/api/Player/GetPositions');
     }
 
-    getPlayers = async () => {
-        return await this.getResource("/api/Player/GetPlayers");
+    getPlayers = async (page: number = 1, size: number = 6) => {
+        return await this.getResource(`/api/Player/GetPlayers?Page=${page}&PageSize=${size}`);
+    };
+
+    getPlayersByTeamId = async (id: string = '') => {
+        return await this.getResource(`/api/Player/GetPlayers?TeamIds=${id}`);
+    };
+
+
+    getPlayer = async (id: string = '') => {
+        return await this.getResource(`/api/Player/Get?id=${id}`);
     };
 
     postPlayer = async (data: IPlayer) => {
@@ -140,7 +154,7 @@ export default class ApiService {
     }
 
     deletePlayer = async (id: number | string) => {
-        return await this.postResource('/api/Player/Delete?id='+ id,{}, 'DELETE');
+        return await this.postResource('/api/Player/Delete?id=' + id, {}, 'DELETE');
     }
 
 
