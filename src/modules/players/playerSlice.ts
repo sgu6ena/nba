@@ -11,7 +11,8 @@ interface PlayerState {
 }
 interface IPage {
     page: number,
-    size: number
+    size: number,
+    name?:string
 }
 const initialState: PlayerState = {
     players: [],
@@ -26,6 +27,13 @@ export const fetchPlayers = createAsyncThunk(
         return await response;
     })
 
+
+export const fetchPlayersByName = createAsyncThunk(
+    'players/fetchPlayers',
+    async ({name, page, size}: IPage) => {
+        const response = await api.getPlayersByName(name, page, size);
+        return await response;
+    })
 
 
 export const playerSlice = createSlice({
