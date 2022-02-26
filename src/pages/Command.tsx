@@ -4,23 +4,33 @@ import {useNavigate} from "react-router-dom";
 import EditCard from "../common/components/edit-card/BigCard";
 import LayerPage from "../common/components/LayerPage";
 import Table from "../modules/teams/components/table/Table";
-import {useAppSelector} from "../core/redux/redux";
+
 
 import ImageBox from "../common/components/image-box/ImageBox";
 import {ReactComponent as NotFound} from "../assets/images/NotFound.svg";
 import {api} from "../api/api";
 import {toast, Toaster} from "react-hot-toast";
-import {useState} from "react";
+import {useEffect, useState} from "react";
 import Spinner from "../common/ui/spinner/spinner";
+
 
 
 export function Command() {
     const params = useParams();
-
-    const {teams} = useAppSelector((state) => state.teamReducer);
-    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
-    const thisteam = teams.find((t) => t.id?.toString() === params.id);
+
+    const [isLoading, setIsLoading] = useState(false);
+    const [team, setTeam] = useState()
+
+   useEffect(()=>{
+       setIsLoading(true);
+       api.getTeam(params?.id)
+           .then((data) => setTeam(data))
+           .catch(()=>console.log('error'))
+           .finally( ()=>setIsLoading(false))
+   },[params.id])
+
+
 
     const onDelete = () => {
         setIsLoading(true);
@@ -37,9 +47,9 @@ export function Command() {
 
     return (
         <LayerPage>
-            {thisteam ? (
+            {team ? (
                 <>
-                    <EditCard data={thisteam} type="command" onDelete={onDelete}/>
+                    <EditCard data={team} type="command" onDelete={onDelete}/>
                     <Table/>
                 </>
             ) : (
