@@ -7,7 +7,6 @@ import Button from "../../../common/ui/button/Button";
 import * as sizes from "../../../common/variables/sizes";
 import {Controller, useForm} from "react-hook-form";
 import {Link, useNavigate} from "react-router-dom";
-import {RouteNames} from "../../../common/variables/RouteNames";
 import {useState} from "react";
 import {api} from "../../../api/api";
 import {ITeam} from "../../teams/interfaces/ITeam";

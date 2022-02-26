@@ -4,9 +4,6 @@ import Header from "./header/Header";
 import Sidebar from "./sidebar/Sidebar";
 import * as colors from "../variables/colors";
 import * as sizes from "../variables/sizes";
-import SearchInput from "../ui/SearchInput";
-import Button from "../ui/button/Button";
-import { Link } from "react-router-dom";
 
 interface ILayerPageProps {
   search?: boolean;

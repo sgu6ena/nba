@@ -5,11 +5,11 @@ import LayerPage from "../common/components/LayerPage";
 import {useAppDispatch, useAppSelector} from "../core/redux/redux";
 
 import Spinner from "../common/ui/spinner/spinner";
-import {EventHandler, HTMLProps, useEffect, useRef, useState} from "react";
+import { useState} from "react";
 
 import ReactPaginate from "react-paginate";
 import styled from "styled-components";
-import {fetchTeams} from "../modules/teams/teamSlice";
+import {fetchTeams, fetchTeamsByName} from "../modules/teams/teamSlice";
 import ImageBox from "../common/components/image-box/ImageBox";
 import {ReactComponent as BasketUp} from "../assets/images/Basket-up.svg";
 import SearchInput from "../common/ui/SearchInput";
@@ -21,18 +21,19 @@ import CustomSelect from "../common/ui/CustomSelect/CustomSelect";
 const pages = [{value: '6', label: '6'}, {value: '12', label: '12'}, {value: '24', label: '24'}];
 
 export function CommandList() {
-
-    const [currentPage, setCurrentPage] = useState(1);
-    const [teamsPerPage, setTeamsPerPage] = useState(6);
-    const [search, setSearch] = useState('');
-
-    const dispatch = useAppDispatch();
     const {teams, isLoading, error, count} = useAppSelector(
         (state) => state.teamReducer
     );
+    const [currentPage, setCurrentPage] = useState(1);
+    const [teamsPerPage, setTeamsPerPage] = useState(6);
+
+
+    const dispatch = useAppDispatch();
+
 
     React.useEffect(() => {
         dispatch(fetchTeams({page: currentPage, size: teamsPerPage}));
+
     }, [currentPage, teamsPerPage]);
 
 
@@ -42,10 +43,13 @@ export function CommandList() {
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
-        setSearch(e.target.value.toUpperCase());
+        dispatch(fetchTeamsByName({name:e.target.value, page: currentPage, size: teamsPerPage}));
     }
 
-    const pageChange = (e: any) =>  setTeamsPerPage(e.value);
+    const pageChange = (e: any) => {
+        setCurrentPage(1);
+        setTeamsPerPage(e.value);
+    }
 
     return (
         <LayerPage>
