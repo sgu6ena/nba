@@ -12,8 +12,9 @@ interface TeamState {
 }
 
 interface IPage {
-    page: number,
-    size: number
+    name?: string,
+    page?: number,
+    size?: number
 }
 
 const initialState: TeamState = {
@@ -30,6 +31,15 @@ export const fetchTeams = createAsyncThunk(
         const response = await api.getTeams(page, size);
         return await response;
     })
+
+
+export const fetchTeamsByName = createAsyncThunk(
+    'teams/fetchTeams',
+    async ({name, page, size}: IPage) => {
+        const response = await api.getTeamsByName(name, page, size);
+        return await response;
+    })
+
 
 export const teamSlice = createSlice({
     name: "team",
