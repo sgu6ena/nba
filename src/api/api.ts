@@ -111,6 +111,10 @@ export default class ApiService {
         return await this.getResource(`/api/Team/GetTeams?Page=${page}&PageSize=${size}`);
     };
 
+    getTeamsByName = async (name:string='', page: number = 1, size: number = 6)=>{
+        return await this.getResource(`/api/Team/GetTeams?Name=${name}&Page=${page}&PageSize=${size}`)
+    }
+
     getTeam = async (id: string = '') => {
         return await this.getResource(`/api/Team/Get?id=${id}`);
     };
@@ -140,6 +144,9 @@ export default class ApiService {
         return await this.getResource(`/api/Player/GetPlayers?TeamIds=${id}`);
     };
 
+    getPlayersByName = async (name:string='', page: number = 1, size: number = 6)=>{
+        return await this.getResource(`/api/Player/GetPlayers?Name=${name}&Page=${page}&PageSize=${size}`)
+    }
 
     getPlayer = async (id: string = '') => {
         return await this.getResource(`/api/Player/Get?id=${id}`);
