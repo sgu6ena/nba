@@ -17,40 +17,37 @@ import Button from "../common/ui/button/Button";
 import * as sizes from "../common/variables/sizes";
 import CustomSelect from "../common/ui/CustomSelect/CustomSelect";
 
+
 const pages = [{value: '6', label: '6'}, {value: '12', label: '12'}, {value: '24', label: '24'}];
 
 export function PlayerList() {
 
     const [currentPage, setCurrentPage] = useState(1);
-    const [playersPerPage, setplayersPerPage] = useState(6);
+    const [playersPerPage, setPlayersPerPage] = useState(6);
     const [search, setSearch] = useState('');
 
 
     const dispatch = useAppDispatch();
-    const {players, isLoading, error} = useAppSelector(
+    const {players, isLoading, error, count} = useAppSelector(
         (state) => state.playerReducer
     );
 
     React.useEffect(() => {
-        dispatch(fetchPlayers());
-    }, []);
-
+        dispatch(fetchPlayers({page: currentPage, size: playersPerPage}));
+    }, [currentPage, playersPerPage]);
 
 
     const handlePageClick = (e: any) => {
         const selectedPage = e.selected;
         setCurrentPage(selectedPage + 1)
     };
-    const filterPlayers = players.filter(item => item.name.toUpperCase().includes(search));
-    const indexOfLastTeam = currentPage * playersPerPage;
-    const indexOfFirstTeam = indexOfLastTeam - playersPerPage;
-    const currentPlayers = filterPlayers.slice(indexOfFirstTeam, indexOfLastTeam)
+
 
     const handleChange = (e:React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value.toUpperCase());
     }
     const pageChange = (e: any) => {
-        setplayersPerPage(e.value)
+        setPlayersPerPage(e.value)
     }
     return (
         <LayerPage >
@@ -60,10 +57,10 @@ export function PlayerList() {
                 <SearchInput placeholder="Search..." onChange={handleChange} />
                 <Link to="add"><Button>Add&nbsp;＋</Button></Link>
             </FlexBox>
-            {filterPlayers.length ? (
+            {players.length ? (
                 <>
                     <Grid>
-                        {currentPlayers.map((player: IPlayer) => (
+                        {players.map((player: IPlayer) => (
                             <Card
                                 title={player.name}
                                 subtitle={player.position}
@@ -76,7 +73,7 @@ export function PlayerList() {
                     </Grid>
                     <FlexBox>
                         <ReactPaginate onPageChange={handlePageClick}
-                                       pageCount={Math.ceil(filterPlayers.length / playersPerPage)}
+                                       pageCount={Math.ceil(count / playersPerPage)}
                                        containerClassName={"pagination"}
                                        activeClassName={"active"}
                                        previousLabel={"❮"}

@@ -1,41 +1,37 @@
 import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
-import { IPlayer } from "./interfaces/IPlayer";
-import {ITeam} from "../teams/interfaces/ITeam";
-import {fetchTeams} from "../teams/teamSlice";
+import {IPlayer} from "./interfaces/IPlayer";
 import {api} from "../../api/api";
+import {IPlayerResult} from "./interfaces/IPlayerResult";
 
-interface PlayerState{
+interface PlayerState {
     players: IPlayer[];
-    isLoading:boolean;
-    error:string;
+    isLoading: boolean;
+    error: string;
+    count: number
 }
-
-const initialState: PlayerState ={
+interface IPage {
+    page: number,
+    size: number
+}
+const initialState: PlayerState = {
     players: [],
-    isLoading:false,
-    error:"",
+    isLoading: false,
+    error: "",
+    count: 0
 }
-export const fetchPlayers = createAsyncThunk('players/fetchPlayers', async () => {
-    const response =  await api.getPlayers();
-    return await response.data;
-})
+export const fetchPlayers = createAsyncThunk(
+    'players/fetchPlayers',
+    async ({page, size}: IPage) => {
+        const response = await api.getPlayers(page, size);
+        return await response;
+    })
+
+
 
 export const playerSlice = createSlice({
-    name:'player',
+    name: 'player',
     initialState,
-    reducers:{
-        // playersFetching (state){
-        //   state.isLoading = true;
-        // },
-        // playersFetchingSuccess (state,action: PayloadAction<IPlayer[]>){
-        //     state.isLoading = false;
-        //     state.error="";
-        //     state.players = action.payload;
-        // },
-        // playersFetchingError (state, action:PayloadAction<string>){
-        //     state.isLoading = false;
-        //     state.error = action.payload;
-        // }
+    reducers: {
     },
     extraReducers: {
         [fetchPlayers.pending.toString()]: (state) => {
@@ -46,10 +42,11 @@ export const playerSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
-        [fetchPlayers.fulfilled.toString()]: (state, action: PayloadAction<IPlayer[]>) => {
+        [fetchPlayers.fulfilled.toString()]: (state, action: PayloadAction<IPlayerResult>) => {
             state.isLoading = false;
-            state.error="";
-            state.players = action.payload;
+            state.error = "";
+            state.players = action.payload.data;
+            state.count= action.payload.count;
         },
     }
 })
