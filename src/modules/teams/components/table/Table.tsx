@@ -3,49 +3,66 @@ import Row from "./Row";
 import * as colors from "../../../../common/variables/colors";
 import * as sizes from '../../../../common/variables/sizes';
 import styled from "styled-components";
-import {useAppSelector} from "../../../../core/redux/redux";
+
 import {useParams} from "react-router-dom";
+import {useEffect, useState} from "react";
+import {api} from "../../../../api/api";
+import {IPlayer} from "../../../players/interfaces/IPlayer";
+import {IPlayerResult} from "../../../players/interfaces/IPlayerResult";
 
-export interface ITableProps {
-}
 
 
-const Table: React.FC<ITableProps> = (props: ITableProps) => {
-    const {players, isLoading, error} = useAppSelector(
-        (state) => state.playerReducer
-    );
+const Table: React.FC = () => {
+
     const params = useParams();
-    const playersTeam = players.filter(player => player.team?.toString() === params.id)
 
-    return (
-        <StyledTable>
-            <thead>
-            <tr>
-                <th colSpan={5}>Roster</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-                <td className="number">#</td>
-                <td>Player</td>
-                <td className="hidden-sm">Heigth</td>
-                <td className="hidden-sm">Weigth</td>
-                <td className="hidden-sm">Age</td>
-            </tr>
+    const [isLoadingTable, setIsLoadingTable] = useState(false);
+    const [players, setPlayers] = useState([]);
 
-            {playersTeam.map(player => <Row
-                name={player.name}
-                position={player.position}
-                number={player.number}
-                height={player.height}
-                weight={player.weight}
-                avatarUrl={player.avatarUrl ?? player.avatarUrl}
-                birthday={player.birthday}
-                id={player.id}
-            />)}
+    useEffect(() => {
+        setIsLoadingTable(true);
 
-            </tbody>
-        </StyledTable>
+        api.getPlayersByTeamId(params?.id)   // @ts-ignore
+            .then((data: IPlayerResult) => setPlayers(data.data))
+            .finally(() => setIsLoadingTable(false))
+    }, [params.id])
+
+
+    return (<>
+            {isLoadingTable ? <h3>Loading players...</h3> :
+
+            players.length?
+            <StyledTable>
+                    <thead>
+                    <tr>
+                        <th colSpan={5}>Roster</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                        <td className="number">#</td>
+                        <td>Player</td>
+                        <td className="hidden-sm">Heigth</td>
+                        <td className="hidden-sm">Weigth</td>
+                        <td className="hidden-sm">Age</td>
+                    </tr>
+
+                    {players.map((player: IPlayer) => <Row
+                        name={player.name}
+                        position={player.position}
+                        number={player.number}
+                        height={player.height}
+                        weight={player.weight}
+                        avatarUrl={player.avatarUrl ?? player.avatarUrl}
+                        birthday={player.birthday}
+                        id={player.id}
+                    />)}
+
+                    </tbody>
+                </StyledTable>
+                :
+                <h3>No players detected for this team</h3>}
+        </>
     );
 };
 
@@ -100,9 +117,11 @@ const StyledTable = styled.table`
         font-weight: 500;
         font-size: 14px;
         line-height: 24px;
-a {
- color: ${colors.$grey}
-}
+
+        a {
+          color: ${colors.$grey}
+        }
+
         .player {
           display: flex;
           align-items: end;

@@ -1,41 +1,40 @@
-import {createAsyncThunk, createSlice, isFulfilled, PayloadAction} from "@reduxjs/toolkit";
+import {createAsyncThunk, createSlice, PayloadAction} from "@reduxjs/toolkit";
 import {ITeam} from "./interfaces/ITeam";
 import {api} from "../../api/api";
+import {ITeamsResult} from "./interfaces/ITeamsResult";
+
 
 interface TeamState {
     teams: ITeam[];
     isLoading: boolean;
     error: string;
+    count: number;
+}
+
+interface IPage {
+    page: number,
+    size: number
 }
 
 const initialState: TeamState = {
     teams: [],
     isLoading: false,
     error: "",
+    count: 0
 };
 
-export const fetchTeams = createAsyncThunk('teams/fetchTeams', async () => {
-    const response =  await api.getTeams();
-    return await response.data;
-})
+
+export const fetchTeams = createAsyncThunk(
+    'teams/fetchTeams',
+    async ({page, size}: IPage) => {
+        const response = await api.getTeams(page, size);
+        return await response;
+    })
 
 export const teamSlice = createSlice({
     name: "team",
     initialState,
-    reducers: {
-        // teamsFetching(state) {
-        //     state.isLoading = true;
-        // },
-        // teamsFetchingSuccess(state, action: PayloadAction<ITeam[]>) {
-        //     state.isLoading = false;
-        //     state.error = "";
-        //     state.teams = action.payload;
-        // },
-        // teamsFetchingError(state, action: PayloadAction<string>) {
-        //     state.isLoading = false;
-        //     state.error = action.payload;
-        // },
-    },
+    reducers: {},
     extraReducers: {
         [fetchTeams.pending.toString()]: (state) => {
             state.isLoading = true;
@@ -45,10 +44,11 @@ export const teamSlice = createSlice({
             state.isLoading = false;
             state.error = action.payload;
         },
-        [fetchTeams.fulfilled.toString()]: (state, action: PayloadAction<ITeam[]>) => {
+        [fetchTeams.fulfilled.toString()]: (state, action: PayloadAction<ITeamsResult>) => {
             state.isLoading = false;
             state.error = "";
-            state.teams = action.payload;
+            state.count = action.payload.count;
+            state.teams = action.payload.data;
         },
     }
 });

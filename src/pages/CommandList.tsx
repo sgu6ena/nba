@@ -27,31 +27,26 @@ export function CommandList() {
     const [search, setSearch] = useState('');
 
     const dispatch = useAppDispatch();
-    const {teams, isLoading, error} = useAppSelector(
+    const {teams, isLoading, error, count} = useAppSelector(
         (state) => state.teamReducer
     );
 
     React.useEffect(() => {
-        dispatch(fetchTeams());
-    }, [dispatch]);
+        dispatch(fetchTeams({page: currentPage, size: teamsPerPage}));
+    }, [currentPage, teamsPerPage]);
 
-    const filterTeams = teams.filter(item => item.name.toUpperCase().includes(search));
-    const indexOfLastTeam = currentPage * teamsPerPage;
-    const indexOfFirstTeam = indexOfLastTeam - teamsPerPage;
-    const currentTeams = filterTeams.slice(indexOfFirstTeam, indexOfLastTeam)
 
     const handlePageClick = (e: any) => {
         const selectedPage = e.selected;
-        setCurrentPage(selectedPage + 1)
+        setCurrentPage(selectedPage + 1);
     };
 
     const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value.toUpperCase());
     }
 
-    const pageChange = (e: any) => {
-        setTeamsPerPage(e.value)
-    }
+    const pageChange = (e: any) =>  setTeamsPerPage(e.value);
+
     return (
         <LayerPage>
             <FlexBox>
@@ -62,7 +57,7 @@ export function CommandList() {
             {error}
             {teams.length ? (<>
                     <Grid>
-                        {currentTeams.map((team: any) => (
+                        {teams.map((team: any) => (
                             <Card
                                 title={team.name}
                                 subtitle={
@@ -78,13 +73,14 @@ export function CommandList() {
 
                     <FlexBox>
                         <ReactPaginate onPageChange={handlePageClick}
-                                       pageCount={Math.ceil(filterTeams.length / teamsPerPage)}
+                                       pageCount={Math.ceil(count / teamsPerPage)}
                                        containerClassName={"pagination"}
                                        activeClassName={"active"}
                                        previousLabel={"❮"}
                                        nextLabel={"❯"}
                         />
-                        <CustomSelect pages  value={pages[0]} onChange={pageChange} options={pages} placeholder={teamsPerPage.toString()} />
+                        <CustomSelect pages value={pages[0]} onChange={pageChange} options={pages}
+                                      placeholder={teamsPerPage.toString()}/>
 
                     </FlexBox></>)
                 :
@@ -113,26 +109,26 @@ const FlexBox = styled.div`
 
   @media (max-width: ${sizes.$md}) {
     flex-direction: column;
-   a{ 
-     width: 100%;
-     button{
-       width: 100%;
-     }
-   }  
+    a {
+      width: 100%;
+
+      button {
+        width: 100%;
+      }
+    }
   }
 `;
-
 
 
 const Grid = styled.div`
   display: grid;
   grid-gap: 2em;
-  grid-template-columns: repeat(3,1fr);
+  grid-template-columns: repeat(3, 1fr);
   @media (max-width: ${sizes.$xl}) {
-    grid-template-columns: repeat(2,1fr);
+    grid-template-columns: repeat(2, 1fr);
   }
 
   @media (max-width: ${sizes.$sm}) {
-    grid-template-columns: repeat(1,1fr);
+    grid-template-columns: repeat(1, 1fr);
   }
 `
